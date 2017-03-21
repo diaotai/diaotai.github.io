@@ -97,12 +97,13 @@
 <h3 id="重点是这一行-exception-in-initAndListen-20-Attempted-to-create-a-lock-file-on-a-read-only-directory-data-db-terminating"><a href="#重点是这一行-exception-in-initAndListen-20-Attempted-to-create-a-lock-file-on-a-read-only-directory-data-db-terminating" class="headerlink" title="重点是这一行 exception in initAndListen: 20 Attempted to create a lock file on a read-only directory: /data/db, terminating"></a>重点是这一行 exception in initAndListen: 20 Attempted to create a lock file on a read-only directory: /data/db, terminating</h3><p>我根据StackOverFlow 的指示，跑到根目录下去新建这个/data/db 目录，依旧不行<br>然后改变/usr/local/etc/mongod.conf文件的路径配置，然而还是有问题</p>
 <p>说起来真的很少碰到StackOverFlow还搞不定的情况</p>
 <h3 id="虽然至此还没有搞定，但我大致已经明白错误在哪里来——不知道为什么数据库存储的文件夹失效了，而配置文件不起作用-按说我执行命令时候用了sudo-然而还是无法创建"><a href="#虽然至此还没有搞定，但我大致已经明白错误在哪里来——不知道为什么数据库存储的文件夹失效了，而配置文件不起作用-按说我执行命令时候用了sudo-然而还是无法创建" class="headerlink" title="虽然至此还没有搞定，但我大致已经明白错误在哪里来——不知道为什么数据库存储的文件夹失效了，而配置文件不起作用,按说我执行命令时候用了sudo 然而还是无法创建"></a>虽然至此还没有搞定，但我大致已经明白错误在哪里来——不知道为什么数据库存储的文件夹失效了，而配置文件不起作用,按说我执行命令时候用了sudo 然而还是无法创建</h3><p>所以</p>
-<h1 id="解决方案为：运行一条新的命令-mongod-–dbpath-你自己选择的路径"><a href="#解决方案为：运行一条新的命令-mongod-–dbpath-你自己选择的路径" class="headerlink" title="解决方案为：运行一条新的命令 mongod –dbpath  你自己选择的路径"></a>解决方案为：运行一条新的命令 mongod –dbpath  你自己选择的路径</h1><p>成功解决，然而我还是没有弄明白之前是在吗出问题了？配置文件为何失效。<br>如果有大神懂，可以联系我一下<br>邮箱:1486637702@qq.com</p>
+<h1 id="解决方案为：运行一条新的命令-mongod-–dbpath-你自己选择的路径，要确保这条路径存在"><a href="#解决方案为：运行一条新的命令-mongod-–dbpath-你自己选择的路径，要确保这条路径存在" class="headerlink" title="解决方案为：运行一条新的命令 mongod –dbpath  你自己选择的路径，要确保这条路径存在"></a>解决方案为：运行一条新的命令 mongod –dbpath  你自己选择的路径，要确保这条路径存在</h1><p>我的命令是 mongod –dbpath /Users/diaotai/project/data</p>
+<p>成功解决，然而我还是没有弄明白之前是在吗出问题了？配置文件为何失效。<br>如果有大神懂，可以联系我一下<br>邮箱:1486637702@qq.com</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://diaotai.com/2017/03/21/mongodb错误Invalid-command-–dbpath解决方案/" data-id="cj0jb5xr6000050zp61j9z229" class="article-share-link">Share</a>
+      <a data-url="http://diaotai.com/2017/03/21/mongodb错误Invalid-command-–dbpath解决方案/" data-id="cj0jbjur80000abzp03u7tner" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://diaotai.com/2017/03/05/关于mongoose数据库的安装和使用/" data-id="cj0jb5xrb000150zpznotcbrz" class="article-share-link">Share</a>
+      <a data-url="http://diaotai.com/2017/03/05/关于mongoose数据库的安装和使用/" data-id="cj0jbjurf0001abzpbaq924u5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://diaotai.com/2017/03/04/第一篇文章（用于测试）/" data-id="cj0jb5xre000250zp39qyb29b" class="article-share-link">Share</a>
+      <a data-url="http://diaotai.com/2017/03/04/第一篇文章（用于测试）/" data-id="cj0jbjurj0002abzpvze25mam" class="article-share-link">Share</a>
       
       
     </footer>
