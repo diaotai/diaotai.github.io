@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Diaotai's blog">
 <meta property="og:description" content="今天出了一件很不幸的事情，我的mongodb数据库炸了，具体表现在于无法启动服务器，贴一点报错信息（急着要解决方案的去最后）
 12345678910$ sudo mongod –config /usr/local/etc/mongod.confPassword:Invalid command: –configOptions:General options:  -h [ --help ]">
-<meta property="og:updated_time" content="2017-03-21T09:09:22.000Z">
+<meta property="og:updated_time" content="2017-03-29T01:55:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" mongodb错误Invalid command: –dbpath解决方案">
 <meta name="twitter:description" content="今天出了一件很不幸的事情，我的mongodb数据库炸了，具体表现在于无法启动服务器，贴一点报错信息（急着要解决方案的去最后）
@@ -101,11 +101,13 @@
 <h3 id="虽然至此还没有搞定，但我大致已经明白错误在哪里来——不知道为什么数据库存储的文件夹失效了，而配置文件不起作用-按说我执行命令时候用了sudo-然而还是无法创建"><a href="#虽然至此还没有搞定，但我大致已经明白错误在哪里来——不知道为什么数据库存储的文件夹失效了，而配置文件不起作用-按说我执行命令时候用了sudo-然而还是无法创建" class="headerlink" title="虽然至此还没有搞定，但我大致已经明白错误在哪里来——不知道为什么数据库存储的文件夹失效了，而配置文件不起作用,按说我执行命令时候用了sudo 然而还是无法创建"></a>虽然至此还没有搞定，但我大致已经明白错误在哪里来——不知道为什么数据库存储的文件夹失效了，而配置文件不起作用,按说我执行命令时候用了sudo 然而还是无法创建</h3><p>所以</p>
 <h1 id="解决方案为：运行一条新的命令-mongod-–dbpath-你自己选择的路径，要确保这条路径存在"><a href="#解决方案为：运行一条新的命令-mongod-–dbpath-你自己选择的路径，要确保这条路径存在" class="headerlink" title="解决方案为：运行一条新的命令 mongod –dbpath  你自己选择的路径，要确保这条路径存在"></a>解决方案为：运行一条新的命令 mongod –dbpath  你自己选择的路径，要确保这条路径存在</h1><p>我的命令是 mongod –dbpath /Users/diaotai/project/data</p>
 <p>成功解决，然而我还是没有弄明白之前是在吗出问题了？配置文件为何失效。<br>如果有大神懂，可以联系我一下<br>邮箱:1486637702@qq.com</p>
+<hr>
+<p>更新 上一条命令也炸了<br>新命令 sudo mongod -f /usr/local/etc/mongod.conf</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://diaotai.com/2017/03/21/mongodb错误Invalid-command-–dbpath解决方案/" data-id="cj0jbjur80000abzp03u7tner" class="article-share-link">Share</a>
+      <a data-url="http://diaotai.com/2017/03/21/mongodb错误Invalid-command-–dbpath解决方案/" data-id="cj0ubmcb70000m6zp52i3pg1m" class="article-share-link">Share</a>
       
       
     </footer>
