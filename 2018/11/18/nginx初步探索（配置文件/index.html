@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="tools,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="日拱一卒">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="本文是用于记录 nginx 常见的配置文件处理，包括个人在实验过程中碰到的问题。本次实验成果进行了反向代理，静态资源服务器，加 http 头，修改 http 返回的 header，封 ip 等尝试待完成任务有 gzip 和 日志的开启，这两块始终不成功  基本结构nginx 配置文件分为以下几个部分:  main 模块:    一般是用于记录 nginx 的用户和用户组、nginx 允许生成的w">
+<meta name="keywords" content="tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx初步探索（配置文件）">
+<meta property="og:url" content="http://yoursite.com/2018/11/18/nginx初步探索（配置文件/index.html">
 <meta property="og:site_name" content="日拱一卒">
+<meta property="og:description" content="本文是用于记录 nginx 常见的配置文件处理，包括个人在实验过程中碰到的问题。本次实验成果进行了反向代理，静态资源服务器，加 http 头，修改 http 返回的 header，封 ip 等尝试待完成任务有 gzip 和 日志的开启，这两块始终不成功  基本结构nginx 配置文件分为以下几个部分:  main 模块:    一般是用于记录 nginx 的用户和用户组、nginx 允许生成的w">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-11-18T13:21:57.115Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="日拱一卒">
+<meta name="twitter:title" content="nginx初步探索（配置文件）">
+<meta name="twitter:description" content="本文是用于记录 nginx 常见的配置文件处理，包括个人在实验过程中碰到的问题。本次实验成果进行了反向代理，静态资源服务器，加 http 头，修改 http 返回的 header，封 ip 等尝试待完成任务有 gzip 和 日志的开启，这两块始终不成功  基本结构nginx 配置文件分为以下几个部分:  main 模块:    一般是用于记录 nginx 的用户和用户组、nginx 允许生成的w">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/18/nginx初步探索（配置文件/">
 
 
 
 
 
-  <title>日拱一卒</title>
+  <title>nginx初步探索（配置文件） | 日拱一卒</title>
   
 
 
@@ -140,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -214,9 +218,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -246,9 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/18/nginx初步探索（配置文件/" itemprop="url">nginx初步探索（配置文件）</a></h1>
+          <h1 class="post-title" itemprop="name headline">nginx初步探索（配置文件）</h1>
         
 
         <div class="post-meta">
@@ -298,9 +300,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>本文是用于记录 nginx 常见的配置文件处理，包括个人在实验过程中碰到的问题。本次实验成果进行了反向代理，静态资源服务器，加 http 头，修改 http 返回的 header，封 ip 等尝试<br>待完成任务有 gzip 和 日志的开启，这两块始终不成功</p>
 </blockquote>
 <h1 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h1><p>nginx 配置文件分为以下几个部分:</p>
@@ -315,8 +315,6 @@
 <h1 id="内置全局变量列表"><a href="#内置全局变量列表" class="headerlink" title="内置全局变量列表"></a>内置全局变量列表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$args ：这个变量等于请求行中的参数，同$query_string</span><br><span class="line">$content_length ： 请求头中的Content-length字段。</span><br><span class="line">$content_type ： 请求头中的Content-Type字段。</span><br><span class="line">$document_root ： 当前请求在root指令中指定的值。</span><br><span class="line">$host ： 请求主机头字段，否则为服务器名称。</span><br><span class="line">$http_user_agent ： 客户端agent信息</span><br><span class="line">$http_cookie ： 客户端cookie信息</span><br><span class="line">$limit_rate ： 这个变量可以限制连接速率。</span><br><span class="line">$request_method ： 客户端请求的动作，通常为GET或POST。</span><br><span class="line">$remote_addr ： 客户端的IP地址。</span><br><span class="line">$remote_port ： 客户端的端口。</span><br><span class="line">$remote_user ： 已经经过Auth Basic Module验证的用户名。</span><br><span class="line">$request_filename ： 当前请求的文件路径，由root或alias指令与URI请求生成。</span><br><span class="line">$scheme ： HTTP方法（如http，https）。</span><br><span class="line">$server_protocol ： 请求使用的协议，通常是HTTP/1.0或HTTP/1.1。</span><br><span class="line">$server_addr ： 服务器地址，在完成一次系统调用后可以确定这个值。</span><br><span class="line">$server_name ： 服务器名称。</span><br><span class="line">$server_port ： 请求到达服务器的端口号。</span><br><span class="line">$request_uri ： 包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。</span><br><span class="line">$uri ： 不带请求参数的当前URI，$uri不包含主机名，如”/foo/bar.html”。</span><br><span class="line">$document_uri ： 与$uri相同。</span><br></pre></td></tr></table></figure>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料:"></a>参考资料:</h1><p><a href="https://zhuanlan.zhihu.com/p/31202053" target="_blank" rel="noopener">nginx快速入门之配置篇</a></p>
 
-          
-        
       
     </div>
     
@@ -331,352 +329,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/markdown-入门/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/18/markdown-入门/" itemprop="url">markdown 入门</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T16:47:48+08:00">
-                2018-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/tools/" rel="tag"># tools</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>如果没记错的话这是我第四次要学习 markdown 语法了，但是避免再次忘掉，我决定在这一次把它记下来。</p>
-</blockquote>
-<h1 id="标题类"><a href="#标题类" class="headerlink" title="标题类"></a>标题类</h1><p>这一类就是 #，从一个到六个</p>
-<h1 id="列表类"><a href="#列表类" class="headerlink" title="列表类"></a>列表类</h1><h2 id="无序列表是使用-开头，比如"><a href="#无序列表是使用-开头，比如" class="headerlink" title="无序列表是使用 - 开头，比如"></a>无序列表是使用 - 开头，比如</h2><ul>
-<li>abc</li>
-<li>def</li>
-<li>ghi</li>
-</ul>
-<h2 id="有序列表则是使用数字开头，比如"><a href="#有序列表则是使用数字开头，比如" class="headerlink" title="有序列表则是使用数字开头，比如"></a>有序列表则是使用数字开头，比如</h2><ol>
-<li>asdf</li>
-<li>sffds</li>
-<li>sdfds </li>
-</ol>
-<p>要注意的是，数字是不影响排布顺序的</p>
-<h1 id="引用类"><a href="#引用类" class="headerlink" title="引用类"></a>引用类</h1><h2 id="网址链接-文字-网址"><a href="#网址链接-文字-网址" class="headerlink" title="网址链接 [文字] (网址)"></a>网址链接 [文字] (网址)</h2><p>比如说 <a href="https://www.baidu.com" target="_blank" rel="noopener">百度</a></p>
-<h2 id="图片-文字描述-图片地址"><a href="#图片-文字描述-图片地址" class="headerlink" title="图片 ![文字描述](图片地址)"></a>图片 ![文字描述](图片地址)</h2><p>比如说 <img src="http://www.aosabook.org/images/nginx/architecture.png" alt="nginx架构"></p>
-<h2 id="引用文字-gt"><a href="#引用文字-gt" class="headerlink" title="引用文字 &gt;"></a>引用文字 &gt;</h2><blockquote>
-<p>这是一段文字引用</p>
-</blockquote>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&apos;hello world&apos;);</span><br></pre></td></tr></table></figure>
-<h1 id="粗体和斜体"><a href="#粗体和斜体" class="headerlink" title="粗体和斜体"></a>粗体和斜体</h1><h2 id="斜体是首尾一个-，注意要紧挨着，粗体则是两个，比如："><a href="#斜体是首尾一个-，注意要紧挨着，粗体则是两个，比如：" class="headerlink" title="斜体是首尾一个*，注意要紧挨着，粗体则是两个，比如："></a>斜体是首尾一个*，注意要紧挨着，粗体则是两个，比如：</h2><p><em>这是一个斜体</em><br><strong>这个是一个粗体</strong></p>
-<h1 id="换行符（-）"><a href="#换行符（-）" class="headerlink" title="换行符（---）"></a>换行符（---）</h1><p>也就是，另外换行符要之前要进行一次换行，表格什么的也有类似的问题 </p>
-<hr>
-<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>第一行是表格头，每个之间用 | 隔开，中间留有空格<br>第二行是 - | 这样的分隔<br>后续如第一行，只不过是具体的内容，比如</p>
-<table>
-<thead>
-<tr>
-<th>dog</th>
-<th>bird</th>
-<th>cat</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>foo</td>
-<td>foo</td>
-<td>foo</td>
-</tr>
-<tr>
-<td>bar</td>
-<td>bar</td>
-<td>bar</td>
-</tr>
-<tr>
-<td>baz</td>
-<td>baz</td>
-<td>baz</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/nginx初步探索(基本介绍)/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/17/nginx初步探索(基本介绍)/" itemprop="url">nginx初步探索（基本介绍）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-17T23:31:54+08:00">
-                2018-11-17
-              </time>
+              <a href="/2018/11/18/markdown-入门/" rel="next" title="markdown 入门">
+                <i class="fa fa-chevron-left"></i> markdown 入门
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <blockquote>
-<p>nginx 这个东西我听说很久了，实际上用页用过几次，但是实际上我一直没搞明白它是一个什么东西，以及它到底有什么用处，另外到底是什么原理。在这个周末，我看了一些文字，自己做了一些实验，简单的记一下。</p>
-</blockquote>
-<h1 id="nginx是什么？"><a href="#nginx是什么？" class="headerlink" title="nginx是什么？"></a>nginx是什么？</h1><p>nginx 是一个开源的服务器，主要是用于http服务器，反向代理以及邮件服务器。理论上它和Apache是一类东西。而它和 Apache 的区别在于 Apache 是多进程的，当一个请求到来的时候 Apache 都会启动一个进程或线程对其进行处理。这样当并发量上去的时候对CPU和内存的需求简直爆炸。。。而 Nginx 是异步、单进程、事件驱动和非阻塞的，非常适合处理高并发。<br>此外，nginx 可以提供静态资源服务、缓存服务、修改 HTTP 头或内容、负载均衡、流量控制和权限控制等功能，可以说非常的全面且可靠。<br>当 nginx 提供负载均衡时存在 内置策略 和 自定义策略，而内置策略又分为三种：轮询，ip Hash，加权轮询三种。</p>
-<h1 id="nginx-基本原理介绍"><a href="#nginx-基本原理介绍" class="headerlink" title="nginx 基本原理介绍"></a>nginx 基本原理介绍</h1><h2 id="nginx-基本组成"><a href="#nginx-基本组成" class="headerlink" title="nginx 基本组成"></a>nginx 基本组成</h2><p>nginx 从架构上讲由一个核心和多个模块组成，核心部分的工作是维持一个事件队列，在合适的时候调用worker处理事件，并在相应的时候调用对应模块。而功能模块负责的东西更多，包括网络内容的读写，对内容的处理，与上游服务器交互，应用选择器进行筛选（在返回给client之前）。</p>
-<h2 id="nginx-基本架构"><a href="#nginx-基本架构" class="headerlink" title="nginx 基本架构"></a>nginx 基本架构</h2><p><img src="http://www.aosabook.org/images/nginx/architecture.png" alt="nginx基础架构"></p>
-<p>而具体到实现思路上是由一个 master 进程 和 N 个 worker 组成的（另外还有一个缓存加载进程和一个缓存管理进程，其实完全可以把它们视为 worker 进程）。</p>
-<p>master 进程负责的任务包括：</p>
-<ul>
-<li>读取并校验配置文件</li>
-<li>创建、绑定或删除 与worker 进行通信的socket</li>
-<li>开始、终止或维持 根据配置文件所设定的多个 worker</li>
-<li>在不中断服务的基础上重新加载配置文件</li>
-<li>处理日志输出</li>
-<li>编译 Perl 脚本</li>
-</ul>
-<p>worker 负责的任务包括：</p>
-<ul>
-<li>读取并处理来自客户端的请求</li>
-<li>反向代理</li>
-<li>对返回内容进行筛选</li>
-</ul>
-<p>而每个 worker 都可以处理 N 个请求，而正如之前所说，Nginx 不会为每个请求都启动新的进程或线程，而是会用已有的 worker 进行处理。这样就不会存在创建、销毁进程和切换上下文所产生的消耗，这是 Nginx 高效的原因之一，也是为什么 Apache 的消耗会随着并发量的上涨线性上涨，而 Nginx 是非线性上涨。另外 worker 和 Nginx 之间的通信是通过共享内存来实现的。</p>
-<p>每个请求都完全由一个 worker 进程来进行处理，这样做的好处包括：</p>
-<ul>
-<li>节省锁带来的开销</li>
-<li>独立进程、避免风险</li>
-<li>一次请求无需进行上下文切换</li>
-</ul>
-<p>最后是缓存加载器和缓存管理器，前者负责缓存的读取和书写，后者负责缓存过期时间管理以及内容校验。</p>
-<h1 id="nginx-最大连接数"><a href="#nginx-最大连接数" class="headerlink" title="nginx 最大连接数"></a>nginx 最大连接数</h1><ul>
-<li>worker_processes：worker 进程的个数</li>
-<li>worker_connections： 每个 worker 可以处理的请求的个数</li>
-<li>Nginx作为http服务器的时候：max_clients = worker_processes * worker_connections</li>
-<li>Nginx作为反向代理服务器的时候：max_clients = worker_processes * worker_connections/4 （/4原因：因为浏览器默认会开启2个连接到nginx server，而且nginx还会为每个连接使用fds（file descriptor）从连接池建立connection到upstream后端。）</li>
-</ul>
-<h1 id="nginx-常用命令"><a href="#nginx-常用命令" class="headerlink" title="nginx 常用命令"></a>nginx 常用命令</h1><ul>
-<li>nginx 配置文件所在：  /usr/local/etc/nginx 或 /etc/nginx</li>
-<li>启动: nginx</li>
-<li>缓和终止(完成现有任务再停止): nginx -s quit</li>
-<li>迅速终止（直接退出）:  nginx -s stop</li>
-<li>重启服务（通常因为修改配置）: nginx -s reload</li>
-<li>重新打开日志文件: nginx -s reopen</li>
-<li>指定配置文件: nginx -c filename</li>
-<li>校验配置文件（不执行）: nginx -t filename</li>
-<li>显示 nginx 版本: nginx -v</li>
-<li>显示 nginx 版本及配置参数: nginx -V</li>
-</ul>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://www.aosabook.org/en/nginx.html" target="_blank" rel="noopener">nginx简介</a><br><a href="https://zhuanlan.zhihu.com/p/31196264" target="_blank" rel="noopener">nginx快速入门之基本原理篇</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -686,138 +368,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/hello-world/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/17/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-17T23:23:24+08:00">
-                2018-11-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -825,6 +380,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -845,8 +404,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -897,6 +465,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本结构"><span class="nav-number">1.</span> <span class="nav-text">基本结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx-基本配置模板"><span class="nav-number">2.</span> <span class="nav-text">nginx 基本配置模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内置全局变量列表"><span class="nav-number">3.</span> <span class="nav-text">内置全局变量列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1030,6 +614,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
