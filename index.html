@@ -1,1911 +1,469 @@
 <!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="en">
+<!-- Head tag -->
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="日拱一卒">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="日拱一卒">
-<meta property="og:locale" content="en">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="日拱一卒">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/">
-
-
-
-
-
-  <title>日拱一卒</title>
-  
-
-
-
-
-
-
-
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
-  
-  
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('') 
+            /*config*/
+        
+    }
     
-  
+</style>
 
-  <div class="container sidebar-position-left 
-  page-home">
-    <div class="headband"></div>
+<header class="intro-header">
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="site-heading">
+                        <h1>日拱一卒</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading"></span>
+                    </div>
+                
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
 
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">日拱一卒</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+                </div>
+            </div>
+        </div>
     </div>
-      
-        <p class="site-subtitle">我将继续前行，不管是前路是荆棘还是坦途</p>
-      
-  </div>
+</header>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">日拱一卒</a>
+        </div>
 
-<nav class="site-nav">
-  
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
 
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
 </nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/02/RPC-初步探索/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/02/RPC-初步探索/" itemprop="url">RPC 初步探索</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-02T22:34:21+08:00">
-                2018-12-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>RPC(remote procedure call)即远程过程调用，是目前业界内非常常见的通信方法，其作用在于调用非本地的函数。主流的 RPC 框架主要是基于 HTTP 和 TCP 协议的，其它的也有，不过属于奇葩。<br>当 RPC 框架基于 HTTP 时，返回的格式会更加单一，只会是 JSON 或者 XML。其优点自跨语言，对外友好，缺点则是性能低下，传输了很多无意义数据，一般用于对外开放的 openAPI。 而那些内部使用的 RPC 框架往往是基于 TCP协议的，其优势在于性能更好，数据有效率更高，但是这也要求我们更多的关注底层的细节。</p>
-<p>RPC框架应当解决两个问题：</p>
-<ol>
-<li>服务之间远程调用的问题</li>
-<li>使服务使用者感知不到远程调用的过程，就如同调用本地函数一样。</li>
-</ol>
-<p><em>注意: RPC 和 REST 的区别在于前者面向过程，后者面向资源（尽管从广义上讲 REST 属于 RPC 的一种）</em></p>
-<h1 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h1><p><img src="https://pic4.zhimg.com/80/v2-4e9537fed30a8c7e6cc414c2636d6657_hd.jpg" alt="RPC 框架基本步骤"></p>
-<p>RPC 框架的调用可以分为以下 7 步:</p>
-<ol>
-<li>client 通过代理调用 RPC 服务。</li>
-<li>本地服务将调用函数名、参数等信息交给 RPC框架，生成一个 RPC request 对象</li>
-<li>encoder 将 RPC request 对象序列化为二进制，并使用传输协议将序列化的发送至 server</li>
-<li>decoder 将二进制数据反序列化为 request 对象</li>
-<li>根据 request对象的信息在 server 完成调用，根据并生成一个 reponse 对象</li>
-<li>RPC 框架再次将 response 数据序列化并使用 TCP 协议发送至 client</li>
-<li>client 将其反序列化，并通过代理返回给本地调用</li>
-</ol>
-<h1 id="基本构成"><a href="#基本构成" class="headerlink" title="基本构成"></a>基本构成</h1><p>RPC 框架可以分为两部分——通信协议和应用协议（也可以称为编码协议）。前者负责将数据完好、安全、准确的送达目的地，这一部分是一个 RPC 框架最核心的部分，也是最通用的部分，这一部分的设计应当注意可用性和扩展性。而后者则是根据业务需要进行约定，属于非常灵活而可定制化的部分。</p>
-<p>一个良好的通信协议应当包含以下部分:</p>
-<ul>
-<li>标识位 A（用于标识是 request 还是 response）</li>
-<li>header 长度</li>
-<li>requestId (用于标识本次请求，应当在 response 中原样返回)</li>
-<li>content 长度（用于标识 body 的长度，也就是用来分辨一个 RPC 调用包是否已经全部接受）</li>
-<li>应用协议 （用于标识编解码协议）</li>
-<li>timeout （超时时间，当超过该值时应当不再进行调用并迅速返回失败）</li>
-</ul>
-<p>在实现中需要注意以下几点:</p>
-<ol>
-<li>在二进制方面，存在 BE 和 LE 两种排布形式——即将它的高位存在低地址上，还是高地址上。而在 TCP 中，采取的 BE 策略。</li>
-<li>由于 RPC 框架是非常底层的协议，因此应当性能优化到极致。为了避免 Buffer 拼接的消耗，可以考虑先分配一个较大的 Buffer，然后写入数据后进行操作，最后进行一次截断。</li>
-<li>在 JavaScript 中，对于数字的支持是 -2^53-1 - 2^53-1，而 long 的范围是 -2^64-1 - 2^64-1</li>
-<li>在对 RPC 包的处理上可以有基于 data 和 readable 和 基于流三种方法，readable 比起 data 的优势在于节省资源(因为对于 RPC 而言你拿到包的一部分是毫无意义的,这种情况下readable 会占据更少的资源）。基于流的实现会更为优雅，然而 RPC 的原理决定了它不可能真正是一个流（因为对于 RPC 来言无论是 request 还是 response 都必须完成才有意义，这和流的思想其实是冲突的）<br><em>以上部分可以查看参考资料 1，2</em></li>
-</ol>
-<h1 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h1><p>其实到此为止 RPC 的基本原理已经讲明白了，但是从实际使用来说，一个 RPC 框架只有以上内容是不够的，因为就算你要获取信息，你至少要知道自己需要向谁来获取信息。目前主要的解决方法分为两种——硬负载和软负载。</p>
-<h2 id="硬负载"><a href="#硬负载" class="headerlink" title="硬负载"></a>硬负载</h2><p>硬负载是通过硬件方式解决这个问题的，所有的请求都需要在调用链路上部署一个独立的硬件设备（一般就是我们所熟知的F5/LVS/HAproxy集群），由它负责后端发现并进行负载均衡。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">                                                +------------+</span><br><span class="line">+----------+  invoke   +---------------+        |  Services  |-+</span><br><span class="line">| Consumer | --------&gt; | Load Balancer | -----&gt; |  Providers | |-+</span><br><span class="line">+----------+           +---------------+        +------------+ | |</span><br><span class="line">                                                 |-------------+ |</span><br><span class="line">                                                   +-------------+</span><br></pre></td></tr></table></figure>
-<p>这种方案的优势在于:</p>
-<ul>
-<li>可以从全局的层面进行负载均衡，安全防控和鉴权等操作<br>其劣势在于:</li>
-<li>一定的性能消耗</li>
-<li>必须集群部署以避免单点故障 </li>
-<li>设备成本高，不易维护</li>
-</ul>
-<h2 id="软负载"><a href="#软负载" class="headerlink" title="软负载"></a>软负载</h2><p>这种方案通过软件和注册中心来实现，属于非常常见的方案，具有以下特点:</p>
-<ol>
-<li>不具备硬件设备</li>
-<li>全部信息都在注册中心来动态注册，由注册中心向使用者提供相应信息</li>
-<li>client 和 server 直连，注册中心位于旁路上<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">                  +------------------+</span><br><span class="line">                  | Service Registry |</span><br><span class="line">                  +------------------+</span><br><span class="line">                  /                 ^</span><br><span class="line">                 /                   \</span><br><span class="line">	    Discover          Register &amp; Keep Alive</span><br><span class="line">	       /                         \ </span><br><span class="line">	      /                           \</span><br><span class="line">	     v                             \</span><br><span class="line">+----------+                                +----------+</span><br><span class="line">| Consumer | ---- Load Balance &amp; Invoke --&gt; | Provider |</span><br><span class="line">+----------+                                +----------+</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>这种方案的优势在乎:</p>
-<ul>
-<li>client 和 server 直连，避免性能损耗</li>
-<li>不需要单独的硬件彩玉<br>但缺点也很明显:</li>
-<li>对于 client 侵入性较强，需要 client 主动去注册中心获取信息</li>
-<li>注册中心对 client 请求的控制能力较弱（碰到 client 不停地往一个 server 上打请求的时候一点办法都没有）</li>
-<li>尽管注册中心位于旁路上，但是注册中心依旧数据非常重要的基础设施，依旧需要保证高可用</li>
-</ul>
-<h2 id="服务发现的服务发现"><a href="#服务发现的服务发现" class="headerlink" title="服务发现的服务发现"></a>服务发现的服务发现</h2><p>还存在一个问题就是服务发现的地址是什么？不过业界有成熟的方案可以保证这个不至于变成鸡生蛋还是蛋生鸡的问题。目前常见的有使用 DNS 通过域名来进行解决，或者写死某个特殊的地址。</p>
-<h1 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h1><p>RPC 的负载均衡策略有很多，比如</p>
-<ul>
-<li>随机: 本方案的问题在于如果机器配置不一致，那么就会导致部分机器利用率较低</li>
-<li>轮询: 问题和随机一样</li>
-<li>ip Hash: 本方案不错，可以保证 session 问题，不过分布式里这种问题不应该通过 redis 之类的机制来解决吗？</li>
-<li>负载: 负载需要 server 向注册中心同步自己目前的状态</li>
-<li>就近原则: 优先同机房，其次同城，总之是优先找最近的</li>
-</ul>
-<h1 id="健康检测"><a href="#健康检测" class="headerlink" title="健康检测"></a>健康检测</h1><p>RPC 注册中心不同于普通的动态注册，因为其注册信息是有状态的（至少有可用和不可用两种）, 因此健康监测变成了非常重要的部分。常见的解决方法有两种——心跳检测以及暴露接口定期检测。<br>理论上说 TCP 本身就是基于连接的，检查其是否处于连接状态就可以确认是否健康。但是在网络突然出问题的情况下可能连 FIN 包都收不到，这样一边连接实际已经中断但是套接字可能还认为一切正常。</p>
-<p>心跳检测通过维持一个长链接定期发送一个包来确认网络通畅(Zookeeper, 阿里的 ConfigServer 都采用这种方式来做健康检查)，其优点在于:</p>
-<ol>
-<li>实现简单，对业务透明</li>
-<li>至少保证网络通畅<br>其劣势在于:</li>
-<li>检查粒度过于粗糙，网络通畅和服务健康根本就是两码事</li>
-<li>对于注册中心需要维护大量长链接（个人觉得这个不算问题，因为定期检查不是长链接就是不停地创建短链接，还能怎么样呢）</li>
-</ol>
-<p>而暴露接口定期检测则可以做到更细粒度的划分（K8s 里的 Health Checks 就是这种方式），其优势在于:</p>
-<ol>
-<li>不必维持长链接</li>
-<li>可以由服务自行定义健康标准，检测力度更为精细而准确<br>其劣势则是:</li>
-<li>对于服务有一定的侵入性</li>
-</ol>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/38012481" target="_blank" rel="noopener">聊聊 Node.js RPC（一）— 协议</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/40606909" target="_blank" rel="noopener">聊聊 Node.js RPC（二）— 服务发现</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/36427583" target="_blank" rel="noopener">如何给老婆解释什么是RPC</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/36528189" target="_blank" rel="noopener">如何实现一个简单的RPC</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/37260151" target="_blank" rel="noopener">蚂蚁金服RPC框架结构分析</a></li>
-<li><a href="https://www.zhihu.com/question/41609070/answer/191965937" target="_blank" rel="noopener">在有 HTTP 的情况下为何还需要 RPC</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/40188978" target="_blank" rel="noopener">深入理解RPC——你看或没看见 它都在那里</a></li>
-<li><a href="https://www.zhihu.com/question/25536695/answer/221638079" target="_blank" rel="noopener">RPC 通俗解释</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/02/移动端适配初步探索/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/02/移动端适配初步探索/" itemprop="url">移动端适配初步探索</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-02T16:20:48+08:00">
-                2018-12-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="移动端适配"><a href="#移动端适配" class="headerlink" title="移动端适配"></a>移动端适配</h1><blockquote>
-<p>本文档用于记录一些移动端适配探索的收获，以及使用 flexible 时碰到的问题 </p>
-</blockquote>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>移动端适配会依赖一些概念，下面进行简单的介绍：</p>
-<h3 id="像素相关"><a href="#像素相关" class="headerlink" title="像素相关"></a>像素相关</h3><h4 id="物理像素-physical-pixel"><a href="#物理像素-physical-pixel" class="headerlink" title="物理像素(physical pixel)"></a>物理像素(physical pixel)</h4><p>物理像素又称为设备像素，来表示显示设备上最微小的物理单位，每个像素都可以单独设置其颜色和亮度。</p>
-<h4 id="设备独立像素-density-independent-pixel"><a href="#设备独立像素-density-independent-pixel" class="headerlink" title="设备独立像素(density-independent pixel)"></a>设备独立像素(density-independent pixel)</h4><p>设备独立像素又称为密度无关像素，它可以被理解为计算机坐标系统中的一个点，这个点可以代表一个虚拟像素，会被相关系统转化为物理像素。 不同设备的设备独立像素可能会存在区别。</p>
-<h4 id="CSS像素"><a href="#CSS像素" class="headerlink" title="CSS像素"></a>CSS像素</h4><p>CSS像素又被称为设备无关像素(device-independent pixel)，简称DIPs。<br>CSS像素属于抽象单位，主要用于精确度量 Web 页面上的内容。<br><strong>要注意的是，屏幕缩放操作会直接改变 1 CSS像素 所代表的 物理像素(这也是一种解决 1像素 问题的思路)</strong><br><img src="http://sf1-ttcdn-tos.pstatp.com/obj/ttfe/scale.png" alt="CSS像素缩放示意图"></p>
-<h4 id="屏幕密度"><a href="#屏幕密度" class="headerlink" title="屏幕密度"></a>屏幕密度</h4><p>屏幕密度是指一个设备表面上存在的像素数量，它通常以每英寸有多少像素来计算(PPI)。<br>PS: 这个概念我在好几篇文章中都看到了，然而没看到有谁用了这个概念</p>
-<h4 id="设备像素比-device-pixel-ratio"><a href="#设备像素比-device-pixel-ratio" class="headerlink" title="设备像素比(device pixel ratio)"></a>设备像素比(device pixel ratio)</h4><p>设备像素比简称 dpr，它表示了一个 CSS像素 对应了几个 物理像素。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设备像素比 = 物理像素 / CSS像素</span><br></pre></td></tr></table></figure></p>
-<p>在 JavaScript 中，可以使用 window.devicePixelRatio 来获取当前设备 dpr。而在CSS中，可以通过-webkit-device-pixel-ratio，-webkit-min-device-pixel-ratio和 -webkit-max-device-pixel-ratio进行媒体查询。<br>不过说真的，目前见到的适配方案都是在 js 层面做的，没看到在 CSS 层面做适配的方案。</p>
-<p><img src="https://camo.githubusercontent.com/a407f9dc63ca26a60ade9ed8830713c14f6132d8/687474703a2f2f7777772e773363706c75732e636f6d2f73697465732f64656661756c742f66696c65732f626c6f67732f3230313231322f726574696e612d7765622d332e6a7067" alt="设备像素比示意图"></p>
-<p>上图属于很经典的示意图了，简单来说，就是在不同设备上 1 CSS像素 对应的 物理像素 是不同的。</p>
-<h3 id="viewport-视口"><a href="#viewport-视口" class="headerlink" title="viewport 视口"></a>viewport 视口</h3><p>对于视口概念，目前大家比较认可的解释是 ppk 大神的三种视口的解释，对此他用了三篇文章进行阐述。</p>
-<ol>
-<li><a href="https://www.quirksmode.org/mobile/viewports.html" target="_blank" rel="noopener">第一篇</a></li>
-<li><a href="http://www.quirksmode.org/mobile/viewports2.html" target="_blank" rel="noopener">第二篇</a></li>
-<li><a href="http://www.quirksmode.org/mobile/metaviewport/" target="_blank" rel="noopener">第三篇</a></li>
-</ol>
-<p>在本处简单介绍一下他的理解：</p>
-<h4 id="layout-viewport"><a href="#layout-viewport" class="headerlink" title="layout viewport"></a>layout viewport</h4><p>首先，移动设备的浏览器认为自己应该能让所有网站都正常显示，即使是那些没有做移动端适配页面。但是如果浏览器直接以可视区域作为 viewport，因为移动设备普遍较窄，所以很多页面布局会直接乱掉。所以移动端浏览器会在默认情况下给 viewport 设置一个较宽的值，这样 PC 端页面也可以正常显示了。<br>ppk 将这个浏览器的默认视口称为 layout viewport, 我们可以通过 document.documentElement.clientWidth 来获取其宽度。</p>
-<h4 id="visual-viewport"><a href="#visual-viewport" class="headerlink" title="visual viewport"></a>visual viewport</h4><p>layout viewport 的值是大过浏览器可视区域的，所以我们需要一个 viewport 来代表可视区域，即 visual viewport。visual viewport 的宽度可以通过window.innerWidth 来获取，但在Android 2, Oprea mini 和 UC 8中无法正确获取。<br><strong>要注意的是，视觉视口与设备屏幕一样宽，并且它的css像素的数量会随着用户缩放而改变。这也就导致了在可见区域内 1 CSS像素 对应的 物理像素是不同的</strong></p>
-<h4 id="ideal-viewport"><a href="#ideal-viewport" class="headerlink" title="ideal viewport"></a>ideal viewport</h4><p>ideal viewport 即将布局视口改为设备宽度的视口，是对设备来说最理想的布局适口——即用户不需要进行任何缩放或左右滚动即可看到全部内容。<br>ideal viewport 没有固定的尺寸，不同的设备拥有不同的理想视口。<br>我们可以通过 screen.width 测量理想视口的大小。</p>
-<h4 id="屏幕缩放时三种视口值的变化"><a href="#屏幕缩放时三种视口值的变化" class="headerlink" title="屏幕缩放时三种视口值的变化"></a>屏幕缩放时三种视口值的变化</h4><p><img src="http://sf1-ttcdn-tos.pstatp.com/obj/ttfe/viewport-change.png" alt="视口变化"></p>
-<p>也就是说，当屏幕缩放时只有 visual viewport 在跟随变化，当页面缩小时 可见视口 会变大（因为代表的区域更大了），反之亦然。</p>
-<h3 id="meta-标签"><a href="#meta-标签" class="headerlink" title="meta 标签"></a>meta 标签</h3><p>meta viewport 标签首先是由苹果公司在其safari浏览器中引入的，目的就是解决移动设备的viewport问题。后来安卓以及各大浏览器厂商也都纷纷效仿，引入对meta viewport的支持，事实也证明这个东西还是非常有用的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>本行代码是非常常见的，但是在iphone和ipad上，无论是竖屏还是横屏，宽度都是竖屏时ideal viewport的宽度。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>测试结果表明 initial-scale=1 也能把当前的viewport宽度变成 ideal viewport 的宽度，但这次轮到了windows phone 上的IE 无论是竖屏还是横屏都把宽度设为竖屏时ideal viewport的宽度。<br><strong>这一行可以得到类似的效果，因为 scale 的是针对于 ideal viewport 进行缩放的，因此，当设置为 1 时就是 ideal viewport。</strong><br><em>当宽度和缩放比冲突时，会以较大的那个值为准</em><br>因此，当写以下代码时，就会解决适配问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>visual viewport宽度 = ideal viewport宽度  / 当前缩放值</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/02/如何高效学习-读书笔记/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/02/如何高效学习-读书笔记/" itemprop="url">如何高效学习(读书笔记)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-02T14:50:11+08:00">
-                2018-12-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
-<p>整体性学习是一种成体系的，非零散的学习方式，用于进行高效，持久深入的学习。</p>
-</blockquote>
-<h1 id="学习的五个阶段"><a href="#学习的五个阶段" class="headerlink" title="学习的五个阶段"></a>学习的五个阶段</h1><ol>
-<li>获取信息<ul>
-<li>获取信息是我个人弱点，可以通过练习阅读和笔记法来解决</li>
-<li>笔记法和图表法的区别？ 高度类似，不过概念图注意的是逻辑，而非具体的顺序或时间</li>
-</ul>
-</li>
-<li>理解<ul>
-<li>个人觉得我的问题不大，这一步是正确 get 到关键点 </li>
-</ul>
-</li>
-<li>拓展（这一步是最花时间的，然而没有这一步就是一无所得）<ul>
-<li>横向扩展(比较类似的情况，建立内部的联系)</li>
-<li>纵向扩展（从何而来，因何而去，建立联系）</li>
-<li>深度扩展 （有没有更深层的知识）</li>
-</ul>
-</li>
-<li>纠错<ul>
-<li>重新梳理知识体系，确认个人的疑惑，去除错误的知识</li>
-<li>实践中检验所得</li>
-</ul>
-</li>
-<li>应用<ul>
-<li>后续进行应用</li>
-</ul>
-</li>
-</ol>
-<p>另外还有一个测试阶段，在以上每个阶段都要使用</p>
-<h1 id="五种不同的信息"><a href="#五种不同的信息" class="headerlink" title="五种不同的信息"></a>五种不同的信息</h1><ol>
-<li>随意信息<ul>
-<li>零散，难以记忆，不具备逻辑性</li>
-</ul>
-</li>
-<li>过程信息<ul>
-<li>关于怎么做的知识，往往有着清晰的步骤，可以使用流程图来概括，需要亲身实践才能真正收获</li>
-</ul>
-</li>
-<li>抽象信息<ul>
-<li>往往属于理论知识，抽象性极强，难以直观的理解。但是一旦理解难以忘记，应当使用关系图等工具来整体</li>
-</ul>
-</li>
-<li>具体信息<ul>
-<li>比如一些细节性的知识</li>
-</ul>
-</li>
-<li>观点信息<ul>
-<li>观点信息的难点是获取信息，需要多方比较</li>
-</ul>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/24/redis-初步探索/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/24/redis-初步探索/" itemprop="url">redis 初步探索</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-24T17:40:14+08:00">
-                2018-11-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>在本周我尝试了 redis 的一些操作，感觉还是很有意思的，所以写本文记下来</p>
-</blockquote>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Redis是一个开源的、基于内存的数据结构存储器，可以用作数据库、缓存和消息中间件。<br>Redis 是一款采取 CS 架构的单线程服务器，基于事件循环处理客户端请求。尽管 redis 是基于内存进行存储的，但是它可以通过快照的形式（包括全量和增量）来进行数据持久化。</p>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>redis 的数据库结构非常简单，每个数据库采取一个数字来标识，默认数据库是 0.通过 select n 就可以切换数据库。</p>
-<p>redis 提供了 5 种数据结构来进行数据存储，分别是 字符串，数组，set，hashMdp。</p>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>这是最常见的数据类型，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set users:leto &apos;&#123;&quot;name&quot;: leto, &quot;planet&quot;: dune, &quot;likes&quot;: [&quot;spice&quot;]&#125;&apos; //写</span><br><span class="line">get users:leto  //读</span><br></pre></td></tr></table></figure></p>
-<p>另外 redis 对字符串有一些常见的操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; strlen users:leto     // 获取字符串长度 </span><br><span class="line">(integer) 50    </span><br><span class="line"></span><br><span class="line">&gt; getrange users:leto 31 48     // 获取特定范围的字符</span><br><span class="line">&quot;\&quot;likes\&quot;: [\&quot;spice\&quot;]&quot;</span><br><span class="line"></span><br><span class="line">&gt; append users:leto &quot; OVER 9000!!&quot;  // 追加内容</span><br><span class="line">(integer) 62</span><br></pre></td></tr></table></figure></p>
-<p>另外如果字符串是整型也会很有意思<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; incr stats:page:about     // 加一</span><br><span class="line">(integer) 1</span><br><span class="line">&gt; incr stats:page:about</span><br><span class="line">(integer) 2</span><br><span class="line"></span><br><span class="line">&gt; incrby ratings:video:12333 5  // 增加指定大小</span><br><span class="line">(integer) 5</span><br><span class="line">&gt; incrby ratings:video:12333 3</span><br><span class="line">(integer) 8</span><br></pre></td></tr></table></figure></p>
-<h2 id="哈希结构"><a href="#哈希结构" class="headerlink" title="哈希结构"></a>哈希结构</h2><p>和普通字符串而言是多了一层数据:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hset users:goku powerlevel 9000     // 设置hashset</span><br><span class="line">hget users:goku powerlevel          // 获取hashset</span><br><span class="line">hmset users:goku race saiyan age 737    // 一次设置多个</span><br><span class="line">hmget users:goku race powerlevel        // 一次获取多个</span><br><span class="line">hgetall users:goku      // 获取全部值</span><br><span class="line">hkeys users:goku        // 获取全部key</span><br><span class="line">hdel users:goku age     // 删除key</span><br></pre></td></tr></table></figure></p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>列表结构可以让你，为指定的 key 保存和处理数组形式的 value 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lpush newusers goku     // push 内容</span><br><span class="line">ltrim newusers 0 49     // 保留最新的五十个</span><br></pre></td></tr></table></figure></p>
-<h2 id="集合结构"><a href="#集合结构" class="headerlink" title="集合结构"></a>集合结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sadd friends:leto ghanima paul chani jessica    // 向 set 内添加内容</span><br><span class="line">sismember friends:leto jessica      // 检验是否在内部</span><br></pre></td></tr></table></figure>
-<h2 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h2><p>和普通集合的唯一区别在于存在权重<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zadd friends:duncan 70 ghanima 95 paul 95 chani 75 jessica 1 vladimir // 添加内容时加权重</span><br><span class="line">zcount friends:duncan 90 100    // 统计 90-100 间的个数</span><br><span class="line">zrank friends:duncan chani      // 由低到高进行排序</span><br><span class="line">zrevrank friends:duncan chani   // 由高到低进行排序</span><br></pre></td></tr></table></figure></p>
-<h2 id="其它操作"><a href="#其它操作" class="headerlink" title="其它操作"></a>其它操作</h2><h3 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h3><p>Redis 所有的命令都是原子性的，包括那些一次可以执行多项操作的命令也一样。此外，在使用多命令的时候，Redis 支持事务，例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">redis.watch(&apos;powerlevel&apos;)</span><br><span class="line">current = redis.get(&apos;powerlevel&apos;)</span><br><span class="line">redis.multi()</span><br><span class="line">redis.set(&apos;powerlevel&apos;, current + 1)</span><br><span class="line">redis.exec()</span><br></pre></td></tr></table></figure></p>
-<h3 id="超时"><a href="#超时" class="headerlink" title="超时"></a>超时</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">expire pages:about 30               // 超时时间 30 s</span><br><span class="line">expireat pages:about 1356933600     // 设置 unix 时间戳</span><br><span class="line">ttl pages:about                     // 还剩多久</span><br><span class="line">persist pages:about                 // 删除过期数据</span><br><span class="line">setex pages:about 30 &apos;&lt;h1&gt;about us&lt;/h1&gt;....&apos;    // 在放入时就设置过期时间</span><br></pre></td></tr></table></figure>
-<h3 id="发布订阅"><a href="#发布订阅" class="headerlink" title="发布订阅"></a>发布订阅</h3><p>同一个发布事件可以被多个窗口监听，一个窗口也可以监听多个事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subscribe warnings          // a 窗口发布消息</span><br><span class="line">publish warnings &quot;it&apos;s over 9000!&quot;  // b 窗口接受消息</span><br></pre></td></tr></table></figure></p>
-<h3 id="Monitor-and-Slow-Log"><a href="#Monitor-and-Slow-Log" class="headerlink" title="Monitor and Slow Log"></a>Monitor and Slow Log</h3><p>这是两个非常好的调试工具,但不应该被用于生产环境中</p>
-<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>sort 是Redis 最强力命令之一。它允许你对列表，集合，有序集合中的值进行排序 (有序集是依照权重排序的，而不是集合中的成员)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpush users:leto:guesses 5 9 10 2 4 10 19 2</span><br><span class="line">sort users:leto:guesses         // 由低到高（默认）</span><br><span class="line">sort friends:ghanima limit 0 3 desc alpha   //  分页、逆序，按照字典序</span><br></pre></td></tr></table></figure>
-<p>排序可以更复杂<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hset bug:12339 severity 3</span><br><span class="line">hset bug:12339 priority 1</span><br><span class="line">hset bug:12339 details &apos;&#123;&quot;id&quot;: 12339, ....&#125;&apos;</span><br><span class="line"></span><br><span class="line">sort watch:leto by bug:*-&gt;priority get bug:*-&gt;details   // 根据优先级排序，获取细节</span><br></pre></td></tr></table></figure></p>
-<p>另外，store 可以缓存排序结果</p>
-<h2 id="扫描"><a href="#扫描" class="headerlink" title="扫描"></a>扫描</h2><p>keys 命令不应该被用于生产环境，scan 则是另一回事了<br>一次调用 scan 无需返回所有匹配结果。没什么奇怪的，就是一个被分页的结果;但是, scan 返回的结果条数不定，它不能被精确的控制。你可以用 count 选项，默认是 10，不过它完全有可能拿到比指定的 count 更多或更少的结果。<br>也就是说，一个空结果集并不意味着没有其他的结果存在。只有一个 0 游标，才意味着没有更多的结果。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">scan 0 match bugs:* count 2</span><br><span class="line">&gt; 1) &quot;3&quot;</span><br><span class="line">&gt; 2) 1) &quot;bugs:125&quot;</span><br><span class="line">scan 3 match bugs:* count 2</span><br><span class="line">&gt; 1) &quot;0&quot;</span><br><span class="line">&gt; 2) 1) &quot;bugs:124&quot;</span><br><span class="line">&gt;    2) &quot;bugs:123&quot;</span><br></pre></td></tr></table></figure>
-<p><em>这有两点需要牢记。首先，scan 可以多次返回相同的 key 。你需要自己处理(比如说保存一个已有值集合)。其次，scan 只保证在迭代的整个持续过程中的存在值会被返回。如果在迭代中有值被添加或者被删除，新值可能被返回，旧值可能被忽略。再强调一次，这就是 scan 所谓的无状态; 它不会对存在值做快照(就像你在许多数据库中看到的那样，提供了强一致性保证)，仅仅是遍历同一块内存空间，不管空间有没有发生变更。</em></p>
-<h1 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h1><p>简单集群和负载均衡其实是很危险的——当某一台机器出现问题时上面的数据会全部丢失，因此，我们应该采取主从库的结构，而 master-slave 模式可以有以下两个优势：</p>
-<ul>
-<li>数据高可用：Master负责接收客户端的写入请求，将数据写到Master后，同步给Slave，实现数据备份。一旦Master挂了，可以将Slave提拔为Master；</li>
-<li>提高查询效率：一旦Master发现自己忙不过来了，可以把一些查询请求，转发给Slave去处理，也就是Master负责读写或者只负责写，Slave负责读；尽管这样可能导致读到一些过期的数据，不过还算是可以接受的折中。</li>
-</ul>
-<p>配置主从服务可以通过修改配置文件的 slaveof 标签或者用 slaveof 命令来实现。不过目前 redis 还不支持自动将 slave 提升为 master,因此依旧需要用心跳监控和脚本来手动处理</p>
-<h1 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h1><p>备份 Redis 只需要简单的将 Redis 的快照拷贝到你想要的地方(S3, FTP, …)。默认的，Redis 把它的快照保存在名为 dump.rdb 的文件中。随时，你都可以 scp, ftp 或者 cp (或别的什么) 操作这个文件。</p>
-<p>在主服务上禁用快照或者禁用增量文件(append-only file (aof))，转而让从服务去维护，这种做法并不少见。这有助于降低主服务器上的负载，并且允许在从服务上使用更积极的备份操作，而不会影响整个系统的响应速度。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><a href="https://github.com/ilivebox/the-little-redis-book/blob/master/zh-cn/redis.md" target="_blank" rel="noopener">redis 简介</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/37055648" target="_blank" rel="noopener">Redis简明教程</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/20/vim-初步探索/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/20/vim-初步探索/" itemprop="url">vim 初步探索</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-20T10:02:03+08:00">
-                2018-11-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>由于平时工作中有用到 vim 的情况，然而我对 vim 的了解就是进入退出编辑，所以初步的进行一些探索。本文记录下来的 vim 操作只是最最基础的，只代表我接下来一段时间会投入使用的命令，后续会接着尝试更多的命令。</p>
-</blockquote>
-<h1 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h1><h2 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ctrl + f        向下跳一页</span><br><span class="line">ctrl + b        向上跳一页</span><br><span class="line">*               当鼠标停留在某个单词上时摁 * 会跳到后面下一个单词上（最后会跳到第一个）</span><br><span class="line">#               当鼠标停留在某个单词上时摁 # 会跳到后面上一个单词上（最后会跳到第一个）</span><br><span class="line">gg              跳转到文件第一行</span><br><span class="line">G               跳转到文件最后一行</span><br><span class="line">nG或ngg         跳转到文件第几行</span><br><span class="line">(n)H            跳转到当前页面第几行（默认是第一行</span><br><span class="line">M               跳转到当前页面中间</span><br><span class="line">(n)L            跳转到当前页面倒数第几行</span><br></pre></td></tr></table></figure>
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(n)dd           删除以下n行</span><br><span class="line">(n)dw           删除光标右侧n个字</span><br><span class="line">(n)db           删除光标左侧n个字</span><br><span class="line">d$              光标删除到行末</span><br><span class="line">d0              光标删除到行首</span><br><span class="line">J               删除本行回车符，与下一行合并</span><br></pre></td></tr></table></figure>
-<h2 id="复制粘贴撤销重做"><a href="#复制粘贴撤销重做" class="headerlink" title="复制粘贴撤销重做"></a>复制粘贴撤销重做</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p               粘贴至光标之后</span><br><span class="line">P               粘贴至光标之前</span><br><span class="line">(n)yy           复制到内存中</span><br><span class="line">u               撤销</span><br><span class="line">.               重复上一步操作</span><br></pre></td></tr></table></figure>
-<h1 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h1><h2 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:w filename     另存为filename</span><br><span class="line">:n              跳转到第n行</span><br><span class="line">:m,nw filename  第m-n行写入文件</span><br><span class="line">:.,$w filename  当前行到最后一行写入文件</span><br><span class="line">:f              显示当前信息，比如文件共几行，光标在第几行</span><br></pre></td></tr></table></figure>
-<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:/str/          正向搜索</span><br><span class="line">:?str?          逆向搜索</span><br><span class="line">可以使用正则表达式</span><br></pre></td></tr></table></figure>
-<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://www.jianshu.com/p/bcbe916f97e1" target="_blank" rel="noopener">vim入门</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/nginx初步探索（配置文件/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/18/nginx初步探索（配置文件/" itemprop="url">nginx初步探索（配置文件）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T20:06:11+08:00">
-                2018-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>本文是用于记录 nginx 常见的配置文件处理，包括个人在实验过程中碰到的问题。本次实验成果进行了反向代理，静态资源服务器，加 http 头，修改 http 返回的 header，封 ip 等尝试<br>待完成任务有 gzip 和 日志的开启，这两块始终不成功</p>
-</blockquote>
-<h1 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h1><p>nginx 配置文件分为以下几个部分:</p>
-<ul>
-<li>main 模块:    一般是用于记录 nginx 的用户和用户组、nginx 允许生成的worker数， 日志存储位置等信息</li>
-<li>events 模块:  直接影响网络连接，记录允许每个进程最多接受多少请求，是否可以同时接受多个请求，选取哪一种连接模型，是否进行序列化等。</li>
-<li>http 模块:    很核心的模块，主要用于处理 http 及 https 服务，其中可以定义大量的信息：比如说 反向代理、ip控制、缓存、静态资源服务等等，绝大多数模块的使用都在这里</li>
-<li>server 模块: 用于定义虚拟主机的相关参数，一个 http 模块可以有多个server 参数</li>
-<li>location 模块: 用于定义路径的匹配及处理</li>
-</ul>
-<h1 id="nginx-基本配置模板"><a href="#nginx-基本配置模板" class="headerlink" title="nginx 基本配置模板"></a>nginx 基本配置模板</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br></pre></td><td class="code"><pre><span class="line">########### 每个指令必须有分号结束。#################</span><br><span class="line"></span><br><span class="line">#配置用户或者组，默认为nobody nobody。</span><br><span class="line">#user administrator administrators; </span><br><span class="line">#允许生成的进程数，默认为1</span><br><span class="line">#worker_processes 2; </span><br><span class="line">#指定nginx进程运行文件存放地址</span><br><span class="line">#pid /nginx/pid/nginx.pid; </span><br><span class="line">#制定错误日志路径，级别。这个设置可以放入全局块，http块，server块，级别依次为：debug|info|notice|warn|error|crit|alert|emerg</span><br><span class="line">error_log log/error.log debug; </span><br><span class="line"></span><br><span class="line">#工作模式及连接数上限</span><br><span class="line">events &#123;</span><br><span class="line">#设置网路连接序列化，防止惊群现象发生，默认为on</span><br><span class="line">   accept_mutex on; </span><br><span class="line">#设置一个进程是否同时接受多个网络连接，默认为off</span><br><span class="line">   multi_accept on; </span><br><span class="line">#事件驱动模型，select|poll|kqueue|epoll|resig|/dev/poll|eventport</span><br><span class="line">#use epoll; </span><br><span class="line">#单个work进程允许的最大连接数，默认为512</span><br><span class="line">   worker_connections 512; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">#文件扩展名与文件类型映射表。设定mime类型(邮件支持类型),类型由mime.types文件定义</span><br><span class="line">#include /usr/local/etc/nginx/conf/mime.types;</span><br><span class="line">   include mime.types; </span><br><span class="line">#默认文件类型，默认为text/plain</span><br><span class="line">   default_type application/octet-stream; </span><br><span class="line"></span><br><span class="line"># _note 取消服务访问日志(这个很坑爹，我最后也没有找到日志到底打在哪里了))</span><br><span class="line">#access_log off;     </span><br><span class="line">#自定义日志格式</span><br><span class="line">   log_format myFormat &apos;$remote_addr–$remote_user [$time_local] $request $status $body_bytes_sent $http_referer $http_user_agent $http_x_forwarded_for&apos;; </span><br><span class="line">#设置访问日志路径和格式。&quot;log/&quot;该路径为nginx日志的相对路径，mac下是/usr/local/var/log/。combined为日志格式的默认值</span><br><span class="line">   access_log log/access.log myFormat; </span><br><span class="line">   rewrite_log on;</span><br><span class="line"></span><br><span class="line">#允许sendfile方式传输文件，默认为off，可以在http块，server块，location块。（sendfile系统调用不需要将数据拷贝或者映射到应用程序地址空间中去）</span><br><span class="line">   sendfile on; </span><br><span class="line">#每个进程每次调用传输数量不能大于设定的值，默认为0，即不设上限。</span><br><span class="line">   sendfile_max_chunk 100k; </span><br><span class="line"></span><br><span class="line">#连接超时时间，默认为75s，可以在http，server，location块。</span><br><span class="line">   keepalive_timeout 65; </span><br><span class="line"></span><br><span class="line"># _note gzip压缩开关（同样坑爹，怎么也打不开。。。）</span><br><span class="line">#gzip on;</span><br><span class="line"></span><br><span class="line">   tcp_nodelay on;</span><br><span class="line"></span><br><span class="line">#设定实际的服务器列表</span><br><span class="line">   upstream mysvr1 &#123;   </span><br><span class="line">     server 127.0.0.1:7878;</span><br><span class="line">     server 192.168.10.121:3333 backup; #热备(其它所有的非backup机器down或者忙的时候，请求backup机器))</span><br><span class="line">   &#125;</span><br><span class="line">   upstream mysvr2 &#123;</span><br><span class="line"># _note weigth参数表示权值，权值越高被分配到的几率越大（传说中的加权轮询）</span><br><span class="line">     server 192.168.1.11:80 weight=5;</span><br><span class="line">     server 192.168.1.12:80 weight=1;</span><br><span class="line">     server 192.168.1.13:80 weight=6;</span><br><span class="line">   &#125;</span><br><span class="line">   upstream https-svr &#123;</span><br><span class="line"># _note 每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题（不过说起来多服务器的 session 这种东西不应该是使用 redis 或 memory吗）</span><br><span class="line">     ip_hash;</span><br><span class="line">     server 192.168.1.11:90;</span><br><span class="line">     server 192.168.1.12:90;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">#error_page 404 https://www.baidu.com; #错误页</span><br><span class="line"></span><br><span class="line">#HTTP服务器</span><br><span class="line"></span><br><span class="line"># 静态资源一般放在nginx所在主机</span><br><span class="line">   server &#123;</span><br><span class="line">       listen 80; #监听HTTP端口</span><br><span class="line">       server_name 127.0.0.1; #监听地址  </span><br><span class="line">       keepalive_requests 120; #单连接请求上限次数</span><br><span class="line">       set $doc_root_dir &quot;/Users/doing/IdeaProjects/edu-front-2.0&quot;; #设置server里全局变量</span><br><span class="line">       #index index.html;  #定义首页索引文件的名称</span><br><span class="line">       location ~*^.+$ &#123; #请求的url过滤，正则匹配，~为区分大小写，~*为不区分大小写。</span><br><span class="line">        # _note 静态资源目录实验成功（除了我怎么都关不掉这个功能），本功能不能提供目录的展示，不过可以提供旗下所有文件的下载</span><br><span class="line">          root $doc_root_dir; #静态资源根目录  </span><br><span class="line">          proxy_pass http://mysvr1; #请求转向“mysvr1”定义的服务器列表</span><br><span class="line">          # _note 本处是封ip功能，试验成功，写 all 的时候会把所有ip都干掉</span><br><span class="line">          #deny 127.0.0.1; #拒绝的ip</span><br><span class="line">          #allow 172.18.5.54; #允许的ip           </span><br><span class="line">       &#125; </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">#http</span><br><span class="line">   server &#123;</span><br><span class="line">       listen 80;</span><br><span class="line">       server_name www.helloworld.com; # _note 监听基于域名的虚拟主机。可有多个，可以使用正则表达式和通配符，不过要玩这个需要动host文件，不然依旧没什么卵用。就方便而言用 OmegaSwitch 是更好的选择</span><br><span class="line">       charset utf-8; #编码格式</span><br><span class="line">       set $static_root_dir &quot;/Users/doing/static&quot;;</span><br><span class="line">       location /app1 &#123; # _note 反向代理的路径（和upstream绑定），location后面设置映射的路径(注意，本处对应的路径在 server 上要有对应的路径，这里的映射不是把该路径映射到 server 的根路径上) </span><br><span class="line">           proxy_pass http://zp_server1;</span><br><span class="line">       &#125; </span><br><span class="line">       location /app2 &#123;  </span><br><span class="line">           proxy_pass http://zp_server2;</span><br><span class="line">       &#125; </span><br><span class="line">       location ~ ^/(images|javascript|js|css|flash|media|static)/ &#123;  #静态文件，nginx自己处理</span><br><span class="line">           root $static_root_dir;</span><br><span class="line">           expires 30d; #静态资源过时间30天</span><br><span class="line">       &#125;</span><br><span class="line">       location ~ /\.ht &#123;  #禁止访问 .htxxx 文件</span><br><span class="line">           deny all;</span><br><span class="line">       &#125;</span><br><span class="line">       location = /do_not_delete.html &#123; # _note 直接简单粗暴的返回状态码及内容文本（如果使用浏览器访问该接口会直接下载一个文本文件）</span><br><span class="line">           return 200 &quot;hello.&quot;;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       # 指定某些路径使用https访问(使用正则表达式匹配路径+重写uri路径)</span><br><span class="line">       location ~* /http* &#123; #路径匹配规则：如localhost/http、localhost/httpsss等等</span><br><span class="line">#rewrite只能对域名后边的除去传递的参数外的字符串起作用，例如www.c.com/proxy/html/api/msg?method=1&amp;para=2只能对/proxy/html/api/msg重写。</span><br><span class="line">#rewrite 规则 定向路径 重写类型;</span><br><span class="line">#rewrite后面的参数是一个简单的正则。$1代表正则中的第一个()。</span><br><span class="line">#$host是nginx内置全局变量，代表请求的主机名</span><br><span class="line">#重写规则permanent表示返回301永久重定向</span><br><span class="line">           rewrite ^/(.*)$ https://$host/$1 permanent;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       #错误处理页面（可选择性配置）</span><br><span class="line">#error_page 404 /404.html;</span><br><span class="line">#error_page 500 502 503 504 /50x.html;</span><br><span class="line"></span><br><span class="line">#以下是一些反向代理的配置(可选择性配置)</span><br><span class="line">#proxy_redirect off;</span><br><span class="line">#proxy_set_header Host $host; #proxy_set_header用于设置发送到后端服务器的request的请求头</span><br><span class="line">#proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">#proxy_set_header X-Forwarded-For $remote_addr; #后端的Web服务器可以通过X-Forwarded-For获取用户真实IP</span><br><span class="line">#proxy_connect_timeout 90; #nginx跟后端服务器连接超时时间(代理连接超时)</span><br><span class="line">#proxy_send_timeout 90; #后端服务器数据回传时间(代理发送超时)</span><br><span class="line">#proxy_read_timeout 90; #连接成功后，后端服务器响应时间(代理接收超时)</span><br><span class="line">#proxy_buffer_size 4k; #设置代理服务器（nginx）保存用户头信息的缓冲区大小</span><br><span class="line">#proxy_buffers 4 32k; #proxy_buffers缓冲区，网页平均在32k以下的话，这样设置</span><br><span class="line">#proxy_busy_buffers_size 64k; #高负荷下缓冲大小（proxy_buffers*2）</span><br><span class="line">#proxy_temp_file_write_size 64k; #设定缓存文件夹大小，大于这个值，将从upstream服务器传</span><br><span class="line"></span><br><span class="line">#client_max_body_size 10m; #允许客户端请求的最大单文件字节数</span><br><span class="line">#client_body_buffer_size 128k; #缓冲区代理缓冲用户端请求的最大字节数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">#https</span><br><span class="line">#(1)HTTPS的固定端口号是443，不同于HTTP的80端口；</span><br><span class="line">#(2)SSL标准需要引入安全证书，所以在 nginx.conf 中你需要指定证书和它对应的 key</span><br><span class="line">   server &#123;</span><br><span class="line">     listen 443;</span><br><span class="line">     server_name  www.hellohttps1.com www.hellohttps2.com;</span><br><span class="line">     set $geek_web_root &quot;/Users/doing/IdeaProjects/backend-geek-web&quot;;</span><br><span class="line">     ssl_certificate      /usr/local/etc/nginx/ssl-key/ssl.crt; #ssl证书文件位置(常见证书文件格式为：crt/pem)</span><br><span class="line">     ssl_certificate_key  /usr/local/etc/nginx/ssl-key/ssl.key; #ssl证书key位置</span><br><span class="line">     location /passport &#123;</span><br><span class="line">       send_timeout 90;</span><br><span class="line">       proxy_connect_timeout 50;</span><br><span class="line">       proxy_send_timeout 90;</span><br><span class="line">       proxy_read_timeout 90;</span><br><span class="line">       proxy_pass http://https-svr;</span><br><span class="line">     &#125;</span><br><span class="line">     location ~ ^/(res|lib)/ &#123;</span><br><span class="line">        root $geek_web_root; </span><br><span class="line">        expires 7d;</span><br><span class="line"># _note add_header用于为后端服务器返回的response添加请求头，这里通过add_header实现CROS跨域请求服务器，该指令疑似只有用于具体的 location块中才有作用</span><br><span class="line">        add_header Access-Control-Allow-Origin *; </span><br><span class="line">     &#125;</span><br><span class="line">#ssl配置参数（选择性配置）</span><br><span class="line">     ssl_session_cache shared:SSL:1m;</span><br><span class="line">     ssl_session_timeout 5m;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   #配置访问控制：每个IP一秒钟只处理一个请求，超出的请求会被delayed</span><br><span class="line">#语法：limit_req_zone  $session_variable  zone=name:size  rate=rate (为session会话状态分配一个大小为size的内存存储区，限制了每秒（分、小时）只接受rate个IP的频率)</span><br><span class="line">   limit_req_zone  $binary_remote_addr zone=req_one:10m   rate=1r/s nodelay;</span><br><span class="line">   location /pay &#123;</span><br><span class="line">       # 用于向请求添加http头，这里是在请求向具体的后端服务器之前加请求头，可以从后端读到（似乎一样只能用于具体的 location 块中）</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header X-Real_IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">#访问控制：limit_req zone=name [burst=number] [nodelay];</span><br><span class="line">        limit_req zone=req_one burst=5; #burst=5表示超出的请求(被delayed)如果超过5个，那些请求会被终止（默认返回503）</span><br><span class="line">        proxy_pass http://mysvr1;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">#可以把子配置文件放到/usr/local/etc/nginx/servers/路径下，通过include引入</span><br><span class="line">   include /usr/local/etc/nginx/servers/*.conf;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="内置全局变量列表"><a href="#内置全局变量列表" class="headerlink" title="内置全局变量列表"></a>内置全局变量列表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$args ：这个变量等于请求行中的参数，同$query_string</span><br><span class="line">$content_length ： 请求头中的Content-length字段。</span><br><span class="line">$content_type ： 请求头中的Content-Type字段。</span><br><span class="line">$document_root ： 当前请求在root指令中指定的值。</span><br><span class="line">$host ： 请求主机头字段，否则为服务器名称。</span><br><span class="line">$http_user_agent ： 客户端agent信息</span><br><span class="line">$http_cookie ： 客户端cookie信息</span><br><span class="line">$limit_rate ： 这个变量可以限制连接速率。</span><br><span class="line">$request_method ： 客户端请求的动作，通常为GET或POST。</span><br><span class="line">$remote_addr ： 客户端的IP地址。</span><br><span class="line">$remote_port ： 客户端的端口。</span><br><span class="line">$remote_user ： 已经经过Auth Basic Module验证的用户名。</span><br><span class="line">$request_filename ： 当前请求的文件路径，由root或alias指令与URI请求生成。</span><br><span class="line">$scheme ： HTTP方法（如http，https）。</span><br><span class="line">$server_protocol ： 请求使用的协议，通常是HTTP/1.0或HTTP/1.1。</span><br><span class="line">$server_addr ： 服务器地址，在完成一次系统调用后可以确定这个值。</span><br><span class="line">$server_name ： 服务器名称。</span><br><span class="line">$server_port ： 请求到达服务器的端口号。</span><br><span class="line">$request_uri ： 包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。</span><br><span class="line">$uri ： 不带请求参数的当前URI，$uri不包含主机名，如”/foo/bar.html”。</span><br><span class="line">$document_uri ： 与$uri相同。</span><br></pre></td></tr></table></figure>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料:"></a>参考资料:</h1><p><a href="https://zhuanlan.zhihu.com/p/31202053" target="_blank" rel="noopener">nginx快速入门之配置篇</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/markdown-入门/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/18/markdown-入门/" itemprop="url">markdown 入门</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T16:47:48+08:00">
-                2018-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>如果没记错的话这是我第四次要学习 markdown 语法了，但是避免再次忘掉，我决定在这一次把它记下来。</p>
-</blockquote>
-<h1 id="标题类"><a href="#标题类" class="headerlink" title="标题类"></a>标题类</h1><p>这一类就是 #，从一个到六个</p>
-<h1 id="列表类"><a href="#列表类" class="headerlink" title="列表类"></a>列表类</h1><h2 id="无序列表是使用-开头，比如"><a href="#无序列表是使用-开头，比如" class="headerlink" title="无序列表是使用 - 开头，比如"></a>无序列表是使用 - 开头，比如</h2><ul>
-<li>abc</li>
-<li>def</li>
-<li>ghi</li>
-</ul>
-<h2 id="有序列表则是使用数字开头，比如"><a href="#有序列表则是使用数字开头，比如" class="headerlink" title="有序列表则是使用数字开头，比如"></a>有序列表则是使用数字开头，比如</h2><ol>
-<li>asdf</li>
-<li>sffds</li>
-<li>sdfds </li>
-</ol>
-<p>要注意的是，数字是不影响排布顺序的</p>
-<h1 id="引用类"><a href="#引用类" class="headerlink" title="引用类"></a>引用类</h1><h2 id="网址链接-文字-网址"><a href="#网址链接-文字-网址" class="headerlink" title="网址链接 [文字] (网址)"></a>网址链接 [文字] (网址)</h2><p>比如说 <a href="https://www.baidu.com" target="_blank" rel="noopener">百度</a></p>
-<h2 id="图片-文字描述-图片地址"><a href="#图片-文字描述-图片地址" class="headerlink" title="图片 ![文字描述](图片地址)"></a>图片 ![文字描述](图片地址)</h2><p>比如说 <img src="http://www.aosabook.org/images/nginx/architecture.png" alt="nginx架构"></p>
-<h2 id="引用文字-gt"><a href="#引用文字-gt" class="headerlink" title="引用文字 &gt;"></a>引用文字 &gt;</h2><blockquote>
-<p>这是一段文字引用</p>
-</blockquote>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&apos;hello world&apos;);</span><br></pre></td></tr></table></figure>
-<h1 id="粗体和斜体"><a href="#粗体和斜体" class="headerlink" title="粗体和斜体"></a>粗体和斜体</h1><h2 id="斜体是首尾一个-，注意要紧挨着，粗体则是两个，比如："><a href="#斜体是首尾一个-，注意要紧挨着，粗体则是两个，比如：" class="headerlink" title="斜体是首尾一个*，注意要紧挨着，粗体则是两个，比如："></a>斜体是首尾一个*，注意要紧挨着，粗体则是两个，比如：</h2><p><em>这是一个斜体</em><br><strong>这个是一个粗体</strong></p>
-<h1 id="换行符（-）"><a href="#换行符（-）" class="headerlink" title="换行符（---）"></a>换行符（---）</h1><p>也就是，另外换行符要之前要进行一次换行，表格什么的也有类似的问题 </p>
-<hr>
-<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>第一行是表格头，每个之间用 | 隔开，中间留有空格<br>第二行是 - | 这样的分隔<br>后续如第一行，只不过是具体的内容，比如</p>
-<table>
-<thead>
-<tr>
-<th>dog</th>
-<th>bird</th>
-<th>cat</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>foo</td>
-<td>foo</td>
-<td>foo</td>
-</tr>
-<tr>
-<td>bar</td>
-<td>bar</td>
-<td>bar</td>
-</tr>
-<tr>
-<td>baz</td>
-<td>baz</td>
-<td>baz</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/nginx初步探索(基本介绍)/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/17/nginx初步探索(基本介绍)/" itemprop="url">nginx初步探索（基本介绍）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-17T23:31:54+08:00">
-                2018-11-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>nginx 这个东西我听说很久了，实际上用页用过几次，但是实际上我一直没搞明白它是一个什么东西，以及它到底有什么用处，另外到底是什么原理。在这个周末，我看了一些文字，自己做了一些实验，简单的记一下。</p>
-</blockquote>
-<h1 id="nginx是什么？"><a href="#nginx是什么？" class="headerlink" title="nginx是什么？"></a>nginx是什么？</h1><p>nginx 是一个开源的服务器，主要是用于http服务器，反向代理以及邮件服务器。理论上它和Apache是一类东西。而它和 Apache 的区别在于 Apache 是多进程的，当一个请求到来的时候 Apache 都会启动一个进程或线程对其进行处理。这样当并发量上去的时候对CPU和内存的需求简直爆炸。。。而 Nginx 是异步、单进程、事件驱动和非阻塞的，非常适合处理高并发。<br>此外，nginx 可以提供静态资源服务、缓存服务、修改 HTTP 头或内容、负载均衡、流量控制和权限控制等功能，可以说非常的全面且可靠。<br>当 nginx 提供负载均衡时存在 内置策略 和 自定义策略，而内置策略又分为三种：轮询，ip Hash，加权轮询三种。</p>
-<h1 id="nginx-基本原理介绍"><a href="#nginx-基本原理介绍" class="headerlink" title="nginx 基本原理介绍"></a>nginx 基本原理介绍</h1><h2 id="nginx-基本组成"><a href="#nginx-基本组成" class="headerlink" title="nginx 基本组成"></a>nginx 基本组成</h2><p>nginx 从架构上讲由一个核心和多个模块组成，核心部分的工作是维持一个事件队列，在合适的时候调用worker处理事件，并在相应的时候调用对应模块。而功能模块负责的东西更多，包括网络内容的读写，对内容的处理，与上游服务器交互，应用选择器进行筛选（在返回给client之前）。</p>
-<h2 id="nginx-基本架构"><a href="#nginx-基本架构" class="headerlink" title="nginx 基本架构"></a>nginx 基本架构</h2><p><img src="http://www.aosabook.org/images/nginx/architecture.png" alt="nginx基础架构"></p>
-<p>而具体到实现思路上是由一个 master 进程 和 N 个 worker 组成的（另外还有一个缓存加载进程和一个缓存管理进程，其实完全可以把它们视为 worker 进程）。</p>
-<p>master 进程负责的任务包括：</p>
-<ul>
-<li>读取并校验配置文件</li>
-<li>创建、绑定或删除 与worker 进行通信的socket</li>
-<li>开始、终止或维持 根据配置文件所设定的多个 worker</li>
-<li>在不中断服务的基础上重新加载配置文件</li>
-<li>处理日志输出</li>
-<li>编译 Perl 脚本</li>
-</ul>
-<p>worker 负责的任务包括：</p>
-<ul>
-<li>读取并处理来自客户端的请求</li>
-<li>反向代理</li>
-<li>对返回内容进行筛选</li>
-</ul>
-<p>而每个 worker 都可以处理 N 个请求，而正如之前所说，Nginx 不会为每个请求都启动新的进程或线程，而是会用已有的 worker 进行处理。这样就不会存在创建、销毁进程和切换上下文所产生的消耗，这是 Nginx 高效的原因之一，也是为什么 Apache 的消耗会随着并发量的上涨线性上涨，而 Nginx 是非线性上涨。另外 worker 和 Nginx 之间的通信是通过共享内存来实现的。</p>
-<p>每个请求都完全由一个 worker 进程来进行处理，这样做的好处包括：</p>
-<ul>
-<li>节省锁带来的开销</li>
-<li>独立进程、避免风险</li>
-<li>一次请求无需进行上下文切换</li>
-</ul>
-<p>最后是缓存加载器和缓存管理器，前者负责缓存的读取和书写，后者负责缓存过期时间管理以及内容校验。</p>
-<h1 id="nginx-最大连接数"><a href="#nginx-最大连接数" class="headerlink" title="nginx 最大连接数"></a>nginx 最大连接数</h1><ul>
-<li>worker_processes：worker 进程的个数</li>
-<li>worker_connections： 每个 worker 可以处理的请求的个数</li>
-<li>Nginx作为http服务器的时候：max_clients = worker_processes * worker_connections</li>
-<li>Nginx作为反向代理服务器的时候：max_clients = worker_processes * worker_connections/4 （/4原因：因为浏览器默认会开启2个连接到nginx server，而且nginx还会为每个连接使用fds（file descriptor）从连接池建立connection到upstream后端。）</li>
-</ul>
-<h1 id="nginx-常用命令"><a href="#nginx-常用命令" class="headerlink" title="nginx 常用命令"></a>nginx 常用命令</h1><ul>
-<li>nginx 配置文件所在：  /usr/local/etc/nginx 或 /etc/nginx</li>
-<li>启动: nginx</li>
-<li>缓和终止(完成现有任务再停止): nginx -s quit</li>
-<li>迅速终止（直接退出）:  nginx -s stop</li>
-<li>重启服务（通常因为修改配置）: nginx -s reload</li>
-<li>重新打开日志文件: nginx -s reopen</li>
-<li>指定配置文件: nginx -c filename</li>
-<li>校验配置文件（不执行）: nginx -t filename</li>
-<li>显示 nginx 版本: nginx -v</li>
-<li>显示 nginx 版本及配置参数: nginx -V</li>
-</ul>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://www.aosabook.org/en/nginx.html" target="_blank" rel="noopener">nginx简介</a><br><a href="https://zhuanlan.zhihu.com/p/31196264" target="_blank" rel="noopener">nginx快速入门之基本原理篇</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/hello-world/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/17/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-17T23:23:24+08:00">
-                2018-11-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-
-
-          </div>
-          
-
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">diaotai</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">9</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">tags</span>
-                
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">diaotai</span>
-
-  
-</div>
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
 </script>
 
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
+    <!-- Main Content -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
+
+
+<div class="post-preview">
+
+    <a href="/2019/04/09/关于-canvas-的范围机制的一些探索/">
+        <h2 class="post-title">
+            关于 canvas 的范围机制的一些探索
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            
+本篇博客是来自于我在项目中实际碰到的关于 canvas 绘图所遇到的一些问题
+
+canvas 的大小
+canvas 的大小分为两种，一种是我们平时所了解的，作为 css 属性的宽高，而另一种则是 canvas 本身的大小.
+canvas 本身的大小我们可以在 html 标签属性上的 width 和 height 进行设置，单位为像素，而默认大小是 300 *150
+canvas 元素可以使......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by diaotai on
+            2019-04-09
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2019/04/09/hello-world/">
+        <h2 class="post-title">
+            Hello World
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Qu......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by diaotai on
+            2019-04-09
+        </p>
+    
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+    
+</ul>
+
+
+
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- 如果开启评论功能 -->
+                
+            </div>
+
+          <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Featured Tags -->
+
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">ABOUT ME</a></h5>
+    <div class="short-about">
+
+        
+            <img id="avatar_pic" src="img/&lt;your avatar path">
+        
+
+        
+            <p>diaotai 写博客的地方</p>
+        
+
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+            
+
+            
+
+            
+
+            
+            
+            
+            
+        </ul>
+    </div>
+</section>
+
+        <hr>
+    
+        
+  <h5>RECENT POSTS
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/2019/04/09/关于-canvas-的范围机制的一些探索/">关于 canvas 的范围机制的一些探索</a>
+        </li>
+      
+        <li>
+          <a href="/2019/04/09/hello-world/">Hello World</a>
+        </li>
+      
+    </ul>
+  </div>
+</h5>
+        <hr>
+    
+        <!-- Friends Blog -->
+
+        <hr>
+    
+        
+    <h5>ARCHIVES</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+
+        <hr>
+    
+        <!-- Categories -->
+
+        <hr>
+    
+</div>
+
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; diaotai 2019 
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://www.huweihuang.com">胡伟煌</a> | 
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=huweihuang&repo=hexo-theme-huweihuang&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
+
 </html>
