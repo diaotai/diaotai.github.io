@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          
+          redux 机制探索 - undefined
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/archives/2019/04/">
+    <link rel="canonical" href="http://yoursite.com/2019/04/16/redux-机制探索/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -72,7 +72,7 @@
     header.intro-header{
         
             background-image: url('')
-            /*page*/
+            /*post*/
         
     }
     
@@ -85,10 +85,18 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>日拱一卒</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading"></span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#front-end" title="front-end">front-end</a>
+                            
+                        </div>
+                        <h1>redux 机制探索</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by diaotai on
+                            2019-04-16
+                        </span>
                     </div>
                 
 
@@ -167,210 +175,115 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 归档列表 -->
-            
-            
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-             <!-- 归档列表 -->
+                <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>近日研究了一下 redux 的文档和源码，深感自己原来根本没有理解对 redux 的用法和原理。在花了三天时间把这一块搞明白之后，写下这篇博客作为记录。</p>
+<h1 id="什么是-redux"><a href="#什么是-redux" class="headerlink" title="什么是 redux"></a>什么是 redux</h1><p>我一直以为 redux 是一个 react 的专属的全局状态管理工具，但实际上， redux 是一个单向数据流的观察者模式，完全可以用在后端或者其它前端框架里使用。<br>redux 将整个数据流分为以下几个部分:</p>
+<h2 id="store"><a href="#store" class="headerlink" title="store"></a>store</h2><p>store 是 redux 的核心部分，它负责全局状态的管理（包括创建、更新以及对外暴露）、观察者的管理（包括注册、删除及触发对应的更新）。<br>而全局状态 state 对外是只读的（这也是为什么能保证单向数据流的原因），理论上讲，只要我们有全局 state 的数据，就获得一个 web 状态的复刻。</p>
+<p>在 createStore 实现中比较有意思的点包括:</p>
+<ul>
+<li>通过闭包维持一个变量，保证了不可能在 reducer 中再次触发 action</li>
+<li>对 action 的类型判断（原生的 redux 只允许有对象类型的 action）</li>
+<li>有一点很搞笑 —— 每次 dispatch 触发会使得所有的 listener 都触发，并没有针对的部分</li>
+</ul>
+<h2 id="action"><a href="#action" class="headerlink" title="action"></a>action</h2><p>action 通常而言是对象（当使用 redux-thunk 的时候可以是特定类型的函数）, 这个对象会包含 type 和 data 两部分， 标明了类型和数据。<br>触发 action 是唯一变动 state 的方式, 这也是维持单向数据流的方式</p>
+<h2 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h2><p>reducer 可以说是 redux 的核心部分，每一个 reducer 都是一个纯函数（最好是，否则时间旅行就是空谈）。只要我们知道前一个状态和触发的 action，那么必然会算出同一个结果。<br>reducer 的纯函数理论也让 redux 的测试变得非常的容易。</p>
+<h2 id="combineReducer"><a href="#combineReducer" class="headerlink" title="combineReducer"></a>combineReducer</h2><p>redux 要求全局只有一个状态，但是这会让我们的开发有很大的麻烦，比如数据更新时的嵌套问题，也不方便 reducer 的测试。<br>而 combinReducer 提供了一个解决方法，它可以把多个 reducer 合并成同一个（返回一个新的 reducer 函数），状态也是如此。<br>不过它的更新机制有点搞笑——它会把所有子 reducer 和传入的 action 都算一遍，由于 reducer 默认返回原状态，所以也没什么大不了的，如果能更新，则必然会更新。</p>
+<h2 id="Middleware"><a href="#Middleware" class="headerlink" title="Middleware"></a>Middleware</h2><p>中间件机制类似于 express 中的中间件，指的是当 dispatch 触发前后进行一些操作，本质上中间件机制就是通过对原 dispatch 进行层层的嵌套调用。</p>
+<h1 id="redux-中间件"><a href="#redux-中间件" class="headerlink" title="redux 中间件"></a>redux 中间件</h1><h2 id="redux-thunk"><a href="#redux-thunk" class="headerlink" title="redux-thunk"></a>redux-thunk</h2><p>redux-thunk 的本意是用来解决异步问题的，但是实际上可以用来使一个特定类型的函数作为 action。<br>该函数会接受 (dispatch, getState) 作为参数，而在函数中应当触发新的 action，否则父 action 会终结<br>通过这种写法可以把请求数据、更新数据汇成一体，只需要写一个这种类型的函数即可</p>
+<h2 id="手写"><a href="#手写" class="headerlink" title="手写"></a>手写</h2><p>中间件只是一个三阶函数， next 可以理解为该中间件内部的中间件们包裹的 dispatch，下面是我手写的一个尝试性的中间件，大致就是这样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">export function createHelloworld () &#123;</span><br><span class="line">    return (&#123;dispatch, getState&#125;) =&gt; next =&gt; action =&gt; &#123;</span><br><span class="line">        console.log(&apos;hello world!!!!!&apos;, action);</span><br><span class="line">        debugger;</span><br><span class="line">        next(action);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const helloWorld = createHelloworld();</span><br><span class="line"></span><br><span class="line">export &#123;</span><br><span class="line">    helloWorld</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h2 id="state-组织"><a href="#state-组织" class="headerlink" title="state 组织"></a>state 组织</h2><p>比较常见的玩法主要是以下几点：</p>
+<ul>
+<li>将数据像数据库一样组织，准确的说是 selector 机制，这样在一些容易修改数据的web app 中会可靠很多</li>
+<li>可以通过 reselect 可以完成对数据很好的缓存（一般写在 mapState 中）, 这样可以避免重复的计算</li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://redux.js.org" target="_blank" rel="noopener">redux官网</a></li>
+<li><a href="https://blog.isquaredsoftware.com/2017/12/idiomatic-redux-using-reselect-selectors/" target="_blank" rel="noopener">Idiomatic Redux: Using Reselect Selectors for Encapsulation and Performance</a></li>
+</ul>
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2019">
-                    <span class="tag-text">2019</span>
-                </span>
-                <ul>
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-16
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/16/redux-机制探索/" style="color: #0085a1">
-                        <span>
-                            redux 机制探索
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-16
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/16/js-模块机制探索/" style="color: #0085a1">
-                        <span>
-                            js 模块机制探索
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-09
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/09/关于-canvas-的范围机制的一些探索/" style="color: #0085a1">
-                        <span>
-                            关于 canvas 的范围机制的一些探索
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-09
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/09/hello-world/" style="color: #0085a1">
-                        <span>
-                            Hello World
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/04/16/js-模块机制探索/" data-toggle="tooltip" data-placement="top" title="js 模块机制探索">Next Post &rarr;</a>
+                        </li>
+                    
                 </ul>
-            </div>
-            
-
-
-        </div>
-    </div>
-</div>
 
                 <br>
 
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                <!--分享-->
+                <br>                       
+                
                 <!-- require APlayer -->
                 
 
-                <!-- 如果开启评论功能 -->
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
-
-        
-            <img id="avatar_pic" src="img/&lt;your avatar path">
-        
-
-        
-            <p>diaotai 写博客的地方</p>
-        
-
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
-
-            
-
-            
-
-            
-            
-            
-            
-        </ul>
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        
-  <h5>RECENT POSTS
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2019/04/16/redux-机制探索/">redux 机制探索</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/16/js-模块机制探索/">js 模块机制探索</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/09/关于-canvas-的范围机制的一些探索/">关于 canvas 的范围机制的一些探索</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/09/hello-world/">Hello World</a>
-        </li>
-      
-    </ul>
-  </div>
-</h5>
-        <hr>
-    
-        <!-- Friends Blog -->
 
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
-    </div>
 
-        <hr>
-    
-        <!-- Categories -->
 
-        <hr>
-    
-</div>
 
-        
-    </div>
-</div>
+
+
+
 
 
     <!-- Footer -->
