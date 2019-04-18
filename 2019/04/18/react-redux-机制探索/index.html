@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          
+          react-redux 机制探索 - undefined
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/archives/">
+    <link rel="canonical" href="http://yoursite.com/2019/04/18/react-redux-机制探索/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -72,7 +72,7 @@
     header.intro-header{
         
             background-image: url('')
-            /*page*/
+            /*post*/
         
     }
     
@@ -85,10 +85,18 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>日拱一卒</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading"></span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#front-end" title="front-end">front-end</a>
+                            
+                        </div>
+                        <h1>react-redux 机制探索</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by diaotai on
+                            2019-04-18
+                        </span>
                     </div>
                 
 
@@ -167,229 +175,115 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 归档列表 -->
-            
-            
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-             <!-- 归档列表 -->
+                <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>react-redux 本身的作用很小，就是为了让 redux 配合 react。其中，暴露出来的接口只有两个—— Provider 组件和 Connect 函数，这两个东西的作用就是将 store 内的数据传入对应组件，传入触发 action 的方法以及在 store 更新时进行更新，要注意的是，react-redux 对于 react 做了一些性能上的优化。</p>
+<h1 id="API-简介"><a href="#API-简介" class="headerlink" title="API 简介"></a>API 简介</h1><p>Connect 的两个参数:</p>
+<h2 id="mapStateToProps"><a href="#mapStateToProps" class="headerlink" title="mapStateToProps"></a>mapStateToProps</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function mapStateToProps(state, ownProps?)</span><br></pre></td></tr></table></figure>
+<p>第二个参数是可选的，指的是那些从 Connect 组件上传下来的 prop，没有必要最好别用。<br>该函数的返回值应该是一个对象，其 key 为 this.props.xxx 的名称， value 则是具体值</p>
+<h3 id="使用指南"><a href="#使用指南" class="headerlink" title="使用指南"></a>使用指南</h3><ul>
+<li>重塑数据形式（可以改变数据的 key，可以考虑将多个分支的数据合在一起）</li>
+<li>使用 selector 来选择数据，本身就是一种很好的避免重复计算的方式（此外， 如果返回值的每一个子对象都没有变化的话，是不会重新渲染的）</li>
+<li>运行的逻辑应当尽可能少，因为只要有 dispatch 导致 store 发生变化, 就会触发所有 Connect 包裹组件的重新计算（不管最后是否重新渲染）</li>
+<li>应当是同步且不包含副作用，因为这个运算必然会进行很多次，所以任何副作用都可能导致奇怪的错误</li>
+<li>该方法使用严格相等(===)来判断子对象是否相等，因此，要注意避免返回 map，concat，… 等方式返回的数据（这样会因为每次引用都不一样导致重新渲染），可以通过 selector 来解决</li>
+<li>可以通过将数据运算放在 render 或 reducer 里来减少不必要的运算</li>
+<li>该方法在 store 整体无变化的时候不会被执行（因为 redux 里面本身有是否有变化的判断）</li>
+</ul>
+<h2 id="mapDispatchToProps"><a href="#mapDispatchToProps" class="headerlink" title="mapDispatchToProps"></a>mapDispatchToProps</h2><h3 id="空传"><a href="#空传" class="headerlink" title="空传"></a>空传</h3><p>在该值为 null 的时候，组件内部会有一个 dispatch 的属性。而当该值不为空的时候，就不会把 dispatch 传到组件中</p>
+<h3 id="函数形式"><a href="#函数形式" class="headerlink" title="函数形式"></a>函数形式</h3><p>一共有 dispatch,ownProps (optional) 两个参数，返回值应当是一个对象，每个 key 都是函数名</p>
+<h3 id="对象形式"><a href="#对象形式" class="headerlink" title="对象形式"></a>对象形式</h3><p>key 为函数名， value 为 actionCreator </p>
+<h2 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h2><p>Provider 是将 store 传入子组件用的，具体的原理就是靠 react 的 context 机制，Provider 会默认创建一个 Context，我们也可以使用自定义的 Context。如果使用自定义的 Context，那么每个 Connect 需要手动传一下。另外是可以存在多个 Context。</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><ul>
+<li>每个 Connect 包裹的组件都是订阅了 store 的</li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://react-redux.js.org/using-react-redux/accessing-store" target="_blank" rel="noopener">redux 官方文档</a></li>
+<li><a href="https://blog.isquaredsoftware.com/2018/11/react-redux-history-implementation/" target="_blank" rel="noopener">redux 历史和实现</a></li>
+</ul>
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2019">
-                    <span class="tag-text">2019</span>
-                </span>
-                <ul>
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-18
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/18/react-redux-机制探索/" style="color: #0085a1">
-                        <span>
-                            react-redux 机制探索
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-16
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/16/redux-机制探索/" style="color: #0085a1">
-                        <span>
-                            redux 机制探索
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-16
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/16/js-模块机制探索/" style="color: #0085a1">
-                        <span>
-                            js 模块机制探索
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-09
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/09/关于-canvas-的范围机制的一些探索/" style="color: #0085a1">
-                        <span>
-                            关于 canvas 的范围机制的一些探索
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-09
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/09/hello-world/" style="color: #0085a1">
-                        <span>
-                            Hello World
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/04/16/redux-机制探索/" data-toggle="tooltip" data-placement="top" title="redux 机制探索">Next Post &rarr;</a>
+                        </li>
+                    
                 </ul>
-            </div>
-            
-
-
-        </div>
-    </div>
-</div>
 
                 <br>
 
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                <!--分享-->
+                <br>                       
+                
                 <!-- require APlayer -->
                 
 
-                <!-- 如果开启评论功能 -->
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
-
-        
-            <img id="avatar_pic" src="img/&lt;your avatar path">
-        
-
-        
-            <p>diaotai 写博客的地方</p>
-        
-
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
-
-            
-
-            
-
-            
-            
-            
-            
-        </ul>
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        
-  <h5>RECENT POSTS
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2019/04/18/react-redux-机制探索/">react-redux 机制探索</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/16/redux-机制探索/">redux 机制探索</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/16/js-模块机制探索/">js 模块机制探索</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/09/关于-canvas-的范围机制的一些探索/">关于 canvas 的范围机制的一些探索</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/09/hello-world/">Hello World</a>
-        </li>
-      
-    </ul>
-  </div>
-</h5>
-        <hr>
-    
-        <!-- Friends Blog -->
 
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
-    </div>
 
-        <hr>
-    
-        <!-- Categories -->
 
-        <hr>
-    
-</div>
 
-        
-    </div>
-</div>
+
+
+
 
 
     <!-- Footer -->
