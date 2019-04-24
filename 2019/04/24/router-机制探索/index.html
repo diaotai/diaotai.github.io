@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          
+          router 机制探索 - undefined
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/archives/">
+    <link rel="canonical" href="http://yoursite.com/2019/04/24/router-机制探索/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -72,7 +72,7 @@
     header.intro-header{
         
             background-image: url('')
-            /*page*/
+            /*post*/
         
     }
     
@@ -85,10 +85,18 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>日拱一卒</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading"></span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#front-end" title="front-end">front-end</a>
+                            
+                        </div>
+                        <h1>router 机制探索</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by diaotai on
+                            2019-04-24
+                        </span>
                     </div>
                 
 
@@ -167,259 +175,143 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 归档列表 -->
-            
-            
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-             <!-- 归档列表 -->
+                <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>路由这个概念最先是后端出现的。在以前用模板引擎开发页面时，经常会看到一些 .html 或者 .aspx 结尾的路径，这些就是传统的后端路由, 路由的作用就是根据不同的路径来返回不同的资源（这个资源很多时候是页面）。<br>传统的路由分为以下四步:</p>
+<ol>
+<li>浏览器发出请求</li>
+<li>服务器监听到80端口（或443）有请求过来，并解析url路径</li>
+<li>根据服务器的路由配置，返回相应信息（可以是 html 字串，也可以是 json 数据，图片等）</li>
+<li>浏览器根据数据包的<code>Content-Type</code>来决定如何解析数据</li>
+</ol>
+<p>但是后来，前端路由出现了.<br>就算在我接触 SPA 的两年后的今天，我都清楚的记得自己第一次接触前端路由时的震撼和赞叹。将所有的路由跳转都交由前端来负责，确实是里程碑意义的突破，而且，这里面对我来说黑科技的成分实在太重了，所以我决定花一些时间，将里面的东西拆开看一看，了解一下内在的机制。</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>所谓前端路由，其实只做了两件事：</p>
+<ol>
+<li>保证当路径发生变化的时候不会再次向服务器请求数据，也就是避免页面刷新</li>
+<li>在路径变化的时候渲染对应的组件</li>
+</ol>
+<p>甚至第二点都不必要保证——只需要将回调函数和路径对应起来，在路径变为某值时执行对应的回调函数即可。<br>如果要想实现 history 的操作，可以直接使用 html5 的 history，也可以在内部建立一个数组（这样一刷新肯定就没了，但是如果在非 DOM 环境下会很有用）</p>
+<p>前端路由常见的实现思路有两种 —— hash 模式和 history 模式。</p>
+<h2 id="hash-模式"><a href="#hash-模式" class="headerlink" title="hash 模式"></a>hash 模式</h2><p>hash 模式指的是利用 location.hash 来指定路径，由于 location.hash 的改变不会引起页面的跳转，所以可以很好的完成前端路由的第一点。此外，该模式不需要服务器的配合——向服务器请求的路径只会是根路径，后面的 hash 值是不影响资源的，这样的话如果用户刷新的话，也可以直接跳转到之前的页面。</p>
+<p>要注意的是， hash 值的改变是会被直接记录在 history 对象中的，而当我们手动进行前进、后退或手动输入地址的时候只会触发 hashChange 事件(对当前地址的手动输入是不会触发的)，刷新时会触发 load 事件，所以我们只需要监控这两点就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;load&apos;, this.refresh, false);</span><br><span class="line">window.addEventListener(&apos;hashchange&apos;, this.refresh, false);</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic1.zhimg.com/80/v2-73fd628a36c848bce7771c395b9ce6a2_hd.jpg" alt="hash 模式流程图"></p>
+<p>总结以下 hash 模式的优点和缺点：<br>优点：</p>
+<ul>
+<li>兼容性良好</li>
+<li>不需要服务器的配合</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>会有一个丑陋的 # 标志</li>
+<li>可能会影响滚动的代码编写</li>
+</ul>
+<h2 id="history-模式"><a href="#history-模式" class="headerlink" title="history 模式"></a>history 模式</h2><p>在 html5 中， history.pushState 和 history.replaceState，通过这两个 API 可以改变 url 地址且不会发送请求——这样带来了新的可能。</p>
+<p>就像在 hash 模式下我们需要关注 hashchange 事件，在 history 我们需要关注 popstate 事件。</p>
+<p>window.onpopstate 是 popstate 事件在 window 对象上的事件处理程序.<br>每当处于激活状态的历史记录条目发生变化时, popstate 事件就会在对应 window 对象上触发. 如果当前处于激活状态的历史记录条目是由 history.pushState() 方法创建,或者由 history.replaceState() 方法修改过的, 则 popstate 事件对象的 state 属性包含了这个历史记录条目的 state 对象的一个拷贝.<br>调用 history.pushState() 或者 history.replaceState() 不会触发 popstate 事件. popstate 事件只会在浏览器某些行为下触发, 比如点击后退、前进按钮(或者在 JavaScript 中调用 history.back()、history.forward()、history.go() 方法).</p>
+<p>由于我们的 pushState 和 replaceState 方法是不会触发 popstate 事件的，所以我们需要在路由改变的时候手动触发一下。当然，两个事件还是一定要关注的。</p>
+<p>当用户手动刷新时，浏览器会向服务器请求资源，而且那个路径在服务器上应当是没有资源的，这种时候服务器应该返回跟路径所对应的资源，然后由前端路由跳到指定页面。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-ba9732885bb188f8cde94c24ce5b6757_hd.jpg" alt="history 模式流程图"></p>
+<p>优点：</p>
+<ul>
+<li>没有 # 符号，更为流畅</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>兼容性问题</li>
+<li>需要服务器有所配合</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>综上，前端路由本质上就是在不刷新页面的情况下改变 url，并对应的有所行动。至于 react-router 或 vue-router 这些，就是要显示在当前路径上的组件了,还是很有意思的。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/25696969" target="_blank" rel="noopener">ReactRouter-V4 构建之道与源码分析</a></li>
+<li><a href="https://www.zhihu.com/question/53064386" target="_blank" rel="noopener">前端路由简介</a></li>
+<li><a href="https://juejin.im/post/5ac61da66fb9a028c71eae1b" target="_blank" rel="noopener">面试官：你了解前端路由吗</a></li>
+<li><a href="https://juejin.im/post/5b31a4f76fb9a00e90018cee" target="_blank" rel="noopener">history与hash路由的区别</a></li>
+<li><a href="https://github.com/SME-FE/sme-router" target="_blank" rel="noopener">简易前端路由实现</a></li>
+</ul>
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2019">
-                    <span class="tag-text">2019</span>
-                </span>
-                <ul>
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-24
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/24/router-机制探索/" style="color: #0085a1">
-                        <span>
-                            router 机制探索
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-22
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/22/react-redux-源码解析/" style="color: #0085a1">
-                        <span>
-                            react-redux 源码解析
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-18
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/18/react-redux-机制探索/" style="color: #0085a1">
-                        <span>
-                            react-redux 机制探索
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-16
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/16/redux-机制探索/" style="color: #0085a1">
-                        <span>
-                            redux 机制探索
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-16
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/16/js-模块机制探索/" style="color: #0085a1">
-                        <span>
-                            js 模块机制探索
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-09
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/09/关于-canvas-的范围机制的一些探索/" style="color: #0085a1">
-                        <span>
-                            关于 canvas 的范围机制的一些探索
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li>
-                    04-09
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2019/04/09/hello-world/" style="color: #0085a1">
-                        <span>
-                            Hello World
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/04/22/react-redux-源码解析/" data-toggle="tooltip" data-placement="top" title="react-redux 源码解析">Next Post &rarr;</a>
+                        </li>
+                    
                 </ul>
-            </div>
-            
-
-
-        </div>
-    </div>
-</div>
 
                 <br>
 
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                <!--分享-->
+                <br>                       
+                
                 <!-- require APlayer -->
                 
 
-                <!-- 如果开启评论功能 -->
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
-
-        
-            <img id="avatar_pic" src="img/&lt;your avatar path">
-        
-
-        
-            <p>diaotai 写博客的地方</p>
-        
-
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
-
-            
-
-            
-
-            
-            
-            
-            
-        </ul>
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        
-  <h5>RECENT POSTS
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2019/04/24/router-机制探索/">router 机制探索</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/22/react-redux-源码解析/">react-redux 源码解析</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/18/react-redux-机制探索/">react-redux 机制探索</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/16/redux-机制探索/">redux 机制探索</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/16/js-模块机制探索/">js 模块机制探索</a>
-        </li>
-      
-    </ul>
-  </div>
-</h5>
-        <hr>
-    
-        <!-- Friends Blog -->
 
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
-    </div>
 
-        <hr>
-    
-        <!-- Categories -->
 
-        <hr>
-    
-</div>
 
-        
-    </div>
-</div>
+
+
+
 
 
     <!-- Footer -->
