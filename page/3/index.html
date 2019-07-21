@@ -229,6 +229,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/20/vim-初步探索/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/20/vim-初步探索/" itemprop="url">vim 初步探索</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-20T10:02:03+08:00">
+                2018-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>由于平时工作中有用到 vim 的情况，然而我对 vim 的了解就是进入退出编辑，所以初步的进行一些探索。本文记录下来的 vim 操作只是最最基础的，只代表我接下来一段时间会投入使用的命令，后续会接着尝试更多的命令。</p>
+</blockquote>
+<h1 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h1><h2 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ctrl + f        向下跳一页</span><br><span class="line">ctrl + b        向上跳一页</span><br><span class="line">*               当鼠标停留在某个单词上时摁 * 会跳到后面下一个单词上（最后会跳到第一个）</span><br><span class="line">#               当鼠标停留在某个单词上时摁 # 会跳到后面上一个单词上（最后会跳到第一个）</span><br><span class="line">gg              跳转到文件第一行</span><br><span class="line">G               跳转到文件最后一行</span><br><span class="line">nG或ngg         跳转到文件第几行</span><br><span class="line">(n)H            跳转到当前页面第几行（默认是第一行</span><br><span class="line">M               跳转到当前页面中间</span><br><span class="line">(n)L            跳转到当前页面倒数第几行</span><br></pre></td></tr></table></figure>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(n)dd           删除以下n行</span><br><span class="line">(n)dw           删除光标右侧n个字</span><br><span class="line">(n)db           删除光标左侧n个字</span><br><span class="line">d$              光标删除到行末</span><br><span class="line">d0              光标删除到行首</span><br><span class="line">J               删除本行回车符，与下一行合并</span><br></pre></td></tr></table></figure>
+<h2 id="复制粘贴撤销重做"><a href="#复制粘贴撤销重做" class="headerlink" title="复制粘贴撤销重做"></a>复制粘贴撤销重做</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p               粘贴至光标之后</span><br><span class="line">P               粘贴至光标之前</span><br><span class="line">(n)yy           复制到内存中</span><br><span class="line">u               撤销</span><br><span class="line">.               重复上一步操作</span><br></pre></td></tr></table></figure>
+<h1 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h1><h2 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:w filename     另存为filename</span><br><span class="line">:n              跳转到第n行</span><br><span class="line">:m,nw filename  第m-n行写入文件</span><br><span class="line">:.,$w filename  当前行到最后一行写入文件</span><br><span class="line">:f              显示当前信息，比如文件共几行，光标在第几行</span><br></pre></td></tr></table></figure>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:/str/          正向搜索</span><br><span class="line">:?str?          逆向搜索</span><br><span class="line">可以使用正则表达式</span><br></pre></td></tr></table></figure>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://www.jianshu.com/p/bcbe916f97e1" target="_blank" rel="noopener">vim入门</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/nginx初步探索（配置文件/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -865,7 +993,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -878,7 +1006,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
