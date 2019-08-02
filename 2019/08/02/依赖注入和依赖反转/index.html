@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="web,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="日拱一卒">
-<meta property="og:url" content="http://yoursite.com/archives/2019/04/index.html">
+<meta name="description" content="在面向对象语言，有时会出现某个类 a 需要使用类 b 的实例，如果每个使用实例 b 的地方都进行初始化 ，且 b 的实例需要其它的实例，那么会导致一大堆实例化。而在这种情况下， a 虽然依赖 b，但是这种依赖仅限于使用，并不涉及创建和销毁。那么 b 创建销毁的控制器完全就可以放在其他地方，这叫控制反转（IOC）。 因为 a 依赖 b，所以必须能拿到 b 的实例，因此可以使用以下方法:  通过 a">
+<meta name="keywords" content="web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="依赖注入和依赖反转">
+<meta property="og:url" content="http://yoursite.com/2019/08/02/依赖注入和依赖反转/index.html">
 <meta property="og:site_name" content="日拱一卒">
+<meta property="og:description" content="在面向对象语言，有时会出现某个类 a 需要使用类 b 的实例，如果每个使用实例 b 的地方都进行初始化 ，且 b 的实例需要其它的实例，那么会导致一大堆实例化。而在这种情况下， a 虽然依赖 b，但是这种依赖仅限于使用，并不涉及创建和销毁。那么 b 创建销毁的控制器完全就可以放在其他地方，这叫控制反转（IOC）。 因为 a 依赖 b，所以必须能拿到 b 的实例，因此可以使用以下方法:  通过 a">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-02T14:35:43.781Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="日拱一卒">
+<meta name="twitter:title" content="依赖注入和依赖反转">
+<meta name="twitter:description" content="在面向对象语言，有时会出现某个类 a 需要使用类 b 的实例，如果每个使用实例 b 的地方都进行初始化 ，且 b 的实例需要其它的实例，那么会导致一大堆实例化。而在这种情况下， a 虽然依赖 b，但是这种依赖仅限于使用，并不涉及创建和销毁。那么 b 创建销毁的控制器完全就可以放在其他地方，这叫控制反转（IOC）。 因为 a 依赖 b，所以必须能拿到 b 的实例，因此可以使用以下方法:  通过 a">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/04/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/02/依赖注入和依赖反转/">
 
 
 
 
 
-  <title>Archive | 日拱一卒</title>
+  <title>依赖注入和依赖反转 | 日拱一卒</title>
   
 
 
@@ -140,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -214,352 +219,161 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/依赖注入和依赖反转/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">依赖注入和依赖反转</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-02T22:33:07+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 28 posts in total. Keep on posting.
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/30/react-总结汇总/" itemprop="url">
-              
-                <span itemprop="name">react 总结汇总</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-30T15:11:41+08:00" content="2019-04-30">
-          04-30
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/25/redux-undo-机制探索/" itemprop="url">
-              
-                <span itemprop="name">redux-undo 机制探索</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-25T16:41:49+08:00" content="2019-04-25">
-          04-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/25/reselect-机制探索/" itemprop="url">
-              
-                <span itemprop="name">reselect 机制探索</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-25T15:10:52+08:00" content="2019-04-25">
-          04-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>在面向对象语言，有时会出现某个类 a 需要使用类 b 的实例，如果每个使用实例 b 的地方都进行初始化 ，且 b 的实例需要其它的实例，那么会导致一大堆实例化。<br>而在这种情况下， a 虽然依赖 b，但是这种依赖仅限于使用，并不涉及创建和销毁。那么 b 创建销毁的控制器完全就可以放在其他地方，这叫控制反转（IOC）。</p>
+<p>因为 a 依赖 b，所以必须能拿到 b 的实例，因此可以使用以下方法:</p>
+<ul>
+<li>通过 a 的接口把 b 传入</li>
+<li>通过 a 的初始化参数把 b 传入</li>
+<li>通过设置 a 的属性把 b 传入</li>
+</ul>
+<p>以上过程即为依赖注入（DI）,随着依赖注入的广泛使用，便创建一个方法来解决重复代码，即为 IOC Container。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://www.zhihu.com/question/32108444" target="_blank" rel="noopener">依赖注入的知乎解释</a></li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/24/router-机制探索/" itemprop="url">
-              
-                <span itemprop="name">router 机制探索</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-24T17:31:02+08:00" content="2019-04-24">
-          04-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/22/react-redux-源码解析/" itemprop="url">
-              
-                <span itemprop="name">react-redux 源码解析</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-22T17:46:11+08:00" content="2019-04-22">
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/18/react-redux-机制探索/" itemprop="url">
-              
-                <span itemprop="name">react-redux 机制探索</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-18T17:46:06+08:00" content="2019-04-18">
-          04-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/16/redux-机制探索/" itemprop="url">
-              
-                <span itemprop="name">redux 机制探索</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-16T19:53:23+08:00" content="2019-04-16">
-          04-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/16/js-模块机制探索/" itemprop="url">
-              
-                <span itemprop="name">js 模块机制探索</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-16T15:03:07+08:00" content="2019-04-16">
-          04-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/09/关于-canvas-的范围机制的一些探索/" itemprop="url">
-              
-                <span itemprop="name">关于 canvas 的范围机制的一些探索</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-09T20:37:32+08:00" content="2019-04-09">
-          04-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/02/go-debug-方法/" rel="next" title="go debug 方法">
+                <i class="fa fa-chevron-left"></i> go debug 方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/02/go-mod-速记/" rel="prev" title="go mod 速记">
+                go mod 速记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -567,6 +381,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -587,8 +405,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -639,6 +466,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">1.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -772,6 +615,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

@@ -229,6 +229,397 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/go-mod-速记/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/02/go-mod-速记/" itemprop="url">go mod 速记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-02T22:36:10+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>go mod 机制是一种用于摆脱 GOPATH 然后提供一个可以方便再部署的包管理工具。</p>
+</blockquote>
+<h1 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h1><ul>
+<li>初始化: go mod init github.com/you/hello</li>
+<li>获取新依赖包: go get</li>
+<li>查看所有依赖包的版本: go list -m all</li>
+<li>更新所有直接和间接依赖到最新版本: go get -u</li>
+<li>去除所有不需要的依赖: go mod tidy</li>
+<li>根据目前情况创建一个 vendor: go mod vendor</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/依赖注入和依赖反转/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/02/依赖注入和依赖反转/" itemprop="url">依赖注入和依赖反转</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-02T22:33:07+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在面向对象语言，有时会出现某个类 a 需要使用类 b 的实例，如果每个使用实例 b 的地方都进行初始化 ，且 b 的实例需要其它的实例，那么会导致一大堆实例化。<br>而在这种情况下， a 虽然依赖 b，但是这种依赖仅限于使用，并不涉及创建和销毁。那么 b 创建销毁的控制器完全就可以放在其他地方，这叫控制反转（IOC）。</p>
+<p>因为 a 依赖 b，所以必须能拿到 b 的实例，因此可以使用以下方法:</p>
+<ul>
+<li>通过 a 的接口把 b 传入</li>
+<li>通过 a 的初始化参数把 b 传入</li>
+<li>通过设置 a 的属性把 b 传入</li>
+</ul>
+<p>以上过程即为依赖注入（DI）,随着依赖注入的广泛使用，便创建一个方法来解决重复代码，即为 IOC Container。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://www.zhihu.com/question/32108444" target="_blank" rel="noopener">依赖注入的知乎解释</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/go-debug-方法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/02/go-debug-方法/" itemprop="url">go debug 方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-02T22:28:58+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="使用-delve-来进行调试"><a href="#使用-delve-来进行调试" class="headerlink" title="使用 delve 来进行调试"></a>使用 delve 来进行调试</h1><ul>
+<li>break: 断点，可以使用 a.b 进行方法断点，或者 a.go:line 进行行断点</li>
+<li>continue(c): 执行到下一个断点</li>
+<li>list(l): 展示代码</li>
+<li>next(n): 执行到下一行</li>
+<li>step(s): 进入下一层</li>
+<li>stepout: 离开这一层</li>
+<li>print: 打印值</li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://github.com/go-delve/delve/tree/master/Documentation/cli" target="_blank" rel="noopener">delve 文档</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/Django-企业开发实战-读书笔记（第一部分）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1862,435 +2253,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/30/react-总结汇总/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/30/react-总结汇总/" itemprop="url">react 总结汇总</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-30T15:11:41+08:00">
-                2019-04-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="react-生命周期"><a href="#react-生命周期" class="headerlink" title="react 生命周期"></a>react 生命周期</h1><p><img src="https://upload-images.jianshu.io/upload_images/4345168-fd3988bc7dcfee69.png" alt="react 生命周期图"></p>
-<p>我们可以将 react 生命周期分为两种：当组件在挂载或卸载时和当组件产生实质性更新时。</p>
-<p>DOM 真正被添加到 HTML 中的生命周期方法时 componentDidMount 和 componentDidUpdate 中，因此，在这两个方法中去取得 DOM 元素才是有意义的。而取得 DOM 元素的方法有两种，其一是 findDOMNode（只对已挂载组件有作用），其二则是 render 方法中的回调。</p>
-<p>在 componentWillReceiveProps 中调用 setState 是很正常的操作，但是经测试，就算不调用，props 的改变也会导致整个子组件的更新。</p>
-<h1 id="react-事件机制"><a href="#react-事件机制" class="headerlink" title="react 事件机制"></a>react 事件机制</h1><ul>
-<li>react 并不会把时间处理函数直接绑定到真实的节点上，而是把所有时间绑定到结构的最外层，使用一个统一的事件监听器。</li>
-<li>在某些情况下我们可能需要使用原生的事件，通常是在 componentDidMount 中挂载， 在 componentWillUnmount 中清除。</li>
-<li>最好不要将 react 事件和原生的事件共用，react 是无力阻止原生事件的冒泡的。而在原生事件里阻止冒泡，是可以阻止 react 事件的冒泡的。</li>
-</ul>
-<h1 id="react-组件抽象"><a href="#react-组件抽象" class="headerlink" title="react 组件抽象"></a>react 组件抽象</h1><ul>
-<li>react 的高阶组件思路有两种——属性代理和反向继承。前者是进行一次包裹、后者是继承然后调用目标组件的 render。</li>
-<li>两种方法都可以很好的处理 state、props 或者进行渲染劫持。</li>
-<li>不过生命周期顺序有不同：前者是 didMount-&gt;HOC did mount -&gt; HOC will unmount -&gt; unmount, 后者是 did mount -&gt; HOC did mount -&gt; will unmount -&gt; HOC will unmout</li>
-</ul>
-<h1 id="react-性能优化"><a href="#react-性能优化" class="headerlink" title="react 性能优化"></a>react 性能优化</h1><ul>
-<li>尽量使用纯函数组件</li>
-<li>使用 Immutable，该库使用 tire 进行设计，非常的高效和好用</li>
-</ul>
-<h1 id="react-源码注意点"><a href="#react-源码注意点" class="headerlink" title="react 源码注意点"></a>react 源码注意点</h1><ul>
-<li>react 对于 text、DOM 和 Component 有不同的处理</li>
-<li>在处理差异时，基本就是先干掉没有的旧属性，然后加上或修改新属性（包括样式、监听器、属性、DOM 属性）</li>
-<li>生命周期的实现是使用模版设计模式，且大量使用的 事务（可嵌套，前后有操作，中间才是任务）</li>
-<li>setState 使用事务来进行标记，在同步状态下会将几个更新放入队列中合并、而异步时不会进入事务</li>
-<li>diff 算法分为 tree diff 部分、component diff 和 element diff</li>
-<li>patch 部分即为将更新映射到 DOM 上</li>
-</ul>
-<h1 id="MVC-和-MVVM"><a href="#MVC-和-MVVM" class="headerlink" title="MVC 和 MVVM"></a>MVC 和 MVVM</h1><h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p><img src="https://crxdoc-zh.appspot.com/static/images/mvc.png" alt="MVC 架构图"></p>
-<ul>
-<li>Model 负责保存数据以及和后端交互数据或校验数据，Model 的改变会应用到 View 上</li>
-<li>View 是 Model 的可视化表示</li>
-<li>Controller 负责连接 View 和 Model，View 的操作会通过 Controller 应用到 Model 上</li>
-</ul>
-<h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h2><p><img src="https://ask.qcloudimg.com/http-save/yehe-2192986/uptje5tcky.png?imageView2/2/w/1620" alt="MVVM 架构图"></p>
-<ul>
-<li>区别就在于用 ViewModel 代替了 Controller，ViewModel 是双向绑定的</li>
-</ul>
-<h1 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h1><h2 id="三大原则："><a href="#三大原则：" class="headerlink" title="三大原则："></a>三大原则：</h2><ul>
-<li>单一数据源</li>
-<li>状态是只读的</li>
-<li>状态修改由纯函数完成</li>
-</ul>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
-<li>中间件中使用 dispatch 的原因一般是因为希望不到达原生的分发，通常是在异步流里</li>
-<li>webpack.DefinePlugin 可以让我们定义任意字符串，并在代码中把字符串替换成该值（可以用来检测是否为环境变了）</li>
-<li>将 router 和 redux 也是很重要的部分</li>
-</ul>
-<h2 id="SSR"><a href="#SSR" class="headerlink" title="SSR"></a>SSR</h2><p>现在的渲染方式有以下几种——前端渲染、后端渲染和混合渲染。</p>
-<h3 id="前端渲染"><a href="#前端渲染" class="headerlink" title="前端渲染"></a>前端渲染</h3><p>SPA 最正常的渲染方式，也就是绝大多数人所使用的。当完成开发后打包就好。</p>
-<h3 id="后端渲染"><a href="#后端渲染" class="headerlink" title="后端渲染"></a>后端渲染</h3><p>纯粹的后端渲染其实很像模版了——都是路由对应后端的某个路径，当请求该路径的时候会把 jsx 当作类似于模版的东西，将获得的数据传入其中，然后在后端完成代码的执行，得到生成的 html 后再发送至浏览器。<br>其实可以将后端渲染理解为一个运行在服务器的简易版浏览器。</p>
-<h3 id="混合渲染"><a href="#混合渲染" class="headerlink" title="混合渲染"></a>混合渲染</h3><p>前后端渲染都有所涉及，比较常见的方式是只对主页进行服务端渲染，剩下的部分依旧使用前端渲染（比较正常的做法是对不同的路由组件分开进行打包和懒加载，可以很好的提升性能）。</p>
-<p>另一种做法被称为 universal app 或者 isomophic app，这种做法就是对同一个路径前后端都进行支持，当用户以正常的点击进入时，走的是前端路由，而如果在该页面刷新的话，使用的就是后端的服务器端渲染。</p>
-<p>要注意的是，当一个组件想要支持服务器端渲染时，需要在获取数据的那部分做一点兼容（若传入数据，则直接使用，否则用 ajax 请求来获取数据）</p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
-<li><a href="https://juejin.im/post/5b0269c2518825428b3916f9#comment" target="_blank" rel="noopener">React + Koa 实现服务端渲染(SSR)</a></li>
-<li><a href="https://juejin.im/post/5c73ad30f265da2db66de010" target="_blank" rel="noopener">React + Koa 实现服务端渲染(SSR) Part II</a></li>
-<li><a href="https://juejin.im/post/5a0536346fb9a044fe45d33a" target="_blank" rel="noopener">服务端渲染与 Universal React App</a></li>
-<li><a href="http://www.liuweibo.cn/p/206" target="_blank" rel="noopener">react 服务端(ssr) 框架next.js开发个人网站分享</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/25/redux-undo-机制探索/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/25/redux-undo-机制探索/" itemprop="url">redux-undo 机制探索</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-25T16:41:49+08:00">
-                2019-04-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>在看到 redux 的示例的时候，看到了一个很有意思的项目 —— redux-undo。该项目的作用在于时间旅行，可以很好的进行撤销、重做等操作。我比较好奇它的实现，所以就看了一下代码。代码很简单，但是还是决定要记录一下，一面日后遗忘。</p>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>redux-undo 本质上是一个 redux 的 enhancer，它用两个数组和一个 present 来记录之前的状态和当前的状态，当触发 undo、 redo、 jump 等操作时，就去调用相应的 state，然后直接将其返回。这样就可以跳转到当时的状态。若这个 action 类型是没有见过的，那么直接调用原 reducer。<br>以下是不完整的代码，大致是这个思路：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">export default function undoable (reducer, rawConfig = &#123;&#125;) &#123;</span><br><span class="line"></span><br><span class="line">  let initialState = config.history</span><br><span class="line">  return (state = initialState, action = &#123;&#125;, ...slices) =&gt; &#123;</span><br><span class="line">    debug.start(action, state)</span><br><span class="line"></span><br><span class="line">    let history = state</span><br><span class="line"></span><br><span class="line">    const skipReducer = (res) =&gt; config.neverSkipReducer</span><br><span class="line">      ? &#123;</span><br><span class="line">        ...res,</span><br><span class="line">        present: reducer(res.present, action, ...slices)</span><br><span class="line">      &#125; : res</span><br><span class="line"></span><br><span class="line">    let res</span><br><span class="line">    switch (action.type) &#123;</span><br><span class="line">      case undefined:</span><br><span class="line">        return history</span><br><span class="line"></span><br><span class="line">      case config.undoType:</span><br><span class="line">        res = jump(history, -1)</span><br><span class="line">        debug.log(&apos;perform undo&apos;)</span><br><span class="line">        debug.end(res)</span><br><span class="line">        return skipReducer(res)</span><br><span class="line"></span><br><span class="line">      case config.redoType:</span><br><span class="line">        res = jump(history, 1)</span><br><span class="line">        debug.log(&apos;perform redo&apos;)</span><br><span class="line">        debug.end(res)</span><br><span class="line">        return skipReducer(res)</span><br><span class="line"></span><br><span class="line">      case config.jumpToPastType:</span><br><span class="line">        res = jumpToPast(history, action.index)</span><br><span class="line">        debug.log(`perform jumpToPast to $&#123;action.index&#125;`)</span><br><span class="line">        debug.end(res)</span><br><span class="line">        return skipReducer(res)</span><br><span class="line"></span><br><span class="line">      case config.jumpToFutureType:</span><br><span class="line">        res = jumpToFuture(history, action.index)</span><br><span class="line">        debug.log(`perform jumpToFuture to $&#123;action.index&#125;`)</span><br><span class="line">        debug.end(res)</span><br><span class="line">        return skipReducer(res)</span><br><span class="line"></span><br><span class="line">      case config.jumpType:</span><br><span class="line">        res = jump(history, action.index)</span><br><span class="line">        debug.log(`perform jump to $&#123;action.index&#125;`)</span><br><span class="line">        debug.end(res)</span><br><span class="line">        return skipReducer(res)</span><br><span class="line"></span><br><span class="line">      case actionTypeAmongClearHistoryType(action.type, config.clearHistoryType):</span><br><span class="line">        res = createHistory(history.present, config.ignoreInitialState)</span><br><span class="line">        debug.log(&apos;perform clearHistory&apos;)</span><br><span class="line">        debug.end(res)</span><br><span class="line">        return skipReducer(res)</span><br><span class="line"></span><br><span class="line">      default:</span><br><span class="line">        res = reducer(</span><br><span class="line">          history.present,</span><br><span class="line">          action,</span><br><span class="line">          ...slices</span><br><span class="line">        )</span><br><span class="line">        return res</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><a href="https://github.com/omnidan/redux-undo" target="_blank" rel="noopener">redux-undo 仓库</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/25/reselect-机制探索/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/25/reselect-机制探索/" itemprop="url">reselect 机制探索</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-25T15:10:52+08:00">
-                2019-04-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>在学习 redux 的过程中，我看到了一个优化功能非常明显的包 —— reselect.该包的核心作用就是根据输入值进行缓存，若本次输入与上一次输入相同，则不再进行重复计算。<br>本包最常用的地方在于 react-redux 的 mapStateToProps 里面，由于该函数每次 state 更新都会重复计算，无论是否涉及到它。在这种情况下，缓存就显得非常重要了。<br>虽然我个人对 reselect 的猜测是一个闭包，但是还是决定拆开看一看。</p>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createSelector &#125; from &apos;reselect&apos;</span><br><span class="line"></span><br><span class="line">const shopItemsSelector = state =&gt; state.shop.items</span><br><span class="line">const taxPercentSelector = state =&gt; state.shop.taxPercent</span><br><span class="line"></span><br><span class="line">const subtotalSelector = createSelector(</span><br><span class="line">  shopItemsSelector,</span><br><span class="line">  items =&gt; items.reduce((acc, item) =&gt; acc + item.value, 0)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">const taxSelector = createSelector(</span><br><span class="line">  subtotalSelector,</span><br><span class="line">  taxPercentSelector,</span><br><span class="line">  (subtotal, taxPercent) =&gt; subtotal * (taxPercent / 100)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">export const totalSelector = createSelector(</span><br><span class="line">  subtotalSelector,</span><br><span class="line">  taxSelector,</span><br><span class="line">  (subtotal, tax) =&gt; (&#123; total: subtotal + tax &#125;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">let exampleState = &#123;</span><br><span class="line">  shop: &#123;</span><br><span class="line">    taxPercent: 8,</span><br><span class="line">    items: [</span><br><span class="line">      &#123; name: &apos;apple&apos;, value: 1.20 &#125;,</span><br><span class="line">      &#123; name: &apos;orange&apos;, value: 0.95 &#125;,</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(subtotalSelector(exampleState)) // 2.15</span><br><span class="line">console.log(taxSelector(exampleState))      // 0.172</span><br><span class="line">console.log(totalSelector(exampleState))    // &#123; total: 2.322 &#125;</span><br></pre></td></tr></table></figure>
-<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><h2 id="defaultMemoize"><a href="#defaultMemoize" class="headerlink" title="defaultMemoize"></a>defaultMemoize</h2><p>defaultMemoize 是缓存的关键，可以很清楚地看到，就是通过闭包来缓存上一次的输入和结果，然后决定是否重新计算。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">export function defaultMemoize(func, equalityCheck = defaultEqualityCheck) &#123;</span><br><span class="line">  let lastArgs = null</span><br><span class="line">  let lastResult = null</span><br><span class="line">  // we reference arguments instead of spreading them for performance reasons</span><br><span class="line">  return function () &#123;</span><br><span class="line">    if (!areArgumentsShallowlyEqual(equalityCheck, lastArgs, arguments)) &#123;</span><br><span class="line">      // apply arguments instead of spreading for performance.</span><br><span class="line">      lastResult = func.apply(null, arguments)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    lastArgs = arguments</span><br><span class="line">    return lastResult</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="createSelectorCreator"><a href="#createSelectorCreator" class="headerlink" title="createSelectorCreator"></a>createSelectorCreator</h2><p>createSelectorCreator 则是另一个关键，可以看到，这里的缓存是进行了两层，第一层是 selector 的总输入——一般是全局的 state，第二层则是计算出来的子参数，当两层结果都有不同时，才会触发重新计算。<br>另外，判断是否相等的默认标准是严格相等。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">export function createSelectorCreator(memoize, ...memoizeOptions) &#123;</span><br><span class="line">  return (...funcs) =&gt; &#123;</span><br><span class="line">    let recomputations = 0</span><br><span class="line">    const resultFunc = funcs.pop()</span><br><span class="line">    const dependencies = getDependencies(funcs)</span><br><span class="line"></span><br><span class="line">    const memoizedResultFunc = memoize(</span><br><span class="line">      function () &#123;</span><br><span class="line">        recomputations++</span><br><span class="line">        // apply arguments instead of spreading for performance.</span><br><span class="line">        return resultFunc.apply(null, arguments)</span><br><span class="line">      &#125;,</span><br><span class="line">      ...memoizeOptions</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    // If a selector is called with the exact same arguments we don&apos;t need to traverse our dependencies again.</span><br><span class="line">    const selector = memoize(function () &#123;</span><br><span class="line">      const params = []</span><br><span class="line">      const length = dependencies.length</span><br><span class="line"></span><br><span class="line">      for (let i = 0; i &lt; length; i++) &#123;</span><br><span class="line">        // apply arguments instead of spreading and mutate a local list of params for performance.</span><br><span class="line">        params.push(dependencies[i].apply(null, arguments))</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      // apply arguments instead of spreading for performance.</span><br><span class="line">      return memoizedResultFunc.apply(null, params)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    selector.resultFunc = resultFunc</span><br><span class="line">    selector.dependencies = dependencies</span><br><span class="line">    selector.recomputations = () =&gt; recomputations</span><br><span class="line">    selector.resetRecomputations = () =&gt; recomputations = 0</span><br><span class="line">    return selector</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>其实东西很有限，但是我还是想记下来，避免以后想不起来。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><a href="https://github.com/reduxjs/reselect" target="_blank" rel="noopener">reselect 仓库地址</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2341,7 +2303,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
