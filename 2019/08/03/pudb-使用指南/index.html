@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="go,">
+  <meta name="keywords" content="tool,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="go mod 机制是一种用于摆脱 GOPATH 然后提供一个可以方便再部署的包管理工具。  常见命令 初始化: go mod init github.com/you/hello 获取新依赖包: go get 查看所有依赖包的版本: go list -m all 更新所有直接和间接依赖到最新版本: go get -u 去除所有不需要的依赖: go mod tidy 根据目前情况创建一个 vendo">
-<meta name="keywords" content="go">
+<meta name="description" content="简而言之，pudb 就是 python 的一个调试工具，在特殊环境下会非常的好用   使用: import pudb;pu.db; 这时候会在下一行打一个断点 ctrl-x: 切换到命令行，命令行里可以直接输出结果 b: 打断点或取消断点 s: step in，但是面对语言自带函数是进不去的 r: return, 会直接到函数结尾的地方 c: continue, 会执行到下一个断点 n: nex">
+<meta name="keywords" content="tool">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go mod 速记">
-<meta property="og:url" content="http://yoursite.com/2019/08/02/go-mod-速记/index.html">
+<meta property="og:title" content="pudb 使用指南">
+<meta property="og:url" content="http://yoursite.com/2019/08/03/pudb-使用指南/index.html">
 <meta property="og:site_name" content="日拱一卒">
-<meta property="og:description" content="go mod 机制是一种用于摆脱 GOPATH 然后提供一个可以方便再部署的包管理工具。  常见命令 初始化: go mod init github.com/you/hello 获取新依赖包: go get 查看所有依赖包的版本: go list -m all 更新所有直接和间接依赖到最新版本: go get -u 去除所有不需要的依赖: go mod tidy 根据目前情况创建一个 vendo">
+<meta property="og:description" content="简而言之，pudb 就是 python 的一个调试工具，在特殊环境下会非常的好用   使用: import pudb;pu.db; 这时候会在下一行打一个断点 ctrl-x: 切换到命令行，命令行里可以直接输出结果 b: 打断点或取消断点 s: step in，但是面对语言自带函数是进不去的 r: return, 会直接到函数结尾的地方 c: continue, 会执行到下一个断点 n: nex">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-02T14:37:59.326Z">
+<meta property="og:updated_time" content="2019-08-03T14:54:09.207Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go mod 速记">
-<meta name="twitter:description" content="go mod 机制是一种用于摆脱 GOPATH 然后提供一个可以方便再部署的包管理工具。  常见命令 初始化: go mod init github.com/you/hello 获取新依赖包: go get 查看所有依赖包的版本: go list -m all 更新所有直接和间接依赖到最新版本: go get -u 去除所有不需要的依赖: go mod tidy 根据目前情况创建一个 vendo">
+<meta name="twitter:title" content="pudb 使用指南">
+<meta name="twitter:description" content="简而言之，pudb 就是 python 的一个调试工具，在特殊环境下会非常的好用   使用: import pudb;pu.db; 这时候会在下一行打一个断点 ctrl-x: 切换到命令行，命令行里可以直接输出结果 b: 打断点或取消断点 s: step in，但是面对语言自带函数是进不去的 r: return, 会直接到函数结尾的地方 c: continue, 会执行到下一个断点 n: nex">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/02/go-mod-速记/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/03/pudb-使用指南/">
 
 
 
 
 
-  <title>go mod 速记 | 日拱一卒</title>
+  <title>pudb 使用指南 | 日拱一卒</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/go-mod-速记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/pudb-使用指南/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="diaotai">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">go mod 速记</h1>
+          <h1 class="post-title" itemprop="name headline">pudb 使用指南</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-02T22:36:10+08:00">
-                2019-08-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-03T22:48:46+08:00">
+                2019-08-03
               </time>
             
 
@@ -301,15 +301,17 @@
 
       
         <blockquote>
-<p>go mod 机制是一种用于摆脱 GOPATH 然后提供一个可以方便再部署的包管理工具。</p>
+<p>简而言之，pudb 就是 python 的一个调试工具，在特殊环境下会非常的好用</p>
 </blockquote>
-<h1 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h1><ul>
-<li>初始化: go mod init github.com/you/hello</li>
-<li>获取新依赖包: go get</li>
-<li>查看所有依赖包的版本: go list -m all</li>
-<li>更新所有直接和间接依赖到最新版本: go get -u</li>
-<li>去除所有不需要的依赖: go mod tidy</li>
-<li>根据目前情况创建一个 vendor: go mod vendor</li>
+<ul>
+<li>使用: import pudb;pu.db; 这时候会在下一行打一个断点</li>
+<li>ctrl-x: 切换到命令行，命令行里可以直接输出结果</li>
+<li>b: 打断点或取消断点</li>
+<li>s: step in，但是面对语言自带函数是进不去的</li>
+<li>r: return, 会直接到函数结尾的地方</li>
+<li>c: continue, 会执行到下一个断点</li>
+<li>n: next, 下一行</li>
+<li>q: quit, 退出 pudb</li>
 </ul>
 
       
@@ -328,7 +330,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/go/" rel="tag"># go</a>
+            <a href="/tags/tool/" rel="tag"># tool</a>
           
         </div>
       
@@ -341,8 +343,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/02/依赖注入和依赖反转/" rel="next" title="依赖注入和依赖反转">
-                <i class="fa fa-chevron-left"></i> 依赖注入和依赖反转
+              <a href="/2019/08/02/go-mod-速记/" rel="next" title="go mod 速记">
+                <i class="fa fa-chevron-left"></i> go mod 速记
               </a>
             
           </div>
@@ -350,10 +352,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/03/pudb-使用指南/" rel="prev" title="pudb 使用指南">
-                pudb 使用指南 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -405,17 +403,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -466,22 +455,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常见命令"><span class="nav-number">1.</span> <span class="nav-text">常见命令</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

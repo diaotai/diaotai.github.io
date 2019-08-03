@@ -229,6 +229,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/02/RPC-初步探索/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/02/RPC-初步探索/" itemprop="url">RPC 初步探索</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-02T22:34:21+08:00">
+                2018-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>RPC(remote procedure call)即远程过程调用，是目前业界内非常常见的通信方法，其作用在于调用非本地的函数。主流的 RPC 框架主要是基于 HTTP 和 TCP 协议的，其它的也有，不过属于奇葩。<br>当 RPC 框架基于 HTTP 时，返回的格式会更加单一，只会是 JSON 或者 XML。其优点自跨语言，对外友好，缺点则是性能低下，传输了很多无意义数据，一般用于对外开放的 openAPI。 而那些内部使用的 RPC 框架往往是基于 TCP协议的，其优势在于性能更好，数据有效率更高，但是这也要求我们更多的关注底层的细节。</p>
+<p>RPC框架应当解决两个问题：</p>
+<ol>
+<li>服务之间远程调用的问题</li>
+<li>使服务使用者感知不到远程调用的过程，就如同调用本地函数一样。</li>
+</ol>
+<p><em>注意: RPC 和 REST 的区别在于前者面向过程，后者面向资源（尽管从广义上讲 REST 属于 RPC 的一种）</em></p>
+<h1 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h1><p><img src="https://pic4.zhimg.com/80/v2-4e9537fed30a8c7e6cc414c2636d6657_hd.jpg" alt="RPC 框架基本步骤"></p>
+<p>RPC 框架的调用可以分为以下 7 步:</p>
+<ol>
+<li>client 通过代理调用 RPC 服务。</li>
+<li>本地服务将调用函数名、参数等信息交给 RPC框架，生成一个 RPC request 对象</li>
+<li>encoder 将 RPC request 对象序列化为二进制，并使用传输协议将序列化的发送至 server</li>
+<li>decoder 将二进制数据反序列化为 request 对象</li>
+<li>根据 request对象的信息在 server 完成调用，根据并生成一个 reponse 对象</li>
+<li>RPC 框架再次将 response 数据序列化并使用 TCP 协议发送至 client</li>
+<li>client 将其反序列化，并通过代理返回给本地调用</li>
+</ol>
+<h1 id="基本构成"><a href="#基本构成" class="headerlink" title="基本构成"></a>基本构成</h1><p>RPC 框架可以分为两部分——通信协议和应用协议（也可以称为编码协议）。前者负责将数据完好、安全、准确的送达目的地，这一部分是一个 RPC 框架最核心的部分，也是最通用的部分，这一部分的设计应当注意可用性和扩展性。而后者则是根据业务需要进行约定，属于非常灵活而可定制化的部分。</p>
+<p>一个良好的通信协议应当包含以下部分:</p>
+<ul>
+<li>标识位 A（用于标识是 request 还是 response）</li>
+<li>header 长度</li>
+<li>requestId (用于标识本次请求，应当在 response 中原样返回)</li>
+<li>content 长度（用于标识 body 的长度，也就是用来分辨一个 RPC 调用包是否已经全部接受）</li>
+<li>应用协议 （用于标识编解码协议）</li>
+<li>timeout （超时时间，当超过该值时应当不再进行调用并迅速返回失败）</li>
+</ul>
+<p>在实现中需要注意以下几点:</p>
+<ol>
+<li>在二进制方面，存在 BE 和 LE 两种排布形式——即将它的高位存在低地址上，还是高地址上。而在 TCP 中，采取的 BE 策略。</li>
+<li>由于 RPC 框架是非常底层的协议，因此应当性能优化到极致。为了避免 Buffer 拼接的消耗，可以考虑先分配一个较大的 Buffer，然后写入数据后进行操作，最后进行一次截断。</li>
+<li>在 JavaScript 中，对于数字的支持是 -2^53-1 - 2^53-1，而 long 的范围是 -2^64-1 - 2^64-1</li>
+<li>在对 RPC 包的处理上可以有基于 data 和 readable 和 基于流三种方法，readable 比起 data 的优势在于节省资源(因为对于 RPC 而言你拿到包的一部分是毫无意义的,这种情况下readable 会占据更少的资源）。基于流的实现会更为优雅，然而 RPC 的原理决定了它不可能真正是一个流（因为对于 RPC 来言无论是 request 还是 response 都必须完成才有意义，这和流的思想其实是冲突的）<br><em>以上部分可以查看参考资料 1，2</em></li>
+</ol>
+<h1 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h1><p>其实到此为止 RPC 的基本原理已经讲明白了，但是从实际使用来说，一个 RPC 框架只有以上内容是不够的，因为就算你要获取信息，你至少要知道自己需要向谁来获取信息。目前主要的解决方法分为两种——硬负载和软负载。</p>
+<h2 id="硬负载"><a href="#硬负载" class="headerlink" title="硬负载"></a>硬负载</h2><p>硬负载是通过硬件方式解决这个问题的，所有的请求都需要在调用链路上部署一个独立的硬件设备（一般就是我们所熟知的F5/LVS/HAproxy集群），由它负责后端发现并进行负载均衡。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">                                                +------------+</span><br><span class="line">+----------+  invoke   +---------------+        |  Services  |-+</span><br><span class="line">| Consumer | --------&gt; | Load Balancer | -----&gt; |  Providers | |-+</span><br><span class="line">+----------+           +---------------+        +------------+ | |</span><br><span class="line">                                                 |-------------+ |</span><br><span class="line">                                                   +-------------+</span><br></pre></td></tr></table></figure>
+<p>这种方案的优势在于:</p>
+<ul>
+<li>可以从全局的层面进行负载均衡，安全防控和鉴权等操作<br>其劣势在于:</li>
+<li>一定的性能消耗</li>
+<li>必须集群部署以避免单点故障 </li>
+<li>设备成本高，不易维护</li>
+</ul>
+<h2 id="软负载"><a href="#软负载" class="headerlink" title="软负载"></a>软负载</h2><p>这种方案通过软件和注册中心来实现，属于非常常见的方案，具有以下特点:</p>
+<ol>
+<li>不具备硬件设备</li>
+<li>全部信息都在注册中心来动态注册，由注册中心向使用者提供相应信息</li>
+<li>client 和 server 直连，注册中心位于旁路上<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">                  +------------------+</span><br><span class="line">                  | Service Registry |</span><br><span class="line">                  +------------------+</span><br><span class="line">                  /                 ^</span><br><span class="line">                 /                   \</span><br><span class="line">	    Discover          Register &amp; Keep Alive</span><br><span class="line">	       /                         \ </span><br><span class="line">	      /                           \</span><br><span class="line">	     v                             \</span><br><span class="line">+----------+                                +----------+</span><br><span class="line">| Consumer | ---- Load Balance &amp; Invoke --&gt; | Provider |</span><br><span class="line">+----------+                                +----------+</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这种方案的优势在乎:</p>
+<ul>
+<li>client 和 server 直连，避免性能损耗</li>
+<li>不需要单独的硬件彩玉<br>但缺点也很明显:</li>
+<li>对于 client 侵入性较强，需要 client 主动去注册中心获取信息</li>
+<li>注册中心对 client 请求的控制能力较弱（碰到 client 不停地往一个 server 上打请求的时候一点办法都没有）</li>
+<li>尽管注册中心位于旁路上，但是注册中心依旧数据非常重要的基础设施，依旧需要保证高可用</li>
+</ul>
+<h2 id="服务发现的服务发现"><a href="#服务发现的服务发现" class="headerlink" title="服务发现的服务发现"></a>服务发现的服务发现</h2><p>还存在一个问题就是服务发现的地址是什么？不过业界有成熟的方案可以保证这个不至于变成鸡生蛋还是蛋生鸡的问题。目前常见的有使用 DNS 通过域名来进行解决，或者写死某个特殊的地址。</p>
+<h1 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h1><p>RPC 的负载均衡策略有很多，比如</p>
+<ul>
+<li>随机: 本方案的问题在于如果机器配置不一致，那么就会导致部分机器利用率较低</li>
+<li>轮询: 问题和随机一样</li>
+<li>ip Hash: 本方案不错，可以保证 session 问题，不过分布式里这种问题不应该通过 redis 之类的机制来解决吗？</li>
+<li>负载: 负载需要 server 向注册中心同步自己目前的状态</li>
+<li>就近原则: 优先同机房，其次同城，总之是优先找最近的</li>
+</ul>
+<h1 id="健康检测"><a href="#健康检测" class="headerlink" title="健康检测"></a>健康检测</h1><p>RPC 注册中心不同于普通的动态注册，因为其注册信息是有状态的（至少有可用和不可用两种）, 因此健康监测变成了非常重要的部分。常见的解决方法有两种——心跳检测以及暴露接口定期检测。<br>理论上说 TCP 本身就是基于连接的，检查其是否处于连接状态就可以确认是否健康。但是在网络突然出问题的情况下可能连 FIN 包都收不到，这样一边连接实际已经中断但是套接字可能还认为一切正常。</p>
+<p>心跳检测通过维持一个长链接定期发送一个包来确认网络通畅(Zookeeper, 阿里的 ConfigServer 都采用这种方式来做健康检查)，其优点在于:</p>
+<ol>
+<li>实现简单，对业务透明</li>
+<li>至少保证网络通畅<br>其劣势在于:</li>
+<li>检查粒度过于粗糙，网络通畅和服务健康根本就是两码事</li>
+<li>对于注册中心需要维护大量长链接（个人觉得这个不算问题，因为定期检查不是长链接就是不停地创建短链接，还能怎么样呢）</li>
+</ol>
+<p>而暴露接口定期检测则可以做到更细粒度的划分（K8s 里的 Health Checks 就是这种方式），其优势在于:</p>
+<ol>
+<li>不必维持长链接</li>
+<li>可以由服务自行定义健康标准，检测力度更为精细而准确<br>其劣势则是:</li>
+<li>对于服务有一定的侵入性</li>
+</ol>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/38012481" target="_blank" rel="noopener">聊聊 Node.js RPC（一）— 协议</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/40606909" target="_blank" rel="noopener">聊聊 Node.js RPC（二）— 服务发现</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/36427583" target="_blank" rel="noopener">如何给老婆解释什么是RPC</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/36528189" target="_blank" rel="noopener">如何实现一个简单的RPC</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/37260151" target="_blank" rel="noopener">蚂蚁金服RPC框架结构分析</a></li>
+<li><a href="https://www.zhihu.com/question/41609070/answer/191965937" target="_blank" rel="noopener">在有 HTTP 的情况下为何还需要 RPC</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/40188978" target="_blank" rel="noopener">深入理解RPC——你看或没看见 它都在那里</a></li>
+<li><a href="https://www.zhihu.com/question/25536695/answer/221638079" target="_blank" rel="noopener">RPC 通俗解释</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/02/移动端适配初步探索/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1478,7 +1690,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1491,7 +1703,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
