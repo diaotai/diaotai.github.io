@@ -1,693 +1,2157 @@
 <!DOCTYPE html>
-<html lang="en">
 
-<!-- Head tag -->
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content>
-    <meta name="keyword" content>
-    <link rel="shortcut icon" href="/img/ironman-draw.png">
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <title>
-        
-          
-        
-    </title>
-
-    <link rel="canonical" href="http://yoursite.com/">
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    <!-- Custom CSS --> 
-    <link rel="stylesheet" href="/css/beantech.min.css">
-
-    <link rel="stylesheet" href="/css/donate.css">
-    
-    <!-- Pygments Highlight CSS -->
-    <link rel="stylesheet" href="/css/highlight.css">
-
-    <link rel="stylesheet" href="/css/widget.css">
-
-    <link rel="stylesheet" href="/css/rocket.css">
-
-    <link rel="stylesheet" href="/css/signature.css">
-
-    <link rel="stylesheet" href="/css/toc.css">
-
-    <!-- Custom Fonts -->
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
 
 
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
 
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
-    <!-- ga & ba script hoook -->
-    <script></script>
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="日拱一卒">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="日拱一卒">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="日拱一卒">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/">
+
+
+
+
+
+  <title>日拱一卒</title>
+  
+
+
+
+
+
+
+
+
 </head>
 
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="">
-	<!-- Modified by Yu-Hsuan Yen -->
-<!-- Post Header -->
-<style type="text/css">
-    header.intro-header{
-        
-            background-image: url('') 
-            /*config*/
-        
-    }
+  
+  
     
-</style>
+  
 
-<header class="intro-header">
-    <!-- Signature -->
-    <div id="signature">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                
-                    <div class="site-heading">
-                        <h1>日拱一卒</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading"></span>
-                    </div>
-                
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
 
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-                </div>
-            </div>
-        </div>
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">日拱一卒</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-</header>
-
-	
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">日拱一卒</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-
-                    
-                    
-                </ul>
-            </div>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-</script>
-
-
-    <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
-
-
-<div class="post-preview">
-
-    <a href="/2019/06/17/go-语言基础汇总/">
-        <h2 class="post-title">
-            go 语言基础汇总
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            变量
-当变量声明时，类型和表达式可以省略一个。如果类型省略，则类型由表达式决定，如果省略表达式，则使用默认空值。
-:= 表示声明，若没有该变量，则创建，若存在，则赋值。但是至少要保证创建了一个新变量，否则编译失败
-指针的值是一个变量的地址。不是所有的值都有地址，但是所有变量都有地址。使用指针可以间接读取或更新变量的值。
-指针是可以比较的，只有当两个指针指向同一个变量或者两者都是 nil时候，......
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by diaotai on
-            2019-06-17
-        </p>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/06/09/编码-url-和-base64/">
-        <h2 class="post-title">
-            编码: url 和 base64
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            
-今天突然想到一个问题，为什么需要 url 编码 和 base64 编码呢？如果不做处理会有什么问题呢？
-
-base64在日常生活中文本通常是用 ASCII 表示，而 ASCII 编码的是使用 7 bit 来表示的，大多数些操作系统上则会使用字节 8bit 来存储二进制数据，这样直接使用 ASCII 就可能会出问题。
-而标准 base64 共 6 位，即共有 64 个字符（英文大小写、数字和......
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by diaotai on
-            2019-06-09
-        </p>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/06/09/server-端认证-cookie-session-and-token/">
-        <h2 class="post-title">
-            server 端认证:cookie,session and token
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            概述最初的 Web 时代基本只需要阅读信息，所以无所谓身份认证。但是后续很多应用的出现，让身份认证变成了必须要存在的东西。本文简要介绍三个常见的手段:cookie, session 还有 token
-cookiecookie 是一个非常具体的东西，指的就是浏览器里面能永久存储的一种数据，仅仅是浏览器实现的一种数据存储功能。由于 cookie 在客户端是完全可见且可修改的，因此不适合放一些机密......
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by diaotai on
-            2019-06-09
-        </p>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/05/03/linux-常见命令汇总/">
-        <h2 class="post-title">
-            linux 常见命令汇总
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            记录日期
-date: 获取当前日期
-cal: 获取日历
-
-记录文件跳转
-pwd: 列出当前所在的路径
-cd: 更改当前所在目录
-ls: 列出系统文件内容
-
-注意ls
-以 .开头的文件名是隐藏文件。这表示 ls 命令不能列出它们。而 ls -a 就可以，而很多配置文件就是以这个形式隐藏在 home 目录下的
-文件名和目录名是大小写敏感的
-linux 文件名支持空格和标点符号，但标点符号仅允许 ......
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by diaotai on
-            2019-05-03
-        </p>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/04/30/react-总结汇总/">
-        <h2 class="post-title">
-            react 总结汇总
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            react 生命周期
-我们可以将 react 生命周期分为两种：当组件在挂载或卸载时和当组件产生实质性更新时。
-DOM 真正被添加到 HTML 中的生命周期方法时 componentDidMount 和 componentDidUpdate 中，因此，在这两个方法中去取得 DOM 元素才是有意义的。而取得 DOM 元素的方法有两种，其一是 findDOMNode（只对已挂载组件有作用），其二......
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by diaotai on
-            2019-04-30
-        </p>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/04/25/redux-undo-机制探索/">
-        <h2 class="post-title">
-            redux-undo 机制探索
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            背景在看到 redux 的示例的时候，看到了一个很有意思的项目 —— redux-undo。该项目的作用在于时间旅行，可以很好的进行撤销、重做等操作。我比较好奇它的实现，所以就看了一下代码。代码很简单，但是还是决定要记录一下，一面日后遗忘。
-原理redux-undo 本质上是一个 redux 的 enhancer，它用两个数组和一个 present 来记录之前的状态和当前的状态，当触发 un......
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by diaotai on
-            2019-04-25
-        </p>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/04/25/reselect-机制探索/">
-        <h2 class="post-title">
-            reselect 机制探索
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            背景在学习 redux 的过程中，我看到了一个优化功能非常明显的包 —— reselect.该包的核心作用就是根据输入值进行缓存，若本次输入与上一次输入相同，则不再进行重复计算。本包最常用的地方在于 react-redux 的 mapStateToProps 里面，由于该函数每次 state 更新都会重复计算，无论是否涉及到它。在这种情况下，缓存就显得非常重要了。虽然我个人对 reselec......
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by diaotai on
-            2019-04-25
-        </p>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/04/24/router-机制探索/">
-        <h2 class="post-title">
-            router 机制探索
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            背景路由这个概念最先是后端出现的。在以前用模板引擎开发页面时，经常会看到一些 .html 或者 .aspx 结尾的路径，这些就是传统的后端路由, 路由的作用就是根据不同的路径来返回不同的资源（这个资源很多时候是页面）。传统的路由分为以下四步:
-
-浏览器发出请求
-服务器监听到80端口（或443）有请求过来，并解析url路径
-根据服务器的路由配置，返回相应信息（可以是 html 字串，也可以是 ......
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by diaotai on
-            2019-04-24
-        </p>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/04/22/react-redux-源码解析/">
-        <h2 class="post-title">
-            react-redux 源码解析
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            整体结构本次解析的代码是 react-redux 的 v5.0 版本，并不是最新的，不过也很好了。
-代码的核心部分是 Provider 和 connectAdvanced 部分，前者是包含全部组件的地方，后者则是传递搞自组件的地方。
-Provider12345678910111213141516171819202122232425export default class Provider e......
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by diaotai on
-            2019-04-22
-        </p>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2019/04/18/react-redux-机制探索/">
-        <h2 class="post-title">
-            react-redux 机制探索
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            背景react-redux 本身的作用很小，就是为了让 redux 配合 react。其中，暴露出来的接口只有两个—— Provider 组件和 Connect 函数，这两个东西的作用就是将 store 内的数据传入对应组件，传入触发 action 的方法以及在 store 更新时进行更新，要注意的是，react-redux 对于 react 做了一些性能上的优化。
-API 简介Connec......
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by diaotai on
-            2019-04-18
-        </p>
-    
-
-</div>
-<hr>
-
-
-
-<!-- Pager -->
-
-<ul class="pager">
-    
-    
-        <li class="next">
-            <a href="/page/2/">Older Posts &rarr;</a>
-        </li>
-    
-</ul>
-
-
-
-                <br>
-
-                <!-- require APlayer -->
-                
-
-                <!-- 如果开启评论功能 -->
-                
-            </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
-
-        
-            <img id="avatar_pic" src="img/&lt;your avatar path">
-        
-
-        
-            <p>diaotai 写博客的地方</p>
-        
-
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
-
-            
-
-            
-
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
-
-        <hr>
-    
-        
-  <h5>RECENT POSTS
-  <div class="widget">
-    <ul>
       
-        <li>
-          <a href="/2019/06/17/go-语言基础汇总/">go 语言基础汇总</a>
+        <p class="site-subtitle">我将继续前行，不管是前路是荆棘还是坦途</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
         </li>
       
-        <li>
-          <a href="/2019/06/09/编码-url-和-base64/">编码: url 和 base64</a>
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
         </li>
       
-        <li>
-          <a href="/2019/06/09/server-端认证-cookie-session-and-token/">server 端认证:cookie,session and token</a>
-        </li>
-      
-        <li>
-          <a href="/2019/05/03/linux-常见命令汇总/">linux 常见命令汇总</a>
-        </li>
-      
-        <li>
-          <a href="/2019/04/30/react-总结汇总/">react 总结汇总</a>
-        </li>
+
       
     </ul>
-  </div>
-</h5>
-        <hr>
-    
-        <!-- Friends Blog -->
+  
 
-        <hr>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/10/thrift-探索记录/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
         
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
-    </div>
-
-        <hr>
-    
-        <!-- Categories -->
-
-        <hr>
-    
-</div>
-
         
-    </div>
-</div>
-
-
-    <!-- Footer -->
-    <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
+          <h1 class="post-title" itemprop="name headline">
                 
-                
-                
+                <a class="post-title-link" href="/2019/08/10/thrift-探索记录/" itemprop="url">thrift 探索记录</a></h1>
+        
 
-                
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-10T13:40:54+08:00">
+                2019-08-10
+              </time>
+            
 
-                
+            
 
-                
+            
+          </span>
 
-                
+          
 
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; diaotai 2019 
-                    <br>
-                    Theme by <a href="http://beantech.org">BeanTech</a> 
-                    <span style="display: inline-block; margin: 0 5px;">
-                        <i class="fa fa-heart"></i>
-                    </span> 
-                    re-Ported by <a href="http://www.huweihuang.com">胡伟煌</a> | 
-                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=huweihuang&repo=hexo-theme-huweihuang&type=star&count=true">
-                    </iframe>
-                </p>
-            </div>
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>虽然不止一次使用 thrift 进行 RPC 调用了，但是真正的了解还没有过，这次把这件事处理好。</p>
+</blockquote>
+<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Thrift 是一种框架，可以创建高效的、无缝的服务，其传输数据采用二进制格式，相对 XML 和 JSON 体积更小，对于高并发、大数据量和多语言的环境更有优势。此外，作为一种 RPC 框架，Thrift 可以让人几乎无感知的进行调用。</p>
+<p>Thrift 基础架构如下图:<br><img src="https://www.ibm.com/developerworks/cn/java/j-lo-apachethrift/image003.jpg" alt="Thrift 基础架构图"></p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>Thrift 脚本可定义的数据类型包括以下几种类型：</p>
+<h3 id="基本类型："><a href="#基本类型：" class="headerlink" title="基本类型："></a>基本类型：</h3><ul>
+<li>bool：布尔值，true 或 false，对应 Java 的 boolean</li>
+<li>byte：8 位有符号整数，对应 Java 的 byte</li>
+<li>i16：16 位有符号整数，对应 Java 的 short</li>
+<li>i32：32 位有符号整数，对应 Java 的 int</li>
+<li>i64：64 位有符号整数，对应 Java 的 long</li>
+<li>double：64 位浮点数，对应 Java 的 double</li>
+<li>string：未知编码文本或二进制字符串，对应 Java 的 String<h3 id="结构体类型："><a href="#结构体类型：" class="headerlink" title="结构体类型："></a>结构体类型：</h3></li>
+<li>struct：定义公共的对象，类似于 C 语言中的结构体定义（可以嵌套）<h3 id="容器类型："><a href="#容器类型：" class="headerlink" title="容器类型："></a>容器类型：</h3></li>
+<li>list：对应 Java 的 ArrayList</li>
+<li>set：对应 Java 的 HashSet</li>
+<li>map：对应 Java 的 HashMap</li>
+<li>enum： <h3 id="异常类型："><a href="#异常类型：" class="headerlink" title="异常类型："></a>异常类型：</h3></li>
+<li>exception：对应 Java 的 Exception<h3 id="服务类型："><a href="#服务类型：" class="headerlink" title="服务类型："></a>服务类型：</h3></li>
+<li>service：对应服务的类, 其实更接近一个接口，里面对于方法的入参和返回值进行了定义</li>
+</ul>
+<h2 id="配置语法"><a href="#配置语法" class="headerlink" title="配置语法"></a>配置语法</h2><ul>
+<li>include: 将某个 thrift 包括在内</li>
+<li>typedef: typedef i32 MyInteger,定义自己的类型</li>
+<li>const: 定义常量</li>
+<li>optional: 在 struct 里可以定义可选项</li>
+</ul>
+<h1 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h1><p>分为 client 端和 server 端，client 端引入生成的 client 后就可以使用了，而 server 端需要将 thrift 文件里定义的方法都进行一次实现才可以使用。<br>client.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">rom thrift import Thrift</span><br><span class="line">from thrift.transport import TSocket</span><br><span class="line">from thrift.transport import TTransport</span><br><span class="line">from thrift.protocol import TBinaryProtocol</span><br><span class="line"></span><br><span class="line"># Make socket</span><br><span class="line">transport = TSocket.TSocket(&apos;localhost&apos;, 9090)</span><br><span class="line"></span><br><span class="line"># Buffering is critical. Raw sockets are very slow</span><br><span class="line">transport = TTransport.TBufferedTransport(transport)</span><br><span class="line"></span><br><span class="line"># Wrap in a protocol</span><br><span class="line">protocol = TBinaryProtocol.TBinaryProtocol(transport)</span><br><span class="line"></span><br><span class="line"># Create a client to use the protocol encoder</span><br><span class="line">client = Calculator.Client(protocol)</span><br><span class="line"></span><br><span class="line"># Connect!</span><br><span class="line">transport.open()</span><br></pre></td></tr></table></figure></p>
+<p>server.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">handler = CalculatorHandler()</span><br><span class="line">processor = Calculator.Processor(handler)</span><br><span class="line">transport = TSocket.TServerSocket(host=&apos;127.0.0.1&apos;, port=9090)</span><br><span class="line">tfactory = TTransport.TBufferedTransportFactory()</span><br><span class="line">pfactory = TBinaryProtocol.TBinaryProtocolFactory()</span><br><span class="line"></span><br><span class="line">server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)</span><br></pre></td></tr></table></figure></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://thrift.apache.org/" target="_blank" rel="noopener">thrift 官方文档</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/java/j-lo-apachethrift/index.html" target="_blank" rel="noopener">IBM thrift介绍</a></li>
+</ul>
+
+          
+        
+      
     </div>
-</footer>
+    
+    
+    
 
-<!-- jQuery -->
-<script src="/js/jquery.min.js"></script>
+    
 
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js"></script>
+    
 
-<!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js"></script>
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/pudb-使用指南/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/03/pudb-使用指南/" itemprop="url">pudb 使用指南</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-03T22:48:46+08:00">
+                2019-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>简而言之，pudb 就是 python 的一个调试工具，在特殊环境下会非常的好用</p>
+</blockquote>
+<ul>
+<li>使用: import pudb;pu.db; 这时候会在下一行打一个断点</li>
+<li>ctrl-x: 切换到命令行，命令行里可以直接输出结果</li>
+<li>b: 打断点或取消断点</li>
+<li>s: step in，但是面对语言自带函数是进不去的</li>
+<li>r: return, 会直接到函数结尾的地方</li>
+<li>c: continue, 会执行到下一个断点</li>
+<li>n: next, 下一行</li>
+<li>q: quit, 退出 pudb</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/go-mod-速记/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/02/go-mod-速记/" itemprop="url">go mod 速记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-02T22:36:10+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>go mod 机制是一种用于摆脱 GOPATH 然后提供一个可以方便再部署的包管理工具。</p>
+</blockquote>
+<h1 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h1><ul>
+<li>初始化: go mod init github.com/you/hello</li>
+<li>获取新依赖包: go get</li>
+<li>查看所有依赖包的版本: go list -m all</li>
+<li>更新所有直接和间接依赖到最新版本: go get -u</li>
+<li>去除所有不需要的依赖: go mod tidy</li>
+<li>根据目前情况创建一个 vendor: go mod vendor</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/依赖注入和依赖反转/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/02/依赖注入和依赖反转/" itemprop="url">依赖注入和依赖反转</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-02T22:33:07+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在面向对象语言，有时会出现某个类 a 需要使用类 b 的实例，如果每个使用实例 b 的地方都进行初始化 ，且 b 的实例需要其它的实例，那么会导致一大堆实例化。<br>而在这种情况下， a 虽然依赖 b，但是这种依赖仅限于使用，并不涉及创建和销毁。那么 b 创建销毁的控制器完全就可以放在其他地方，这叫控制反转（IOC）。</p>
+<p>因为 a 依赖 b，所以必须能拿到 b 的实例，因此可以使用以下方法:</p>
+<ul>
+<li>通过 a 的接口把 b 传入</li>
+<li>通过 a 的初始化参数把 b 传入</li>
+<li>通过设置 a 的属性把 b 传入</li>
+</ul>
+<p>以上过程即为依赖注入（DI）,随着依赖注入的广泛使用，便创建一个方法来解决重复代码，即为 IOC Container。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://www.zhihu.com/question/32108444" target="_blank" rel="noopener">依赖注入的知乎解释</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/go-debug-方法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/02/go-debug-方法/" itemprop="url">go debug 方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-02T22:28:58+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="使用-delve-来进行调试"><a href="#使用-delve-来进行调试" class="headerlink" title="使用 delve 来进行调试"></a>使用 delve 来进行调试</h1><ul>
+<li>break: 断点，可以使用 a.b 进行方法断点，或者 a.go:line 进行行断点</li>
+<li>continue(c): 执行到下一个断点</li>
+<li>list(l): 展示代码</li>
+<li>next(n): 执行到下一行</li>
+<li>step(s): 进入下一层</li>
+<li>stepout: 离开这一层</li>
+<li>print: 打印值</li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://github.com/go-delve/delve/tree/master/Documentation/cli" target="_blank" rel="noopener">delve 文档</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/Django-企业开发实战-读书笔记（第一部分）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/21/Django-企业开发实战-读书笔记（第一部分）/" itemprop="url">Django 企业开发实战 读书笔记（第一部分）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-21T14:32:57+08:00">
+                2019-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>本书系统得讲述了 python web 得开发流程和细节，并在给出一个一个很不错的项目进行了实践，整体而言质量还是很不错的，尤其是对我这种对于后端知识不成体系的人来说，希望能在一周内把本书看完并实践吧。</p>
+</blockquote>
+<h1 id="第一章-需求"><a href="#第一章-需求" class="headerlink" title="第一章 需求"></a>第一章 需求</h1><ul>
+<li>对于新人来说，最重要的事情就是自己能独立完成某个项目，去涉足项目开发中各个阶段，为以后独立承担项目开发储备经验。没有这个能力，很难成长为独当一面的人。</li>
+<li>要注意的是，技术是为业务而服务的，系统实现应该以满足用户需求为第一要务。</li>
+</ul>
+<h2 id="需求文档"><a href="#需求文档" class="headerlink" title="需求文档"></a>需求文档</h2><p>需求文档属于正规开发必备的东西，这样可以把交流落实到纸面上，方便后续的沟通。<br>而需求描述也说明了需要做什么，以及为什么要做。如果没有详细的需求描述，很容易造成了理解失误并频繁返工。</p>
+<h2 id="需求评审-分析"><a href="#需求评审-分析" class="headerlink" title="需求评审/分析"></a>需求评审/分析</h2><p>对技术而言，评审的目的有一下三个:</p>
+<ul>
+<li>明确所有需求点，避免出现理解上的歧义</li>
+<li>确认技术可行性，避免延期或后面再修改需求</li>
+<li>确认工期，是否需要分期开发</li>
+</ul>
+<p>在评审的时候注意要逐条考虑，细化要求，并考虑可行性。</p>
+<h2 id="功能分析"><a href="#功能分析" class="headerlink" title="功能分析"></a>功能分析</h2><p>这个属于技术人员的工作，其目的就是从产品经理所提的需求中提炼出这个系统有哪些功能点，最终落实为功能列表，再进行任务分配。</p>
+<h2 id="模块划分"><a href="#模块划分" class="headerlink" title="模块划分"></a>模块划分</h2><p>可以考虑产出实体图及相应关系。</p>
+<h1 id="第二章-框架基础及技术选型"><a href="#第二章-框架基础及技术选型" class="headerlink" title="第二章 框架基础及技术选型"></a>第二章 框架基础及技术选型</h1><ul>
+<li>WSGL 协议就是规定了 application 和 server 之间的的数据交流的协议，这样可以让支持该协议的库同时可以对接多个框架。前者是实际的应用本身，后者是监听端口获取请求会返回相应的服务器。</li>
+<li>flask: 小而微，适合快速开发小项目</li>
+<li>Tornado: 基于异步，高性能</li>
+<li>Django: 大而完善</li>
+</ul>
+<h1 id="第三章-django-初步实践"><a href="#第三章-django-初步实践" class="headerlink" title="第三章 django 初步实践"></a>第三章 django 初步实践</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>该框架使用了 MVC 模式，其目的在于解耦:</p>
+<ul>
+<li>Model 层: 所有纯数据相关的操作都应该放在这一层</li>
+<li>View 层: 展示层，偏向于业务部分，获取数据并完成展示</li>
+</ul>
+<h2 id="初始化环境"><a href="#初始化环境" class="headerlink" title="初始化环境:"></a>初始化环境:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 -m venv xxx  // 初始化虚拟环境</span><br><span class="line">source xxx/bin/activate // 激活虚拟环境</span><br></pre></td></tr></table></figure>
+<h2 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h2><p>Django 在渲染模板或静态页面的时候，会去每个 APP 下从上倒下一次寻找，APP 的顺序定义在 settings.py。<br>中间件拥有以下几个属性:</p>
+<ul>
+<li>process_request: 进入中间件的第一个方法</li>
+<li>process_view: 该方法在 process_request 之后只写，进入了 view 层</li>
+<li>process_template_response: 执行了 render 函数后的返回</li>
+<li>process_response: 不带模板的返回</li>
+<li>process_exception: view 层或 response 时候出错</li>
+</ul>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>测试可以针对 Model 层、View 层等，有三个声明周期方法:</p>
+<ul>
+<li>setUp: 启动方法，进行初始化</li>
+<li>test_Xxxx: 测试用例</li>
+<li>tearDown: 用来清理测试环境和测试数据</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/iterm2-小记/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/13/iterm2-小记/" itemprop="url">iterm2 小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T18:11:38+08:00">
+                2019-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="分屏操作"><a href="#分屏操作" class="headerlink" title="分屏操作"></a>分屏操作</h1><ul>
+<li>⌘ + d: 垂直分屏，</li>
+<li>⌘ + shift + d: 水平分屏。</li>
+<li>⌘ + ]和⌘ + [在最近使用的分屏直接切换</li>
+<li>⌘ + 数字: 切换标签页。 </li>
+<li>⌘ + 方向键 按方向切换标签页。</li>
+<li>shift + ⌘ + s: 保存当前窗口快照。</li>
+<li>⌘ + opt + b: 快照回放。很有意思的功能，你可以对你的操作根据时间轴进行回放。可以拖动下方的时间轴，也可以按左右方向键</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/python-学习笔记-基础/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/13/python-学习笔记-基础/" itemprop="url">python 学习笔记(基础)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T16:00:22+08:00">
+                2019-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>本笔记是我第 n 次重新上手 python 的笔记，该笔记并不全面，但是记录了很多关于 python 的某些的需要注意的点。只要注意到这些点，对我来说就可以迅速重新上手这门语言。</p>
+</blockquote>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><ul>
+<li>python 中变量不需要声明</li>
+<li>python 并没有常量的概念，虽然惯例上使用大写字母作为常量名，但是这只是惯例上的约束，实际上依旧可以改变</li>
+<li>整数相除必然除出浮点数，除非用 // 地板除</li>
+<li>int 数字等于对应的浮点数</li>
+<li>只要 x 上非零数字、非空字符串、非空 list 等，就判断为 True，否则为 False</li>
+</ul>
+<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><ul>
+<li>不可越界，否则报错</li>
+<li>可以存放不同的类型</li>
+<li>insert(index, val) 方法用于插入, pop(index?) 可以用来删除指定位置的值</li>
+</ul>
+<h2 id="turple"><a href="#turple" class="headerlink" title="turple"></a>turple</h2><ul>
+<li>形式类似于 (1, 3, 4),其内容是不可变的，剩下基本等同于 list</li>
+</ul>
+<h2 id="dic"><a href="#dic" class="headerlink" title="dic"></a>dic</h2><ul>
+<li>可以用 in 来判断某个 key 是否存在于对象</li>
+<li>get 方法可以用来安全的获取值，并可以在第二个参数设置默认值</li>
+<li>pop 可以用来删除特定 key</li>
+</ul>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><ul>
+<li>添加可以使用 add 方法</li>
+<li>删除的方法为 remove 而不是 pop</li>
+</ul>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ul>
+<li>python 的函数可以返回多个值</li>
+<li>python 的默认参数一定要指向不变的对象</li>
+<li>参数星号代表多参数，参数会以 list 的形式插入</li>
+<li>两个星号则代表以命名参数的行事形成一个 dic</li>
+<li>注意，python 同样存在闭包问题，因此要考虑变量在延迟执行时的情况</li>
+</ul>
+<h1 id="迭代器及函数式编程"><a href="#迭代器及函数式编程" class="headerlink" title="迭代器及函数式编程"></a>迭代器及函数式编程</h1><ul>
+<li>能被 for 使用的对象就是 iterable 对象</li>
+<li>能调用 next 的才是 Iterator 迭代器，可以理解为一个超长的数据流</li>
+<li>map, resuce, filter 的第一个参数是函数，第二个才是迭代器</li>
+<li>sorted 的第一个参数是 list，第二个是 key=function，第三个是布尔值 reverse</li>
+<li>functools.partial 可以以默认值的方式从右向左固定一些值</li>
+</ul>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def log(func):</span><br><span class="line">    def wrapper(*args, **kw):</span><br><span class="line">        print(&apos;call %s():&apos; % func.__name__)</span><br><span class="line">        return func(*args, **kw)</span><br><span class="line">    return wrapper</span><br></pre></td></tr></table></figure>
+<ul>
+<li>func 即为被装饰器所包装的函数，如果需要给装饰器添加参数，则需要再包一层，参数放在最外边</li>
+</ul>
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><ul>
+<li>python 使用包和文件作为模块的机制，包下必须要有<strong>init</strong>.py,否则会被认为是普通的目录</li>
+<li>python 没有限制导出的策略，因此习惯上正常变量名随意导出、<strong>xxx</strong>属于有特殊用途的情况，而_xxx属于私有变量，不应该被使用</li>
+</ul>
+<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Name(object)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类名通常大写，括号内则是继承的类名</li>
+<li>__init__代表构造函数，第一个参数为 self 实例本身，后面则是类的参数</li>
+<li>类内的 __xxx  在类外不可访问</li>
+<li>python 在类型上属于鸭子类型语言，十分类似于 go</li>
+<li>isinstance 可以判断子类及本身，而 type 则可以判断 class 类型</li>
+<li>不加 self 即为类属性，实例属性会覆盖类属性，找不到实例属性就会去找类属性(直接在类中书写普通变量即可)</li>
+<li>__slots__属性可以限制允许挂载到对象上的属性的</li>
+<li>@property 用来将方法变成了 getter, @xxx.settter 把方法变成了赋值的 setter</li>
+<li>结合 hasattr, getattr, setattr 可以很好的处理对象的属性</li>
+<li>__str__代表返回给用户的字符串，__repr__代表返回给开发者的字符串</li>
+<li>要想实现一个迭代器，则必须实现__iter__方法返回一个迭代对象，并实现一个__next__方法不断的调用，直到碰到 StopIteration Error </li>
+<li>__getItem__可以帮助实现一个类似于 list 的结构</li>
+<li>__getattr__用于处理没有定义的属性</li>
+<li>__call__让一个对象可以直接作为方法来被调用</li>
+</ul>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><ul>
+<li>测试分为单元测试和文档测试</li>
+<li>class TestDict(unittest.TestCase) 可以用来测试</li>
+<li>setUp() 和 tearDown() 可以在测试开始前和结束后执行</li>
+</ul>
+<h1 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h1><ul>
+<li>namedtuple 可以实现一个类似于类的小玩意</li>
+<li>dqeue 用于实现队列和栈，存在 append, pop, appendleft, popleft 方法</li>
+<li>OrderedDict 会按插入的顺序进行排布</li>
+<li>ChainMap 可以合并多个 dic，最后以从前向后的顺序查找值</li>
+<li>struct 提供了二进制到类型的转换</li>
+<li>@contextmanager 可以提供上下文，让事物在开始前结束后做一些什么东西，可用于迭代器， yield 代表了返回的值</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/17/go-语言基础汇总/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/17/go-语言基础汇总/" itemprop="url">go 语言基础汇总</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-17T19:28:04+08:00">
+                2019-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><ul>
+<li>当变量声明时，类型和表达式可以省略一个。如果类型省略，则类型由表达式决定，如果省略表达式，则使用默认空值。</li>
+<li>:= 表示声明，若没有该变量，则创建，若存在，则赋值。但是至少要保证创建了一个新变量，否则编译失败</li>
+<li>指针的值是一个变量的地址。不是所有的值都有地址，但是所有变量都有地址。使用指针可以间接读取或更新变量的值。</li>
+<li>指针是可以比较的，只有当两个指针指向同一个变量或者两者都是 nil时候，才是相等的</li>
+<li>new(int) 可以直接返回一个新创建的 int 型指针</li>
+<li>变量将一直生存到它不可访问，其生命周期是通过它是否可达来确定的</li>
+<li>当创建的局部变量指针被赋值到全局时，即为逃逸，它会被在堆空间分配内存，否则则是栈空间分布。</li>
+<li>只有类型精确匹配才可以赋值，只有两个值可以赋值时才可以比较</li>
+<li>type 声明定义一个新的类型。当底层类型相同的不同的 type 使用时应当进行类型转化。</li>
+</ul>
+<h1 id="基本数据"><a href="#基本数据" class="headerlink" title="基本数据"></a>基本数据</h1><h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><ul>
+<li>rune 类型是 int32 的同义词，通常使用一个指 Unicode 码点。</li>
+<li>取模的结果符号只会和被除数一致，整除相除得整数。</li>
+<li>溢出得情况下会直接舍弃高位</li>
+<li>&amp; 位与操作， | 位或操作， ^ 位异或操作，若为前缀，则为按位取反，&amp;^ 按位清除（z=x&amp;^y,y 某位 为 1，则 z 对应为0， 否则，为 x 的对应位）</li>
+<li>和 NaN 得比较总是不成立的</li>
+<li>Go 有两种类型的复数，complex64 和 complex128，二者分别由 float32 和 float64组成。</li>
+<li>&amp;&amp; 的优先级比 || 更高<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2></li>
+<li>字符串的第 i 个字节并不代表是第 i 个字符，因为非 ASCII 字符的 UTF-8 码点需要两个或多个字节。</li>
+<li>字符串的下标越界会引发宕机</li>
+<li>字符串是不可变的，这也意味着可以在底层共用同一段内存，这使得复制任何长度字符串的开销都很低廉。</li>
+<li>UTF-8 以字节为单位对 Unicode 码点作变长编码。一个文字符号编码的首字节高位指出后面还有多少字节。传统 ASCII 码仅占 1 个字节。变长编码使得字符串无法直接访问第 n 个字符。</li>
+<li>码点值小于 256 的文字符号可以写成单个16进制的转义形式（\xe4），更高的码点则必须\u.</li>
+<li>len 得到的是字节数，真的要逐个处理 Unicode，则必须使用其他编码机制。比如 UTF-8.</li>
+<li>字符串属于不可变的，如果需要，则应该使用 bytes.Buffer 对接      <h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2></li>
+<li>常量只能是数字、字符串或布尔值（这个常量就是指 const）</li>
+<li>对常量操作数，所有的数学运算、逻辑运算和比较结果都是常量</li>
+<li>若同时声明一组常量，除了第一项之外，其余的右侧部分都可以省略，这代表值会复用前面一项的表达式及其类型</li>
+<li>iota 可以从 0 开始递增</li>
+</ul>
+<h1 id="复合数据类型"><a href="#复合数据类型" class="headerlink" title="复合数据类型"></a>复合数据类型</h1><ul>
+<li>数组和结构体是值传递，而 slice、map、function、channel 属于引用传递<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2></li>
+<li>数组和结构体都是聚合类型，它们的值由内存中的一组变量组成。数组和结构体的长度都是固定的，slice 和 map 都是动态数据结构，它的长度在元素添加到中可以动态增长</li>
+<li><p>数组是具有固定长度且拥有多个类型元素的序列，数组的长度是数组类型的一部分。长度必须是常量，这个表达式需要在程序编译时就可以确定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a [3]int</span><br><span class="line">var r [3]int = [3]int&#123;1, 2&#125;  // 初始化一部分</span><br><span class="line">q:= [...]int&#123;1,2,3&#125;   // 根据给定值确认长度</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果一个数组的元素类型是可比较的，那么这个数组也是可比较的</p>
+</li>
+<li>数组和其它类型都是值传递,也就是说，内部修改无法影响外部，除非通过指针<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2></li>
+<li>slice 可以理解为可变长度的数组，有三个属性：指针，长度和容量（指针指向原数组第一个元素，长度是元素个数，容器大小是底部数组的长度）</li>
+<li>slice 的元素到过容量则会导致宕机。若 slice 引用超过长度，则最终 slice 要长过原 slice。</li>
+<li>x[m:n]和字符串一样，只消耗常量时间</li>
+<li>由于 slice 拥有指向数组元素的指针，所以可以在内部修改底层数组的元素</li>
+<li>slice 是不能做比较的，因此也不能做 map 的 key  </li>
+<li>通常将 append 的调用结果再次赋值给传入 append 函数的 slice</li>
+<li><h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ages := make(map[string]int)</span><br><span class="line"></span><br><span class="line">ages := map[string]int &#123;</span><br><span class="line">    &quot;abc&quot;: 332</span><br><span class="line">&#125;</span><br><span class="line">ages, ok := map[key]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以使用 delete(map, key) 的操作来删除值，就算 map 中不存在 key 也没有关系</p>
+</li>
+<li>map 的地址不可获得，因为 map 的增长可能导致已有元素被重新放置到新的位置</li>
+<li>大多数 map 操作可以用于 nil map上，但是设置值是不可以的</li>
+<li>可以通过 ok 来判断 map 中是否存在</li>
+<li>map 唯一的合法结构就是与 nil 比较。</li>
+<li><p>map 值的类型可以为某些复杂数据结构</p>
+<h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type Name struct &#123;</span><br><span class="line">    a      int</span><br><span class="line">    b      int</span><br><span class="line">&#125;</span><br><span class="line">P := Name&#123;1, 2&#125;         // 创建一个字面量的方法</span><br><span class="line">P := Name&#123;a:3, b: 4&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结构体中，成员变量的顺序对于结构体同一性来说很重要，如果顺序改变，那么就算两个不同的结构体</p>
+</li>
+<li>结构体成员变量如果首字母大写，那么就算可导出的。一个结构体可以同时包含可导出的成员变量和不可导出的成员变量</li>
+<li>一个结构体类型不可以包含自身，但是可以包含自身的指针</li>
+<li>以上两种初始化模式不可混用，此外，无法通过结构体绕过包变量导出机制</li>
+<li>如果结构体中所有成员变量都可以比较，那么这个结构体就是可以比较的</li>
+<li>可以通过嵌套匿名结构体的方式来为结构体增加变量，不过初始化的时候必须按照层次来</li>
+<li>匿名结构体可以轻微绕过包导出机制</li>
+<li>不能在结构体中放两个变量名相同的变量或匿名结构体</li>
+</ul>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type Movie struct &#123;</span><br><span class="line">    Title   string</span><br><span class="line">    Year    int `json:&quot;released&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>只有可导出的成员变量才可以转换为 json 字段，否则会被无视。在上面的实例中，json 中的 released 字段会被解析成 Year</li>
+<li>可以在 json 标注中添加 omitempty，这样如果为空则不会被输入到 JSON 中</li>
+<li>JSON 在 unmarshal 阶段是无视大小写的</li>
+</ul>
+<h2 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; .abc &#125;&#125;  // 其中 abc 为变量</span><br><span class="line">通过 &#123;&#123;range .a&#125;&#125; 和 &#123;&#123;end&#125;&#125; 可以处理循环</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过一系列操作可以得到模版，最后通过 Execute 来得到渲染结果</li>
+<li>template.HTML 会被认为是可靠的值，不会被转义</li>
+</ul>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ul>
+<li>函数的类型成为函数签名，当两个函数拥有相同的形参列表和返回列表时，即认为两个函数的类型或签名相同，形参和返回值的名字不影响函数类型</li>
+<li>go 语言中不存在默认参数</li>
+<li>如果实参中包含引用类型，比如指针、slice、map、函或者通道，那么函数使用形参变量是就有可能会间接地修改是参变量</li>
+<li>go 的栈长度是可变的，最多可达到1GB的上限</li>
+<li>可以返回多个值，也可以以给返回值命名的方式进行返回值</li>
+<li>当函数返回非空错误时，其它所有的返回都应该被忽略</li>
+<li>go 使用控制流来处理错误，当有意识的忽略某个错误时，应当以注释的形式给出原因</li>
+<li>函数可以以变量的形式使用，此外函数不可比较</li>
+<li>当一个匿名函数需要递归时，必须先声明一个变量然后将匿名函数赋值给这个变量</li>
+<li>参数列表最后可以以 … 的形式传递任意树木的参数</li>
+<li>defer 调用会在任何时候执行，具体时间是 defer 结束的时候，defer 没有次数的限制，执行时以 defer 书写的反顺序执行 </li>
+<li>defer 函数可以改变返回值</li>
+<li>当出现宕机时，正常的程序会停止执行，goroutine 中所有的颜值函数会执行，然后程序会退出并留下一条日志消息</li>
+<li>通过内置函数 panic 可以进行宕机</li>
+<li>宕机是可以恢复的，通过 recover 可以恢复，而获得的值就可以拿到 panic 的参数</li>
+<li>init 函数属于普通函数，在每个文件被初始化的时候，会按照声明的顺序自动执行</li>
+</ul>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><ul>
+<li>一个类型所拥有的方法名所唯一的，不过不同的类型可以使用相同得到方法名</li>
+<li>方法调用会复制每一个实参变量，如果变量太大或者希望改变该变量，就应该传递指针。如果一个方法是指针，那么习惯上所有的方法都应该是指针</li>
+<li>不允许为本身是指针的类型进行方法声明</li>
+<li>编译器会对变量进行隐式的转化，不过只有变量才可以</li>
+<li>如果所有类型 T 的方法的接收者都是 T（而非对应指针），那么复制它的实例是安全的，调用方法的时候都必须进行一次复制。如果是指针，那么应该尽量避免复制。</li>
+<li>nil 是一个合法的指针值</li>
+<li>方法的使用顺序是分层的，首先找自己存在的方法，然后是下一级的方法，然后是再下一级。如果同级有同名方法，则会报错</li>
+<li>go 不支持方法的重载</li>
+<li>通过调用 T.method，可以把方法再一次变成函数，这种情况下第一个值应当是T</li>
+<li>go 支持封装的级别是包而不是类型，同一个包内的代码始终是可见的。</li>
+</ul>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><ul>
+<li>接口类型是对其它类型行为的概括和抽象。通过使用接口，可以写出更为灵活和通用的函数。对于某一个类型，无需声明它都实现了哪些接口，只需要提供这些声明的方法</li>
+<li>普通类型指定了所含数据的精确类型及行为，而接口只是指定了行为（也就是说，只知道实现了哪些方法）</li>
+<li>当一个具体类型要实现某个接口的时候，那么必须实现接口类型中的所有方法</li>
+<li>接口对于数据类型还是一种封装，变量只能调用接口里暴露的方法</li>
+<li>可以把接口理解成一种分类方式，分类可以同时有多种标准</li>
+<li>作为静态类型语言，类型只是编译时概念，因此不是值。给某接口类型赋值与显式转化无异</li>
+<li>由于编译时无法指导一个接口值的动态类型某所以通过接口来做动态分发。编译器必须生成一段代码从接口拿到方法地址，再间接调用该地址</li>
+<li>接口是可以比较的，当都为 nil 或者动态类型完全一致且二者动态值相等，那么两个接口值相等（当动态类型一致，但该类型不可比较的时候，则会崩溃）</li>
+<li>空的接口值和动态类型为 nil 的值不一致，空的接口类型代表什么值都可以接收</li>
+<li>在处理 sort 接口时，处理指针的代码运行速度会快很多</li>
+<li>类型断言检查就算确认作为操作数的动态类型是否满足指定的断言类型，当断言类型为具体类型时，若成功，结果就为断言类型为T，失败则崩溃。当断言类型为接口类型时，则检测x的动态类型是否满足T，若成功，不做变更，结果类型变为接口类型 T</li>
+<li>如果类型断言有两个值，失败也不不会崩溃</li>
+<li>可以通过接口类型断言来查询特性</li>
+<li>可以使用接口作为可识别联合类型某操作它的函数经常有 switch，然后对每种类型用于不同的逻辑 </li>
+</ul>
+<h1 id="goroutine-和通道"><a href="#goroutine-和通道" class="headerlink" title="goroutine 和通道"></a>goroutine 和通道</h1><p>goroutine 和通道（channel）支持通信顺序进程（CSP）</p>
+<h2 id="goroutine-简介"><a href="#goroutine-简介" class="headerlink" title="goroutine 简介"></a>goroutine 简介</h2><ul>
+<li>每一个并行执行的活动成为 goroutine。当一个程序启动时，只会有一个 goroutine 来调用 main 函数，称它为 goroutine。新的 goroutine 听过 go 语句进行创建。语法上，一个go 语句是普通的函数或方法调用前加上 go 关键字前缀的，go 语句使得函数在一个新创建的 goroutine 中调用，go 语句本身的执行立即完成。</li>
+<li>除了从 main 返回或者退出程序之外，没有一个程序化的方法让一个 goroutine 停止另一个，但是可以和 goroutine 通信要求它自己停止。<h2 id="通道"><a href="#通道" class="headerlink" title="通道"></a>通道</h2></li>
+<li>每一个通道是一个具体类型的导管，叫作通道的元素类型。一个有 int 类型元素的通道成为 chan int。</li>
+<li>ch := make(chan int)  // 创建一个 int 型通道</li>
+<li>ch &lt;- x 为发送语句， x = -&lt; ch 为接收语句，close 可以关闭通道。关闭通道后的发送操作会导致宕机，在一个已经关闭的通道上进行接受操作将会获取所有已经发送的值，直到通道为空，此时任何接受操作会立即完成。</li>
+<li>make 可以接受第二个参数作为缓冲通道的容量大小。</li>
+<li>无缓冲通道上的发送操作将会阻塞，直到另一个 goroutine 在对应的通道上执行接受操作，这时值传送完成，两个 goroutine 都可以继续执行。相反，如果接受操作先执行，接收方 goroutine 将阻塞，直到另一个 goroutine 在同一个通道上发送一个值。</li>
+<li>在并发中， x 早于 y 并不是指发生的时间，而是说这个顺序是可以保证的。同样，x y 并发也不代表同时发生，只是说明不能假设其顺序。</li>
+<li>并没有直接的方式来判断通道是否已关闭，但是可以通过接受到的通道元素以及 bool 型值来判断通道是否关闭并读完。</li>
+<li>for range 可以在通道上迭代，保证在读完最后一个值后关闭</li>
+<li>只有需要通知接收方所有数据已发送时才需要关闭通道，通道是根据是否可被访问而被决定是否回收的，而不是根据它是否被关闭。</li>
+<li>关闭操作只能在发送方 goroutine 上关闭，只能接受的 goroutine 不可被关闭。</li>
+<li>在参数中， chan&lt;- int 代表只能发送，&lt;-chan int 代表只能接受。在赋值操作后者难过将双向通道转换为单向通道都是允许的，但是反过来是不行的。</li>
+<li>缓冲通道满时，发送会阻塞，为 0 时，接收会阻塞。</li>
+<li>无缓冲通道提供强同步保证，因为每一次发送都和一次对景的接收同步，而对于缓冲通道，这些操作是解耦的。<h2 id="select-进行多路复用"><a href="#select-进行多路复用" class="headerlink" title="select 进行多路复用"></a>select 进行多路复用</h2></li>
+<li>select 一致等待，直到一次通信操作（通道上的发送或接收）</li>
+<li>如果多个情况同时满足， select 随机选择一个，这样保证每一个通道都有相同的机会被选中。</li>
+<li>如果不希望被 select 阻塞，则可以使用 default。</li>
+<li>可以通过关闭通道的方式来进行取消（关闭后读取值会立即返回）</li>
+</ul>
+<h1 id="使用共享变量实现并发"><a href="#使用共享变量实现并发" class="headerlink" title="使用共享变量实现并发"></a>使用共享变量实现并发</h1><ul>
+<li>如果无法确切的保证一个事件必然优先于另一个事件，那么这两个事件是并发的。如果这个函数在并发调用的情况下依旧能正确工作，那么这个函数是并发安全的。在没有额外同步机制的情况下，从两个或多个 goroutine 同时调用这个函数。</li>
+<li>数据竞态发生于两个 goroutine 并发读写同一个变量且至少一个是写入的时候。有三种方法可以避免数据竞态：<ul>
+<li>方法不修改变量。那些从不修改的数据结构以及不可变数据结构本质上就是并发安全的，不需要任何同步</li>
+<li>避免通过多个 goroutine 访问同一个变量——通过通道来共享内存</li>
+<li>允许多个 goroutine 访问统一变量，但在同一时间只有一个 goroutine 可以访问。该机制被成为互斥机制<h2 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h2></li>
+</ul>
+</li>
+<li>按照惯例，被互斥量保护的变量声明应该紧跟在互斥量之后，如果实际情况不是如此，就要添加注释来说明此事</li>
+<li>lock 和 unlock 之间的代码，可以自由地读取和修改共享变量，这一部分称为临界区域，goroutine 使用完之后应当解锁。</li>
+<li>当处理并发程序时，应当永远优先考虑清晰度，拒绝过早的优化。在可以使用的地方，就尽量使用 defer 来让临界区域扩展到函数结尾处。</li>
+<li>当使用一个互斥量的时候，要确保互斥量本身和保护的变量都没有被导出</li>
+<li>读写互斥锁仅用于在临界区域对共享变量无写操作的情形，一般来讲，我们不应当嘉定那些逻辑上为只读函数或方法不会更新一些变量。<h2 id="内存同步"><a href="#内存同步" class="headerlink" title="内存同步"></a>内存同步</h2></li>
+<li>现代计算机一般有多个处理器，每个处理器都有内存的本地缓存。通道通信或互斥锁操作这样的同步原语都会导致处理器把累计的写操作刷回内存并提交。</li>
+<li>在可能的情况下，把变量局限在单个 goroutine 内部，其他的变量都使用互斥锁保护</li>
+<li>sync.Once 是专门用于解决延迟初始化的特定方案<h2 id="goroutine-与线程"><a href="#goroutine-与线程" class="headerlink" title="goroutine 与线程"></a>goroutine 与线程</h2></li>
+<li>OS 线程的栈大小通常为 2 MB，而 goroutine 的栈不是固定大小的，可以按需增大和缩小</li>
+<li>因为 OS 线程是由内核来调度，所以控制全县从一个进程到另一个进程需要一个完整的上下文切换：即保存一个线程的状态到内存，再恢复另外一个线程的状态，最后更新调度器的数据结构。</li>
+<li>与操作系统的线程调度器不同的是，Go 调度器不是由硬件时钟来定期出发的，而是由特定的 Go 语言结构来触发的。</li>
+</ul>
+<h1 id="包和管理工具"><a href="#包和管理工具" class="headerlink" title="包和管理工具"></a>包和管理工具</h1><ul>
+<li>当一个变量并非局部变量时，则对包内的全部文件都可见，如同写在同一个文件里一样。如果名称以大写字母开头，则是导出的，意味着对包外是可见和可访问的。</li>
+<li>像 ASCII 或 HTML 这样的首字母缩写词会使用相同的大小写</li>
+<li>main 包是很特殊的，该包用于定义一个独立的可运行程序，而不是某个库。在 main 包里，函数 main 也是特殊的。不管在任何函数中， main 做什么事情，总是程序开始执行的地方。当然，main 通常调用其他包中的函数来做更多的事情。</li>
+<li>go 程序编译要快过其他语言，原因如下：<ul>
+<li>所有导入都在源文件的开头进行显式的列出，这样编译器在确定依赖性时无需处理整个文件</li>
+<li>包的依赖性形成有向无环图，因此可以独立甚至并行编译</li>
+<li>go 包编译输出的目标文件不仅记录自己的导出信息，还会记录锁依赖包的信息。</li>
+</ul>
+</li>
+<li>包名通常是导入路径的最后一段，有三个例外：<ul>
+<li>如果该包定义了一条命令（可执行 Go 程序），那么总使用名称 main。必然会由 go build 生成可执行文件</li>
+<li>以 _test.go 结尾文件或者包名中出现_test,该部分用于测试</li>
+<li>包名存在版本后缀，则不包括后缀</li>
+</ul>
+</li>
+<li>可以在导入路径前改写包名，不过仅替代当前文件</li>
+<li>按照约定，包名是路径的最后一段。包初始化从声明变量开始，会先解析其依赖的顺序</li>
+<li>有时需要导入一个包，仅仅为了其副作用：对包级别的变量执行初始化表达式求职，并执行它的 init 函数。例如 import _ “image/png” ，多数情况下，它用来实现一个编译时机制，使用空白引入导入额外的包，从而开启主程序中可选的特性</li>
+<li>包的命名通常要求简短而无歧义，如果是处理某一个类的包，那么其中的函数就不必要加上这个类名</li>
+<li>pkg 子目录是构建工具存储编译后的包的位置，bin 子目录放置可执行程序。</li>
+<li>go get 创建的目录是远程仓库的真实客户端，而不是仅仅是文件的副本，可以使用版本控制命令来查看本地编辑的差异或更新到不同的版本。</li>
+<li>go get 指定 -u 开关，go get 将确保所有包都更新到到最新版本。如果没有该标记，则本地的包不会更新。</li>
+<li>通过给目录加一层 vendor 目录，可以保证依赖不更新。</li>
+<li>go build 命令编译每一个命令行参数中的包。如果包是一个库，结果会被舍弃，对于没有编译错误的包几乎不做检查，go build 会在调用命令的当前目录生成可执行程序，可执行程序名取自包的导入路径的最后一段</li>
+<li>默认情况下，go build 命令构建所有需要的包和它们的依赖性，然后丢弃除了最终可执行程序之外的所有编译后的代码</li>
+<li>go install 和 go build 非常像,区别在于会保存每一个包的编译代码和命令，而不是丢弃。</li>
+<li>go install 和 go build 对于没有改变的包和命令不需要重新编译，从而使后续的构建更加迅速。go build -i 可以将包安装在独立于构建目标的地方。</li>
+<li>当路径片段中含有 internal 的情况时，即为内部包，内部包只能被 internal 目录的父目录为跟的目录树中的包锁引用</li>
+</ul>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><ul>
+<li>在 _test.go 文件中，有三种函数需要特殊对待，即功能测试函数、基准测试函数和示例函数。功能测试函数以 Test 开头，用于检测函数的正确性。基准测试函数以 Benchmark 开头，用来测试某些操作的性能， go tests回报操作的平均执行时间。示例函数以 Example 开头，用于提供机器检查过的文档。</li>
+<li>测试用例是彼此独立的，如果测试表中一个条目造成测试失败，那么其它的条目依旧会测试，这样可以在一次测试用发现多个失败的情况。若需要终止，则使用 t.Fatal 或者 t.Fatalf 函数来终止测试。这些函数的调用必须和 Test 函数在同一个 goroutine 中，而不是在测试创建的其他的 goroutine 中。</li>
+<li>测试代码和产品代码在一个包李敏。尽管包的名称叫做 main，并且李敏定义了一个 main 函数，但是在测试过程中，该包当作库来测试。</li>
+<li>白盒测试和黑盒测试的区别即为对包内情况的了解程度。黑盒测试假设测试者对包的了解仅通过公开的 API 和文档美不逻辑是不透明的。而白盒测试可以访问包内部函数和数据结构，并可以做一些改动。</li>
+<li>外部测试包用于解决循环引用的问题，当包声明为 url_test,它应该单独地编译一个包，这个包仅包含这些文件，然后通过测试。（可以立即为独立的包）</li>
+<li>应该在测试中只处理你关心的属性，选择性的设置断言，并在错误中输出足够的信息。</li>
+<li>默认情况下不会运行任何基准测试，当标记 -bench 的参数指定来要运行的基准测试。</li>
+<li>Example 函数的后缀可以将实力函数与他所演示的包或函数项关联。如果只叫 Example 关联，那么就和包 word 相关联。</li>
+</ul>
+<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
+<li>反射的处理和类型断言有些类似，当我们无法透视一个未知类型的布局时，这段代码就无法继续，这时就需要反射了。</li>
+<li>反射类型由 reflect 包提供，其中最重要的两个类型是 Type 和 Value。</li>
+<li>reflect.Type 接口只有一个实现，即类型描述符，接口里的动态值也是类型描述符</li>
+<li>reflect.TypeOf 返回一个接口值对应的动态类型，所以它总是返回具体类型（而不是接口类型）</li>
+<li>reflect.ValueOf 函数接受任意的 interface{} 并将接口的动态值以 reflect.Value 的形式返回。</li>
+<li>reflect.Value 和 interface 都可以包含任意的值。二者的区别在于空接口会隐藏值的布局信息、内置操作和相关方法，所以除非我们知道它的动态类型，并用一个断言渗透进去，否则能做的事情就很少了。而 Value 则有很多方法可以用来分析所包含的值。</li>
+<li>relfect 和 Kind 方法可以很好的区分不同的类型<h2 id="坏处"><a href="#坏处" class="headerlink" title="坏处"></a>坏处</h2></li>
+<li>反射应当谨慎使用，因为基于反射的代码是很脆弱的。正常情况下编译器可以在编译时报告错误，而反射错误则要等到执行时才以崩溃的方式来报告。</li>
+<li>反射降低了自动重构和分析工具的安全性和准确度，因为它们无法检测到类型信息。</li>
+<li>类型本身就是一种文档，大量的使用反射就如同动态语言一样让人难以理解。</li>
+<li>基于反射的函数会比为特定类型优化的函数要慢一到两个数量级，在关键路径上会大幅降低速度，不过用在测试里是无所谓的事情。 </li>
+</ul>
+<h1 id="杂"><a href="#杂" class="headerlink" title="杂"></a>杂</h1><ul>
+<li>i++ 是语句而不是表达式，另外，只支持后置而不支持前置</li>
+<li>Go 不允许无意义的临时变量，不然会出现编译错误。</li>
+<li>Go 没有构造或析构函数，没有形参默认值，没有范型</li>
+<li>一个 ServerMux 可以把多个 http.handler 合成为一个 http.handler</li>
+<li>在创建预分配空间 map、channel、预分配空间 slice。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/09/编码-url-和-base64/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/09/编码-url-和-base64/" itemprop="url">编码: url 和 base64</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-09T20:04:53+08:00">
+                2019-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>今天突然想到一个问题，为什么需要 url 编码 和 base64 编码呢？如果不做处理会有什么问题呢？</p>
+</blockquote>
+<h1 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h1><p>在日常生活中文本通常是用 ASCII 表示，而 ASCII 编码的是使用 7 bit 来表示的，大多数些操作系统上则会使用字节 8bit 来存储二进制数据，这样直接使用 ASCII 就可能会出问题。</p>
+<p>而标准 base64 共 6 位，即共有 64 个字符（英文大小写、数字和+、/），通过将 3 个 ASCII 字符转化为 4 个 base64 字符，就可以保证规避那些可能出错的 ASCII。转化后的 base64 长度必然能被 4 整除（不算等号）</p>
+<p>显然，不是所有文本长度都是 3 的整数倍，因此，当不能被 3 整除时，就用 \0 补齐, 有几个 \0 就有几个 =。</p>
+<h1 id="URL-编码"><a href="#URL-编码" class="headerlink" title="URL 编码"></a>URL 编码</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>URL 中通过 &amp; 分隔参数，通过 = 来分隔 key 和 value，但是存在一个问题，如果 key 或者 value 中存在 &amp; 和 = 应当如何处理呢？<br>答案就是通过编码保证这些值避免这些问题，这些需要编码的字符即为不安全字符。</p>
+<ul>
+<li>空格：Url在传输的过程，或者用户在排版的过程，或者文本处理程序在处理Url的过程，都有可能引入无关紧要的空格，或者将那些有意义的空格给去掉。</li>
+<li>引号以及&lt;&gt;：引号和尖括号通常用于在普通文本中起到分隔Url的作用</li>
+<li>#：通常用于表示书签或者锚点</li>
+<li>%：百分号本身用作对不安全字符进行编码时使用的特殊字符，因此本身需要编码</li>
+<li>{}|\^[]`~：某一些网关或者传输代理会篡改这些字符</li>
+</ul>
+<p>Url编码默认使用的字符集是US-ASCII。例如a在US-ASCII码中对应的字节是0x61，那么Url编码之后得到的就是%61，对于非 ASCII 编码，通常使用 Unicode 的 utf-8 来进行编码。</p>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><p>在 JS 中， encodeURI 和 encodeURIComponent 的安全字符是不同的，分别如下：</p>
+<ul>
+<li>encodeURI（82个）：!#$&amp;’()*+,/:;=?@-._~0-9a-zA-Z</li>
+<li>encodeURIComponent（71个）：!’()*-._~0-9a-zA-Z</li>
+</ul>
+<p>encodeURI 需要处理整个 URL，因此很多字符不应当处理，而 encodeURIComponent 则是指 key 或者 value。</p>
+<p>表单提交的时候每个值都会经过 URL 编码，但是并不是最新标准。</p>
+<p>另外，很多HTTP监视工具或者浏览器地址栏等在显示Url的时候会自动将Url进行一次解码（使用UTF-8字符集），这就是为什么当你在Firefox中访问Google搜索中文的时候，地址栏显示的Url包含中文的缘故。但实际上发送给服务端的原始Url还是经过编码的。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/58479085" target="_blank" rel="noopener">为什么要进行URL编码</a></li>
+<li><a href="https://www.zhihu.com/question/36306744/answer/71626823" target="_blank" rel="noopener">为什么要使用base64编码</a></li>
+<li><a href="https://stackoverflow.com/questions/3538021/why-do-we-use-base64" target="_blank" rel="noopener">Why do we use Base64?</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">diaotai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">diaotai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
-<!-- 
-     Because of the native support for backtick-style fenced code blocks 
-     right within the Markdown is landed in Github Pages, 
-     From V1.6, There is no need for Highlight.js, 
-     so Huxblog drops it officially.
-
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
--->
-<!--
-    <script>
-        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
-            hljs.initHighlightingOnLoad();
-        })
-    </script>
-    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
--->
-
-
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
-
-<!--fastClick.js -->
-<script>
-    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
-
-
-<!-- Google Analytics -->
-
-
-
-
-<!-- Baidu Tongji -->
 
 
 
 
 
 
-	<a id="rocket" href="#top" class=""></a>
-	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
-<!-- Image to hack wechat -->
-<img src="http://yoursite.com/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work -->
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
 
 </body>
-
 </html>
