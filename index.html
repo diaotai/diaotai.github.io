@@ -229,6 +229,308 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/21/精通CSS笔记/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/21/精通CSS笔记/" itemprop="url">精通CSS笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T16:07:23+08:00">
+                2019-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="语义化-CSS"><a href="#语义化-CSS" class="headerlink" title="语义化 CSS"></a>语义化 CSS</h1><ul>
+<li>给元素添加类名时，即使类名明确用于样式，也不要以体现其视觉效果，正确的作法是用类型指出该组件的类型。比如说，将商品列表命名为 product-list 而不是 larged-centered-list</li>
+<li>在使用选择器时，不应当涉及太多的上下文</li>
+<li>要从结构中分离出皮肤，从内容中分离出容器，不要将字体、颜色和定位、浮动的样式写在一起</li>
+<li>要注意以下几点:<ul>
+<li>以类名作为应用样式的主要手段</li>
+<li>类名要能顾名思义，清晰明了</li>
+<li>通过拆分出单一用途的规则来避免不必要的重复</li>
+<li>不要把元素类型和样式规则绑定到一起</li>
+</ul>
+</li>
+</ul>
+<h1 id="CSS-选择器"><a href="#CSS-选择器" class="headerlink" title="CSS 选择器"></a>CSS 选择器</h1><h2 id="子代和同辈选择符"><a href="#子代和同辈选择符" class="headerlink" title="子代和同辈选择符"></a>子代和同辈选择符</h2><ul>
+<li>a &gt; b: 所有子代</li>
+<li>a + b: 所有相邻同辈属性（位于 a 之后相邻的 b）</li>
+<li>a ~ b: 所有同辈组合子，用于选择位于 a 之后的所有 b</li>
+</ul>
+<h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><ul>
+<li>a[title]: 拥有 title 属性的 a 标签</li>
+<li>a[title=”submit”]: 拥有 title 属性为 submit 的 a 标签</li>
+<li>a[href^=”abc”]: title 属性以 abc 开头</li>
+<li>a[href$=”abc”]: title 属性以 abc 结尾</li>
+<li>a[href*=”abc”]: title 属性中包含 abc 三个字符</li>
+<li>a[href~=abc]: 经空格分隔开的值中有一个为 abc</li>
+</ul>
+<h2 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h2><ul>
+<li>target: 它匹配的元素拥有 id 属性，且为当前页面 URL 末尾的 # 后边的值</li>
+<li>not(): 反选伪类</li>
+<li>nth-child(3n + 4): 该元素的 第(n=0,1,2) 个元素</li>
+<li>nth-child(-n + 4): 当 n 为负值时，即为前四个(nth-last-child 即为逆序)</li>
+<li>only-of-type: 会选择特定类型的元素，如果为纯数字，则为总体而言的第 n 个（必然只出现一次）</li>
+</ul>
+<h2 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h2><ul>
+<li>标注为 !important 的用户样式</li>
+<li>标注为 !important 的开发者样式</li>
+<li>开发者样式</li>
+<li>用户样式</li>
+<li>浏览器默认样式</li>
+</ul>
+<h1 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h1><ul>
+<li>em 对字体是百分比叠加的（如果是用在 font-size 上是以父元素的 font-zize 为基准）</li>
+<li>行高指的是行盒子的总高度，更通俗的是行间距，排版属于叫铅空，就是排字用来隔开字符的铅块。css 中的铅空会始终同时应用于行盒子的上方和下方。</li>
+<li>line-height 设置数字意味着以当前 font-size 为基准，子元素继承的会是一个系数，始终以自身 font-size 为基准</li>
+<li>vertical-align 的默认值是 baseline，即子元素的基线与父元素的对齐</li>
+<li>font-variant 可以通过 small-caps 把英文文本转换成所谓的小型大写字母，即全部字母都大写，但是只有第一个是正常大小，其它的字母的大小会和小写时一样</li>
+<li>使用新 css 属性 hyphens 可以在连续英文中插入连字符</li>
+<li>column 模块可以将网页中部分的内容转换成类似与报纸的分栏效果，而 colimn-span 可以营造出横跨多栏的效果</li>
+<li>在排版时常见的是以正文行高的整数倍来进行设计，因此，margin line-height 的和应该也是整数倍</li>
+<li>潜入 web 字体的关键是 @font-face 规则，其中必须要有的是 font-family 和 src 属性，而 font-weight 和 font-style 则是可选的，后两者不会改变 web 字体，但是会影响匹配的优先级——浏览器会优先匹配正确的字体，正确的 font-family 会优先于正确的粗细值。</li>
+<li>web Font Loader 可以报纸跨浏览器的字体加载的一致性（统一 FOCUS），匹配后备字体可以进行微调来减少抖动</li>
+<li>文字阴影通常用于标题或短文吧，需要指定 x，y 的偏移量以及模糊距离和颜色值，多组阴影会进行这边，先定义的在下，后定义的在上。</li>
+</ul>
+<h1 id="可见格式化模型"><a href="#可见格式化模型" class="headerlink" title="可见格式化模型"></a>可见格式化模型</h1><h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><ul>
+<li>组成盒子模型的范围有 width, height, padding, border, margin, outline 类似于 border，但是并不影响盒子和宽度和高度，因此可以用来复杂布局的调试。</li>
+<li>默认情况下，width 和 height 都指的是内容区的宽度和高度，但这样其实蛮坑爹的</li>
+<li>通过将 box-sizing 的值修改为 border-box，那么 width 和 height 属性的值将包含内边距和边框，不过 margin 不会算在其中</li>
+<li>在 CSS 中设置任何高度值都应该慎重，这是因为元素的高度通常应该取决于所包含的内容，一个定值容易产生越界。如果需要使用，也最好使用 min-height。</li>
+</ul>
+<h2 id="可见盒子模型"><a href="#可见盒子模型" class="headerlink" title="可见盒子模型"></a>可见盒子模型</h2><ul>
+<li>行内盒子是沿文本流水平排列的，也会随着文本换行而换行。它们之间的水平间距可以通过水平方向的 margin、padding、border 来调节。而在竖直方向，唯一修改盒子大小的方法只有 line-height（line-height代表最小值）。</li>
+<li>当文本没有被任何元素包裹的时候，即为匿名盒子，所有展示都位于盒子中</li>
+<li>外边距折叠：外边距折叠只发生在文档常规文本流的垂直方向上，行内盒子、浮动盒子和绝对定位盒子的外边距不会折叠。当发生外边距折叠时，最终结果取较大的那个值，当出嵌套时，如果没有 border 或 padding 或者某些具体的内容在进行隔离，同样会出现外边距折叠，一个空的块级元素自身的上下边距也会折叠。在外边距折叠后，如果碰到其它外边距，还会继续折叠。</li>
+<li>包含块是计算内边距和外边距百分比的依据，在 static 中，默认使用父元素作为包含块。</li>
+</ul>
+<h3 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h3><ul>
+<li>浮动元素会自动收缩为适应其中内容的最小宽度，除非显式设置的 width</li>
+<li>如果浮动元素太窄，无法容纳所有浮动元素水平排列，那么就会向下移动。</li>
+<li>由于浮动元素脱离正常的文档流中，因此无法在文档流内部生成高度，因此需要在结束的的 div 标签签名额外添加一个空元素，然后清除该元素。此外，还可以通过 ::after 伪类生成 content 来处理问题。<h3 id="格式化上下文（BFC）"><a href="#格式化上下文（BFC）" class="headerlink" title="格式化上下文（BFC）"></a>格式化上下文（BFC）</h3></li>
+<li>页面必须包含突出的浮动元素，而且所有块级盒子左边界都默认与包含块左边界对齐。这组规则即为块级格式化上下文。外边距折叠只会发生在属于同一块级格式化上下文的块级元素中。</li>
+<li>以下方法为生成块级格式化上下文的方法：<ul>
+<li>display 为 inline-block 或 table-ceil之类的元素</li>
+<li>float 属性值不为 none 的元素</li>
+<li>绝对定位的元素</li>
+<li>overflow 不为 visible 的元素</li>
+</ul>
+</li>
+<li>浮动元素从文档流中脱离后，会触发其后的元素中行盒子的缩短行为，而当一个元素具备了触发新跨级格式化上下文的条件，且挨着浮动元素后，就会收缩至适当大小且保证做外边必为直线。</li>
+</ul>
+<h1 id="水平布局"><a href="#水平布局" class="headerlink" title="水平布局"></a>水平布局</h1><h2 id="层叠-1"><a href="#层叠-1" class="headerlink" title="层叠"></a>层叠</h2><ul>
+<li>z-index 并不是在所有层面都生效的，只有在非 static 或几种特殊情况下（opacity &lt; 1,transform!=none,filter!=none），才会有效果。要注意，z-index 只有在父级层叠上下文中才有意义，子级层叠上下文会被视为单独的一部分。<h2 id="水平布局-1"><a href="#水平布局-1" class="headerlink" title="水平布局"></a>水平布局</h2></li>
+<li>要让两个元素的内容竖直方向对齐，先把它们设置为 inline 属性，然后应用 vertical-align: center</li>
+<li>在 HTML 的行内，可能出现将换行视为一个空格的情况，这组情况下需要将 font-size 设置为 0 来解决</li>
+<li>通常只将行内块当作兼容旧版本浏览器的逻辑，正常而言应当使用更为先进的 flexbox</li>
+<li>表格布局与常规块不同，不设置宽度的表格会“收缩适应”内容宽度，除非包含块中的内容将其撑开，但是表格布局有很多弊端，比如无法应用外边距，再比如给其定位时可能产生一些无法预料的问题<h2 id="Flexbox"><a href="#Flexbox" class="headerlink" title="Flexbox"></a>Flexbox</h2></li>
+<li>在 flex 中，若不指定大小，那么 flex 容器内的项目会自动收缩，也就是说，会变成容纳各项的最小宽度（如果主轴为列那就是高度），以恰好能容纳自身内容为限。</li>
+<li>如果某一侧外边距值为 auto，且在容器那一侧还有空间，那么该外边距就会扩展至占据所有位置。</li>
+<li>align-items 的默认值为 stretch，也就是说，会拉伸至充满父容器</li>
+<li>其实 flex + margin:auto 就可以完成单个元素的居中</li>
+<li>flex-basis 的默认值为 auto，即为取默认的宽或高，如果没有设置，则收缩为可容纳的最小宽度，当设置为 0 时，flex-grow 将不再考虑其宽度所带来的影响</li>
+<li>flex-grow 的默认值为 0，即默认不再扩展</li>
+<li>flex-shrink 即为收缩，考虑时将使用 flex-basis * flex-shrink 作为比例系数来进行缩放</li>
+<li>flexbox 的方向是逻辑方向，即以文本方向决定哪里是开头哪里是结尾</li>
+<li>order 可以在不改变 html 的情况下改变展示顺序，order 越小越靠前，相等则按照原顺序</li>
+<li>为了处理 flex-box 换行后过于庞大的情况，可以给 item 设置最大宽度</li>
+<li>与常规块不同，不需要将可伸缩项设置为非 static 的定位值，也可以对它们应用 z-index 属性，并产生 z-index 上下文</li>
+<li>flex 中可伸缩项具有隐性最小宽度，即收缩不可能收缩到无法展示内容的情况下，为此，可以覆盖 min-width，明确一个主尺寸</li>
+</ul>
+<h1 id="盒子模型-1"><a href="#盒子模型-1" class="headerlink" title="盒子模型"></a>盒子模型</h1><ul>
+<li>颜色的 hsl 语法需要传入三个参数，第一个是角度，第二个和第三个分别代表饱和度和亮度</li>
+<li>opacity 设置之后，是无法再让其子元素变得不那么透明的<h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2></li>
+<li>在使用背景图片设置位置时，设置具体像素值代表着包含块左上角具体图片左上角的距离，而百分比则代表着包含块左上角到图片对应百分比点的距离正好为包含块的百分比。</li>
+<li>背景图片默认展现在 border 范围内，而 background-clip 属性可以改变这个行为，这个属性的默认值为 border-box，而 padding-box 和 content-box 可以解决这个问题。</li>
+<li>background-attachment 可以解决背景图片附着的问题</li>
+<li>background-size 是百分比并不是根据图片固有大小，而是根据包含块的大小来测定的</li>
+<li>background-size 的 contain 和 cover 都不改变 宽高比例，前者可以保证完全被展示，后者会导致被剪切<h2 id="border"><a href="#border" class="headerlink" title="border"></a>border</h2></li>
+<li>border 的顺序是左上角开始顺时针旋转</li>
+<li>border 的值指的是圆的半径，若两个圆角的弧线相交，则两个轴向都会分别缩小半径，知道圆弧不再相交。对于方形元素的对称圆角而言，任何大于 50% 的值都会得到圆形。而对于矩形元素，则可以设置一个非常大的值来实现胶囊效果。</li>
+<li>当矩形变为圆角后，元素对布局的影响和之前是一样的，但是响应点击的范围是以变化之后为标准的。<h2 id="盒阴影"><a href="#盒阴影" class="headerlink" title="盒阴影"></a>盒阴影</h2></li>
+<li>头两个值表示 x 轴和 y 轴的偏移，第三个值表述模糊半径，最后一个值是颜色。</li>
+<li>box-shadow 可以使用 inset 来设置内阴影，从而作出一种被镂空的效果<h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2></li>
+<li>渐变必然是从一个方向到齐对称方向，默认是从上到下，坐标轴垂直向上，方向为顺时针。<h2 id="嵌入图片的改变"><a href="#嵌入图片的改变" class="headerlink" title="嵌入图片的改变"></a>嵌入图片的改变</h2></li>
+<li>max-width 100% 是限制图片的方法，这意味着会随着容器的缩小而变小，但不会大到超过自身尺寸，且不会改变其比例。</li>
+<li>通常会加上 width、height 为 auto 的声明</li>
+<li>object-fit 可以像 background-size 一样来设置图片的大小，默认是 fill，会拉伸图片来充满容器，因此可能破坏宽高比。none 代表使用图片自有宽高，cover 和 contain 与 background-size 相同，scale-down 则会从 none 和 contain 中选一个，以小的为准</li>
+<li>没有设置宽高的可替代元素最终的默认大小可能是 300px 或 150px</li>
+<li>内外边距的百分比是以本身的宽度来确定的，因此可以设置为宽度 100%，padding-bottom 75% 来完成视频的包含</li>
+</ul>
+<h1 id="页面布局与网格"><a href="#页面布局与网格" class="headerlink" title="页面布局与网格"></a>页面布局与网格</h1><ul>
+<li>传统行列布局的方法是通过 row 和 col 的百分比来计算宽度，通过 padding 来完成边距自适应</li>
+<li>flex 整体而言是更好的旋转，但是 flex box 会随着其中内容的加载而重新计算尺寸，因此在页面首次打开的时候会调一下，体验并不好<h2 id="二维网格布局"><a href="#二维网格布局" class="headerlink" title="二维网格布局"></a>二维网格布局</h2></li>
+<li>分别通过 grid-template-rows 和 grid-template-columns 来设置宽高，1 fr 代表可分配宽度分之一，这个会放到最后来计算</li>
+<li>minmax 可以设置以下最小值</li>
+<li>当 grid-row 或 grid-column 设置跨所有行时，可以将最后一个置为 -1</li>
+<li>justify-content 和 align-content 可以设置多个个体的排布</li>
+<li>而 align-self 可以设置单个在副轴上的排布</li>
+<li>grid-auto-flow 可以设置默认主轴的方向</li>
+<li>默认排布模式是会导致空洞的（出现较大的元素），如果设置为稠密模式（grid-auto-flow: row dense）会自动跑多变，每次都从头开始，尽力找到最前面得到空位置</li>
+<li>可以通过 grid-area 来给网格空间命名</li>
+</ul>
+<h1 id="响应式-web-设计与-css"><a href="#响应式-web-设计与-css" class="headerlink" title="响应式 web 设计与 css"></a>响应式 web 设计与 css</h1><ul>
+<li>理想视口即手机应该有的大小，而可见时刻为实际显式的内容，布局视口则是放大后的整个页面的内容</li>
+<li>设置 meta 标签可以很好的使用理想尺寸，此外，css理论上也可以做到，在 style 标签中使用 @viewport 即可，最好放在 html 里，以保证被尽早执行</li>
+<li>响应式 web 的核心在于媒体查询，媒体查询可以使用一连串的逗号来解决，逗号相当于 或</li>
+<li>媒体查询中使用的 em 始终相对于浏览器偏好中的基准字段，而不是可以通过 css 调整的 html 元素的 rem</li>
+<li>响应式设计应当优先于移动端，flexbox 和 grid 其实都是很不错的旋转</li>
+<li>通过 img 的 srcset 属性，可以让浏览器对图片自有进行预处理，从而让图片等资源在完成整个页面晕眩之前就进行加载</li>
+<li>srcset 可以针对不同的大小和分辨度来使用不同的图片</li>
+<li>sizes 属性可以针对当前的图片来决定图片的大小</li>
+<li>可以在 picture 属性中使用 webp，其中有 source 和 img，img 可以作为整体的后备</li>
+</ul>
+<h1 id="变换、过度与动画"><a href="#变换、过度与动画" class="headerlink" title="变换、过度与动画"></a>变换、过度与动画</h1><h2 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h2><ul>
+<li>transform 不会影响布局本身，但是所有点都会被移到新位置上，图形所在的整个局部坐标系统都会被旋转，同样，旋转也不会影响页面其它部分的布局</li>
+<li>变换默认是以元素边框盒子的中心为原点的，可以通过 transform-origin 来设置 1 到 3 个值，如果忽略，则为 center。坐标原点在图形左上方。</li>
+<li>svg 的变换有一些不同，比如 transform-origin 默认即为左上角，而非中心。</li>
+<li>translate 的百分比是相较于自身而非包含块</li>
+<li>多重变换的顺序非常重要。如果先旋转伪元素，那么变换会以旋转后的坐标来完成</li>
+<li>应用给元素的任何变换都会创建一个堆叠上下文，这意味着在使用变换时，要注意 z-index，因为变换后的元素有自己的堆叠上下文，也就是说，子元素上的 z-index值再大，也无法和父堆叠上下文呢相比较。</li>
+<li>单写某个 transition 形式无法制定多个属性，但可以指定多个不同的过度，以逗号进行分隔。</li>
+<li>transition-property 指定的值决定了要应用的过度数量，如果其它过度列表持续时间更短，则会重复。</li>
+<li>steps 可以将动画分为不同的几帧。</li>
+<li>transition-delay 可以用来延迟动画的触发，延迟时间可以为负值，这样可以跳过一部分动画。</li>
+<li>关键帧动画中 css 属性不允许添加 ！important，加了会被忽略。</li>
+<li>直接修改 dom 的 css 属性可以触发 dom</li>
+<li>在进行 x，y 轴的旋转时，会涉及到透视的概念，用户距离透视点越近，影响越大，反之越小，默认无穷远，即不影响。</li>
+<li>默认情况下，嘉定观察者的实现与应用透视的元素相较于元素的中心。通过 perspective-origin 属性来修改消失的点的位置。</li>
+<li>backface-visibility 属性可以用来控制背面展示，默认是 visible，不过可以设置为 hidden</li>
+<li>当进行三维反转时，所有子元素的三维反转都会失效，因此需要通过 transform-style 属性来设置一个三维上下文， 改制为 perserve-3d.</li>
+</ul>
+<h1 id="高级特效"><a href="#高级特效" class="headerlink" title="高级特效"></a>高级特效</h1><ul>
+<li>shape-outside 可以应用给浮动元素，不改变自身的外观，而是通过设置其形状影响外部的文档流</li>
+<li>当 shape-outside 设置为 border-box 时，此时设置 margin 会呈现 border-box 的形状</li>
+<li>剪切会影响对象的相应区域，而蒙版不会</li>
+<li>剪切使用 clip-path 来进行，只影响文档渲染后的外观和相应区域，并不会影响文档流。</li>
+<li>剪切可以通过 svg，具体而言是在 svg 里面设置 id，在引用时使用 url + id 的形式来解决。</li>
+<li>由于 svg 下剪切路径硬编码的坐标，因此无法缩放，可以将其设置为大小为 1 的 svg 来解决这个问题（换成了对象边界坐标系）</li>
+<li>为保证正确的几个，我们要遵循应用剪切、蒙版、混合和滤镜的标准次序</li>
+</ul>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="浏览器如何解析-css"><a href="#浏览器如何解析-css" class="headerlink" title="浏览器如何解析 css"></a>浏览器如何解析 css</h2><ul>
+<li>解析文件即构建对象模型（将 html 解析为 dom 对象节点树，在浏览器碰到指向 css 的链接时，会获取并解析 css，将 css 文件转化为 css 对象模型，同样是树型结构）</li>
+<li>构建渲染树（被隐藏的 DOM 节点不会出现在这里，而类似于 :before 的伪元素则可能出现在其中，但是在 DOM 中不会有，除了节点，浏览器还会在这里保存其它表现性信息，如滚动块或视口）</li>
+<li>布局（根据渲染树确定不同对象显式于页面的什么位置）</li>
+<li>给予渲染树的信息进行绘制（如果浏览器发现最终图像的某一部分不影响页面其他内容的显式，也可能会拆分成不同的任务，每个任务负责绘制特定的部分）</li>
+<li><a href="https://csstriggers.com/" target="_blank" rel="noopener">https://csstriggers.com/</a> 标注了每个属性对应渲染的什么阶段</li>
+<li>will-change 属性可以用来进行硬件加速，但是一定要慎用</li>
+</ul>
+<h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><ul>
+<li>尽量减少 HTTP 请求，将 css 控制在 1～2 个范围内，注意，@import 同样会触发 HTTP 请求</li>
+<li>压缩和缓存可以有效的加快加载速度</li>
+<li>script 会阻塞渲染，而 async 会异步加载脚本，但是会在脚本加载完毕时执行，阻断 HTML 解析。如果时 defer 的话，同样会异步加载脚本，但是会等到 HTML 解析结束后再执行加载的脚本 </li>
+</ul>
+<h1 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h1><ul>
+<li>如果希望根据浏览器是否支持某个 CSS 属性来提供不同的样式，那么可以在 css 中使用 @supports 模块，该代码被成为条件规则</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/10/thrift-探索记录/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1725,158 +2027,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/09/编码-url-和-base64/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/09/编码-url-和-base64/" itemprop="url">编码: url 和 base64</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-09T20:04:53+08:00">
-                2019-06-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>今天突然想到一个问题，为什么需要 url 编码 和 base64 编码呢？如果不做处理会有什么问题呢？</p>
-</blockquote>
-<h1 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h1><p>在日常生活中文本通常是用 ASCII 表示，而 ASCII 编码的是使用 7 bit 来表示的，大多数些操作系统上则会使用字节 8bit 来存储二进制数据，这样直接使用 ASCII 就可能会出问题。</p>
-<p>而标准 base64 共 6 位，即共有 64 个字符（英文大小写、数字和+、/），通过将 3 个 ASCII 字符转化为 4 个 base64 字符，就可以保证规避那些可能出错的 ASCII。转化后的 base64 长度必然能被 4 整除（不算等号）</p>
-<p>显然，不是所有文本长度都是 3 的整数倍，因此，当不能被 3 整除时，就用 \0 补齐, 有几个 \0 就有几个 =。</p>
-<h1 id="URL-编码"><a href="#URL-编码" class="headerlink" title="URL 编码"></a>URL 编码</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>URL 中通过 &amp; 分隔参数，通过 = 来分隔 key 和 value，但是存在一个问题，如果 key 或者 value 中存在 &amp; 和 = 应当如何处理呢？<br>答案就是通过编码保证这些值避免这些问题，这些需要编码的字符即为不安全字符。</p>
-<ul>
-<li>空格：Url在传输的过程，或者用户在排版的过程，或者文本处理程序在处理Url的过程，都有可能引入无关紧要的空格，或者将那些有意义的空格给去掉。</li>
-<li>引号以及&lt;&gt;：引号和尖括号通常用于在普通文本中起到分隔Url的作用</li>
-<li>#：通常用于表示书签或者锚点</li>
-<li>%：百分号本身用作对不安全字符进行编码时使用的特殊字符，因此本身需要编码</li>
-<li>{}|\^[]`~：某一些网关或者传输代理会篡改这些字符</li>
-</ul>
-<p>Url编码默认使用的字符集是US-ASCII。例如a在US-ASCII码中对应的字节是0x61，那么Url编码之后得到的就是%61，对于非 ASCII 编码，通常使用 Unicode 的 utf-8 来进行编码。</p>
-<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><p>在 JS 中， encodeURI 和 encodeURIComponent 的安全字符是不同的，分别如下：</p>
-<ul>
-<li>encodeURI（82个）：!#$&amp;’()*+,/:;=?@-._~0-9a-zA-Z</li>
-<li>encodeURIComponent（71个）：!’()*-._~0-9a-zA-Z</li>
-</ul>
-<p>encodeURI 需要处理整个 URL，因此很多字符不应当处理，而 encodeURIComponent 则是指 key 或者 value。</p>
-<p>表单提交的时候每个值都会经过 URL 编码，但是并不是最新标准。</p>
-<p>另外，很多HTTP监视工具或者浏览器地址栏等在显示Url的时候会自动将Url进行一次解码（使用UTF-8字符集），这就是为什么当你在Firefox中访问Google搜索中文的时候，地址栏显示的Url包含中文的缘故。但实际上发送给服务端的原始Url还是经过编码的。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/58479085" target="_blank" rel="noopener">为什么要进行URL编码</a></li>
-<li><a href="https://www.zhihu.com/question/36306744/answer/71626823" target="_blank" rel="noopener">为什么要使用base64编码</a></li>
-<li><a href="https://stackoverflow.com/questions/3538021/why-do-we-use-base64" target="_blank" rel="noopener">Why do we use Base64?</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1922,7 +2077,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1935,7 +2090,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
