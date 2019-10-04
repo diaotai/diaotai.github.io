@@ -229,6 +229,209 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/01/css-世界/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/01/css-世界/" itemprop="url">css 世界</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-01T21:52:53+08:00">
+                2019-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="基础流布局简介"><a href="#基础流布局简介" class="headerlink" title="基础流布局简介"></a>基础流布局简介</h1><ul>
+<li>流实际上是 css 世界中的一种基本定位和布局机制，具备自适应的特性。流对于某些 table 并不适用。</li>
+<li>通常把元素分为块级元素和内联元素</li>
+<li>width 为 auto 时如果是块级元素会充分利用可用空间，如果是浮动、绝对定位、inline-block 时会收缩到合适大小，如果是内容连续的很长的英文或数字，则会超出（word-break:break-all 可以用来解决该问题）</li>
+<li>如果内部没有块级元素或块级元素没有设定宽度值，则最大宽度实际上是最大的连续内联盒子的宽度</li>
+<li>对普通流里的元素，如果 height:100% 要想生效，其父级必须有一个可以生效的高度值（否则百分比和 auto 无法计算）</li>
+<li>width 不存在以上问题，它会使用包含块的真实的计算值作为百分比计算的基数</li>
+<li>正常布局的宽高百分比是以包含块的 content-box 来计算的，而绝对定位的宽高百分比是相对于 padding-box。</li>
+<li>max-width 的优先级要高过 width，而 min-width 的优先级要高过 max-width</li>
+<li>通过设置 max-height 可以完成高度展开的动画</li>
+<li>每个行框的开始都会有宽度为 0 高度为 line-height 或 font-size 的内联块，用于撑起基本的高度(可以通过设置一个 inline-block 的空 span 来体现)</li>
+</ul>
+<h1 id="盒尺寸四大家族"><a href="#盒尺寸四大家族" class="headerlink" title="盒尺寸四大家族"></a>盒尺寸四大家族</h1><h2 id="content"><a href="#content" class="headerlink" title="content"></a>content</h2><ul>
+<li>所有替换元素都是内联元素，其内容不受页面 css 上的影响，有着自身的尺寸</li>
+<li>若替换元素的固有尺寸有这个宽高比例，那么设置一个就会自动形成另一个，将图片设置为 block 不会影响其尺寸规则</li>
+<li>替换元素和非替换元素只隔了一个 content 属性，但是替换元素的固有尺寸是无法设置的</li>
+<li>content 只能改变视觉呈现，而当右键保存时，还是原来的内容</li>
+<li>content 生成的文本无法被选中，此外，还不能匹配 empty 类<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2></li>
+<li>内联元素的竖直方向的 padding 是影响布局的（具体体现在会出现滚动条）</li>
+<li>对于非替换元素的内联元素，不仅 padding 不会加入行盒高度的计算，margin 和 border 也是如此，都是不计算高度，但实际上在内联盒周围发生了渲染</li>
+<li>内联元素的高度完全是受 font-size 的限制</li>
+<li>很多表单元素都内置了 padding<h2 id="margin"><a href="#margin" class="headerlink" title="margin"></a>margin</h2></li>
+<li>只有当元素处于充分利用可用空间状态的时候，margin 才可以改变元素水平或竖直的可见尺寸</li>
+<li>chrome 的滚动条为子元素大小超过 content-box 时出现，而 firfox 和 ie 是超过 padding-box 时出现，因此，子元素只能使用 margin-bottom 留白，而不是 padding-bottom</li>
+<li>margin 和 padding 的百分比无论水平还是竖直都是按照块度来计算的</li>
+<li>在没有设置宽高还会自动填充的情况下，margin 如果一侧为定值，一侧为 auto，则 auto 占据剩余所有空间，若都为 auto，则平分距离</li>
+<li>当内部元素尺寸大时，说明可用空间都没有了，会当作 0 来处理</li>
+<li>内联替换元素垂直 margin 有效，不会发生 margin 合并的情况<h2 id="border"><a href="#border" class="headerlink" title="border"></a>border</h2></li>
+<li>border-color 的默认值为 color 的值</li>
+</ul>
+<h1 id="内联元素与流"><a href="#内联元素与流" class="headerlink" title="内联元素与流"></a>内联元素与流</h1><ul>
+<li>vertical-align: middle 并不是绝对的垂直居中对齐，只是一种近似效果</li>
+<li>ex 可以用来保证与文字大小相一致</li>
+<li>行内元素的大小是 line-height 撑开的，line-height 保证了最小的高度，对于非替换元素的纯内联元素可以认为高度完全由 line-height 绝对</li>
+<li>内容区域高度受 font-family 和 font-size 双重影响，而 em-box 仅受 font-size 影响，通常内容区域高度要更高一些。</li>
+<li>内联替换元素和非替换元素放在一起时会共同形成一个行框盒子，line-height 决定其最小高度</li>
+<li>css 中，计算行高的时候，一定不要向下舍入，而是要向上舍入</li>
+<li>vertical-align 可以使用值来计算，负值向下，正值向上。</li>
+<li>vertical-align 只能作用域内联元素和 display 为 table-cell 的元素上</li>
+<li>当为 table-cell 时，vertical-align 设置在自己身上，作用域子元素上</li>
+<li>把 font-size 和 line-height 一起设置可以解决间隙的问题</li>
+<li>非主动触发唯一的内联元素是不可能跑到计算元素之外的</li>
+</ul>
+<h1 id="流的破坏与保护"><a href="#流的破坏与保护" class="headerlink" title="流的破坏与保护"></a>流的破坏与保护</h1><h2 id="float"><a href="#float" class="headerlink" title="float"></a>float</h2><ul>
+<li>浮动参考的元素是浮动元素对齐参考的实体，通常是行框盒子</li>
+<li>clear 属性是让自身不能与前面的浮动元素相邻，根本不会对之后的浮动元素造成影响</li>
+<li>如果 clear:both 元素前面的元素就是 float，那么 margin-top 负值即使设置成 -9999 px 也不会有任何效果。<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2></li>
+<li>display 为 inline-block、table-caption、table-cell 时，position 不为 static 和 relative 时会产生 BFC<h2 id="overflow"><a href="#overflow" class="headerlink" title="overflow"></a>overflow</h2></li>
+<li>清除浮动最合适的不是 clear，而是 overflow，设置 为 hidden。如果要完成元素裁剪的同时在四周设置间隙，那么可以使用透明边框，此时内监局为 padding 时无能为力的。</li>
+<li>如果两个方向的 overflow 有一个是 visible 而另一个不是，那么 visible 会表现为 auto。</li>
+<li>要想实现 text-overflow: ellipsis,必须同时设置另外两个属性– white-space:nowrap,overflow:hidden。</li>
+<li>锚点定位（使用 id 进行跳转）会发生在普通的容器上，且由内向外（指如果存在多层会从最里面那层逐层向上）。</li>
+<li>overflow:hidden 里的元素也是可以滚动的，可以通过锚点来进行跳转。<h2 id="absolute"><a href="#absolute" class="headerlink" title="absolute"></a>absolute</h2></li>
+<li>当 absolute 和 float 同时存在的时候，float 属性是无任何效果的。</li>
+<li>absolute 使用的包含块是 padding-box 而非 content-box</li>
+<li>行内元素生成的包含块由前后内联盒子决定，和里面的细节毫无关系（比如说里面字体特别大撑开）</li>
+<li>absolute 如果不设置 top 和 left 的话会处于原位置，只是会脱离文档流。<h2 id="absolute-和-overflow"><a href="#absolute-和-overflow" class="headerlink" title="absolute 和 overflow"></a>absolute 和 overflow</h2></li>
+<li>如果 overflow 不是定位元素，同时绝对定位元素和 overflow 容器之间也没有定位关系，则 overflow 无法对 absolute 元素进行裁剪。</li>
+<li>如果 overflow 的属性值不是 hidden 而是 auto 或者是 scroll，即使绝对定位元素高宽比 overflow 元素高宽还要大，也不会出现滚动条。</li>
+<li>absolute 被裁剪或 fixed 固定定位失效时，可能是 transform 的原因，<h2 id="absolute-其它"><a href="#absolute-其它" class="headerlink" title="absolute 其它"></a>absolute 其它</h2></li>
+<li>当 absolute 只设置某个方向时，另一个方向的定位依旧保持相对定位特性。</li>
+<li>clip 要起作用其元素必须是绝对定位或者固定定位<h2 id="relative"><a href="#relative" class="headerlink" title="relative"></a>relative</h2></li>
+<li>相对定位的百分比值是给予包含块计算的</li>
+<li>当相对方向的属性值同时出现时，会取上左方向</li>
+<li>在使用 relative 时，力求范围较小</li>
+<li>使用普通元素替换 fixed 可以解决很多问题</li>
+</ul>
+<h1 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h1><ul>
+<li>在同层叠关系下，后来居上，大者为上。<h2 id="基本层叠关系（自下而上）"><a href="#基本层叠关系（自下而上）" class="headerlink" title="基本层叠关系（自下而上）"></a>基本层叠关系（自下而上）</h2></li>
+<li>层叠上下文</li>
+<li>负 z-index</li>
+<li>block 块状水平盒子</li>
+<li>float 浮动盒子</li>
+<li>inline 水平盒子</li>
+<li>z-index 为 auto 或 0</li>
+<li>正 z-index<h2 id="层叠上下文"><a href="#层叠上下文" class="headerlink" title="层叠上下文"></a>层叠上下文</h2></li>
+<li>当 position 为 relative、absolute 或者 position 为 fixed 且 z-index 为 auto 时，会产生层叠上下文。</li>
+<li>z-index 为负数时，依旧无法突破当前上下文。z-index 负值的渲染就是寻找第一个层叠上下文的过程，然后层叠顺序止步于这个层叠上下文元素。 </li>
+</ul>
+<h1 id="元素的显式和隐藏"><a href="#元素的显式和隐藏" class="headerlink" title="元素的显式和隐藏"></a>元素的显式和隐藏</h1><ul>
+<li>父元素 visibility 为 hidden，子元素设置为 visible，是可以支持显式的（这一点可以用在占位符上）</li>
+<li>visibility 是支持 transition 的</li>
+<li>outline 是一个不占任何空间的属性，因此可以解决那些涉及滚动条的问题</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/21/精通CSS笔记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1682,351 +1885,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/17/go-语言基础汇总/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/17/go-语言基础汇总/" itemprop="url">go 语言基础汇总</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-17T19:28:04+08:00">
-                2019-06-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><ul>
-<li>当变量声明时，类型和表达式可以省略一个。如果类型省略，则类型由表达式决定，如果省略表达式，则使用默认空值。</li>
-<li>:= 表示声明，若没有该变量，则创建，若存在，则赋值。但是至少要保证创建了一个新变量，否则编译失败</li>
-<li>指针的值是一个变量的地址。不是所有的值都有地址，但是所有变量都有地址。使用指针可以间接读取或更新变量的值。</li>
-<li>指针是可以比较的，只有当两个指针指向同一个变量或者两者都是 nil时候，才是相等的</li>
-<li>new(int) 可以直接返回一个新创建的 int 型指针</li>
-<li>变量将一直生存到它不可访问，其生命周期是通过它是否可达来确定的</li>
-<li>当创建的局部变量指针被赋值到全局时，即为逃逸，它会被在堆空间分配内存，否则则是栈空间分布。</li>
-<li>只有类型精确匹配才可以赋值，只有两个值可以赋值时才可以比较</li>
-<li>type 声明定义一个新的类型。当底层类型相同的不同的 type 使用时应当进行类型转化。</li>
-</ul>
-<h1 id="基本数据"><a href="#基本数据" class="headerlink" title="基本数据"></a>基本数据</h1><h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><ul>
-<li>rune 类型是 int32 的同义词，通常使用一个指 Unicode 码点。</li>
-<li>取模的结果符号只会和被除数一致，整除相除得整数。</li>
-<li>溢出得情况下会直接舍弃高位</li>
-<li>&amp; 位与操作， | 位或操作， ^ 位异或操作，若为前缀，则为按位取反，&amp;^ 按位清除（z=x&amp;^y,y 某位 为 1，则 z 对应为0， 否则，为 x 的对应位）</li>
-<li>和 NaN 得比较总是不成立的</li>
-<li>Go 有两种类型的复数，complex64 和 complex128，二者分别由 float32 和 float64组成。</li>
-<li>&amp;&amp; 的优先级比 || 更高<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2></li>
-<li>字符串的第 i 个字节并不代表是第 i 个字符，因为非 ASCII 字符的 UTF-8 码点需要两个或多个字节。</li>
-<li>字符串的下标越界会引发宕机</li>
-<li>字符串是不可变的，这也意味着可以在底层共用同一段内存，这使得复制任何长度字符串的开销都很低廉。</li>
-<li>UTF-8 以字节为单位对 Unicode 码点作变长编码。一个文字符号编码的首字节高位指出后面还有多少字节。传统 ASCII 码仅占 1 个字节。变长编码使得字符串无法直接访问第 n 个字符。</li>
-<li>码点值小于 256 的文字符号可以写成单个16进制的转义形式（\xe4），更高的码点则必须\u.</li>
-<li>len 得到的是字节数，真的要逐个处理 Unicode，则必须使用其他编码机制。比如 UTF-8.</li>
-<li>字符串属于不可变的，如果需要，则应该使用 bytes.Buffer 对接      <h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2></li>
-<li>常量只能是数字、字符串或布尔值（这个常量就是指 const）</li>
-<li>对常量操作数，所有的数学运算、逻辑运算和比较结果都是常量</li>
-<li>若同时声明一组常量，除了第一项之外，其余的右侧部分都可以省略，这代表值会复用前面一项的表达式及其类型</li>
-<li>iota 可以从 0 开始递增</li>
-</ul>
-<h1 id="复合数据类型"><a href="#复合数据类型" class="headerlink" title="复合数据类型"></a>复合数据类型</h1><ul>
-<li>数组和结构体是值传递，而 slice、map、function、channel 属于引用传递<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2></li>
-<li>数组和结构体都是聚合类型，它们的值由内存中的一组变量组成。数组和结构体的长度都是固定的，slice 和 map 都是动态数据结构，它的长度在元素添加到中可以动态增长</li>
-<li><p>数组是具有固定长度且拥有多个类型元素的序列，数组的长度是数组类型的一部分。长度必须是常量，这个表达式需要在程序编译时就可以确定</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a [3]int</span><br><span class="line">var r [3]int = [3]int&#123;1, 2&#125;  // 初始化一部分</span><br><span class="line">q:= [...]int&#123;1,2,3&#125;   // 根据给定值确认长度</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果一个数组的元素类型是可比较的，那么这个数组也是可比较的</p>
-</li>
-<li>数组和其它类型都是值传递,也就是说，内部修改无法影响外部，除非通过指针<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2></li>
-<li>slice 可以理解为可变长度的数组，有三个属性：指针，长度和容量（指针指向原数组第一个元素，长度是元素个数，容器大小是底部数组的长度）</li>
-<li>slice 的元素到过容量则会导致宕机。若 slice 引用超过长度，则最终 slice 要长过原 slice。</li>
-<li>x[m:n]和字符串一样，只消耗常量时间</li>
-<li>由于 slice 拥有指向数组元素的指针，所以可以在内部修改底层数组的元素</li>
-<li>slice 是不能做比较的，因此也不能做 map 的 key  </li>
-<li>通常将 append 的调用结果再次赋值给传入 append 函数的 slice</li>
-<li><h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ages := make(map[string]int)</span><br><span class="line"></span><br><span class="line">ages := map[string]int &#123;</span><br><span class="line">    &quot;abc&quot;: 332</span><br><span class="line">&#125;</span><br><span class="line">ages, ok := map[key]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>可以使用 delete(map, key) 的操作来删除值，就算 map 中不存在 key 也没有关系</p>
-</li>
-<li>map 的地址不可获得，因为 map 的增长可能导致已有元素被重新放置到新的位置</li>
-<li>大多数 map 操作可以用于 nil map上，但是设置值是不可以的</li>
-<li>可以通过 ok 来判断 map 中是否存在</li>
-<li>map 唯一的合法结构就是与 nil 比较。</li>
-<li><p>map 值的类型可以为某些复杂数据结构</p>
-<h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type Name struct &#123;</span><br><span class="line">    a      int</span><br><span class="line">    b      int</span><br><span class="line">&#125;</span><br><span class="line">P := Name&#123;1, 2&#125;         // 创建一个字面量的方法</span><br><span class="line">P := Name&#123;a:3, b: 4&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>结构体中，成员变量的顺序对于结构体同一性来说很重要，如果顺序改变，那么就算两个不同的结构体</p>
-</li>
-<li>结构体成员变量如果首字母大写，那么就算可导出的。一个结构体可以同时包含可导出的成员变量和不可导出的成员变量</li>
-<li>一个结构体类型不可以包含自身，但是可以包含自身的指针</li>
-<li>以上两种初始化模式不可混用，此外，无法通过结构体绕过包变量导出机制</li>
-<li>如果结构体中所有成员变量都可以比较，那么这个结构体就是可以比较的</li>
-<li>可以通过嵌套匿名结构体的方式来为结构体增加变量，不过初始化的时候必须按照层次来</li>
-<li>匿名结构体可以轻微绕过包导出机制</li>
-<li>不能在结构体中放两个变量名相同的变量或匿名结构体</li>
-</ul>
-<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type Movie struct &#123;</span><br><span class="line">    Title   string</span><br><span class="line">    Year    int `json:&quot;released&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>只有可导出的成员变量才可以转换为 json 字段，否则会被无视。在上面的实例中，json 中的 released 字段会被解析成 Year</li>
-<li>可以在 json 标注中添加 omitempty，这样如果为空则不会被输入到 JSON 中</li>
-<li>JSON 在 unmarshal 阶段是无视大小写的</li>
-</ul>
-<h2 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; .abc &#125;&#125;  // 其中 abc 为变量</span><br><span class="line">通过 &#123;&#123;range .a&#125;&#125; 和 &#123;&#123;end&#125;&#125; 可以处理循环</span><br></pre></td></tr></table></figure>
-<ul>
-<li>通过一系列操作可以得到模版，最后通过 Execute 来得到渲染结果</li>
-<li>template.HTML 会被认为是可靠的值，不会被转义</li>
-</ul>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ul>
-<li>函数的类型成为函数签名，当两个函数拥有相同的形参列表和返回列表时，即认为两个函数的类型或签名相同，形参和返回值的名字不影响函数类型</li>
-<li>go 语言中不存在默认参数</li>
-<li>如果实参中包含引用类型，比如指针、slice、map、函或者通道，那么函数使用形参变量是就有可能会间接地修改是参变量</li>
-<li>go 的栈长度是可变的，最多可达到1GB的上限</li>
-<li>可以返回多个值，也可以以给返回值命名的方式进行返回值</li>
-<li>当函数返回非空错误时，其它所有的返回都应该被忽略</li>
-<li>go 使用控制流来处理错误，当有意识的忽略某个错误时，应当以注释的形式给出原因</li>
-<li>函数可以以变量的形式使用，此外函数不可比较</li>
-<li>当一个匿名函数需要递归时，必须先声明一个变量然后将匿名函数赋值给这个变量</li>
-<li>参数列表最后可以以 … 的形式传递任意树木的参数</li>
-<li>defer 调用会在任何时候执行，具体时间是 defer 结束的时候，defer 没有次数的限制，执行时以 defer 书写的反顺序执行 </li>
-<li>defer 函数可以改变返回值</li>
-<li>当出现宕机时，正常的程序会停止执行，goroutine 中所有的颜值函数会执行，然后程序会退出并留下一条日志消息</li>
-<li>通过内置函数 panic 可以进行宕机</li>
-<li>宕机是可以恢复的，通过 recover 可以恢复，而获得的值就可以拿到 panic 的参数</li>
-<li>init 函数属于普通函数，在每个文件被初始化的时候，会按照声明的顺序自动执行</li>
-</ul>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><ul>
-<li>一个类型所拥有的方法名所唯一的，不过不同的类型可以使用相同得到方法名</li>
-<li>方法调用会复制每一个实参变量，如果变量太大或者希望改变该变量，就应该传递指针。如果一个方法是指针，那么习惯上所有的方法都应该是指针</li>
-<li>不允许为本身是指针的类型进行方法声明</li>
-<li>编译器会对变量进行隐式的转化，不过只有变量才可以</li>
-<li>如果所有类型 T 的方法的接收者都是 T（而非对应指针），那么复制它的实例是安全的，调用方法的时候都必须进行一次复制。如果是指针，那么应该尽量避免复制。</li>
-<li>nil 是一个合法的指针值</li>
-<li>方法的使用顺序是分层的，首先找自己存在的方法，然后是下一级的方法，然后是再下一级。如果同级有同名方法，则会报错</li>
-<li>go 不支持方法的重载</li>
-<li>通过调用 T.method，可以把方法再一次变成函数，这种情况下第一个值应当是T</li>
-<li>go 支持封装的级别是包而不是类型，同一个包内的代码始终是可见的。</li>
-</ul>
-<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><ul>
-<li>接口类型是对其它类型行为的概括和抽象。通过使用接口，可以写出更为灵活和通用的函数。对于某一个类型，无需声明它都实现了哪些接口，只需要提供这些声明的方法</li>
-<li>普通类型指定了所含数据的精确类型及行为，而接口只是指定了行为（也就是说，只知道实现了哪些方法）</li>
-<li>当一个具体类型要实现某个接口的时候，那么必须实现接口类型中的所有方法</li>
-<li>接口对于数据类型还是一种封装，变量只能调用接口里暴露的方法</li>
-<li>可以把接口理解成一种分类方式，分类可以同时有多种标准</li>
-<li>作为静态类型语言，类型只是编译时概念，因此不是值。给某接口类型赋值与显式转化无异</li>
-<li>由于编译时无法指导一个接口值的动态类型某所以通过接口来做动态分发。编译器必须生成一段代码从接口拿到方法地址，再间接调用该地址</li>
-<li>接口是可以比较的，当都为 nil 或者动态类型完全一致且二者动态值相等，那么两个接口值相等（当动态类型一致，但该类型不可比较的时候，则会崩溃）</li>
-<li>空的接口值和动态类型为 nil 的值不一致，空的接口类型代表什么值都可以接收</li>
-<li>在处理 sort 接口时，处理指针的代码运行速度会快很多</li>
-<li>类型断言检查就算确认作为操作数的动态类型是否满足指定的断言类型，当断言类型为具体类型时，若成功，结果就为断言类型为T，失败则崩溃。当断言类型为接口类型时，则检测x的动态类型是否满足T，若成功，不做变更，结果类型变为接口类型 T</li>
-<li>如果类型断言有两个值，失败也不不会崩溃</li>
-<li>可以通过接口类型断言来查询特性</li>
-<li>可以使用接口作为可识别联合类型某操作它的函数经常有 switch，然后对每种类型用于不同的逻辑 </li>
-</ul>
-<h1 id="goroutine-和通道"><a href="#goroutine-和通道" class="headerlink" title="goroutine 和通道"></a>goroutine 和通道</h1><p>goroutine 和通道（channel）支持通信顺序进程（CSP）</p>
-<h2 id="goroutine-简介"><a href="#goroutine-简介" class="headerlink" title="goroutine 简介"></a>goroutine 简介</h2><ul>
-<li>每一个并行执行的活动成为 goroutine。当一个程序启动时，只会有一个 goroutine 来调用 main 函数，称它为 goroutine。新的 goroutine 听过 go 语句进行创建。语法上，一个go 语句是普通的函数或方法调用前加上 go 关键字前缀的，go 语句使得函数在一个新创建的 goroutine 中调用，go 语句本身的执行立即完成。</li>
-<li>除了从 main 返回或者退出程序之外，没有一个程序化的方法让一个 goroutine 停止另一个，但是可以和 goroutine 通信要求它自己停止。<h2 id="通道"><a href="#通道" class="headerlink" title="通道"></a>通道</h2></li>
-<li>每一个通道是一个具体类型的导管，叫作通道的元素类型。一个有 int 类型元素的通道成为 chan int。</li>
-<li>ch := make(chan int)  // 创建一个 int 型通道</li>
-<li>ch &lt;- x 为发送语句， x = -&lt; ch 为接收语句，close 可以关闭通道。关闭通道后的发送操作会导致宕机，在一个已经关闭的通道上进行接受操作将会获取所有已经发送的值，直到通道为空，此时任何接受操作会立即完成。</li>
-<li>make 可以接受第二个参数作为缓冲通道的容量大小。</li>
-<li>无缓冲通道上的发送操作将会阻塞，直到另一个 goroutine 在对应的通道上执行接受操作，这时值传送完成，两个 goroutine 都可以继续执行。相反，如果接受操作先执行，接收方 goroutine 将阻塞，直到另一个 goroutine 在同一个通道上发送一个值。</li>
-<li>在并发中， x 早于 y 并不是指发生的时间，而是说这个顺序是可以保证的。同样，x y 并发也不代表同时发生，只是说明不能假设其顺序。</li>
-<li>并没有直接的方式来判断通道是否已关闭，但是可以通过接受到的通道元素以及 bool 型值来判断通道是否关闭并读完。</li>
-<li>for range 可以在通道上迭代，保证在读完最后一个值后关闭</li>
-<li>只有需要通知接收方所有数据已发送时才需要关闭通道，通道是根据是否可被访问而被决定是否回收的，而不是根据它是否被关闭。</li>
-<li>关闭操作只能在发送方 goroutine 上关闭，只能接受的 goroutine 不可被关闭。</li>
-<li>在参数中， chan&lt;- int 代表只能发送，&lt;-chan int 代表只能接受。在赋值操作后者难过将双向通道转换为单向通道都是允许的，但是反过来是不行的。</li>
-<li>缓冲通道满时，发送会阻塞，为 0 时，接收会阻塞。</li>
-<li>无缓冲通道提供强同步保证，因为每一次发送都和一次对景的接收同步，而对于缓冲通道，这些操作是解耦的。<h2 id="select-进行多路复用"><a href="#select-进行多路复用" class="headerlink" title="select 进行多路复用"></a>select 进行多路复用</h2></li>
-<li>select 一致等待，直到一次通信操作（通道上的发送或接收）</li>
-<li>如果多个情况同时满足， select 随机选择一个，这样保证每一个通道都有相同的机会被选中。</li>
-<li>如果不希望被 select 阻塞，则可以使用 default。</li>
-<li>可以通过关闭通道的方式来进行取消（关闭后读取值会立即返回）</li>
-</ul>
-<h1 id="使用共享变量实现并发"><a href="#使用共享变量实现并发" class="headerlink" title="使用共享变量实现并发"></a>使用共享变量实现并发</h1><ul>
-<li>如果无法确切的保证一个事件必然优先于另一个事件，那么这两个事件是并发的。如果这个函数在并发调用的情况下依旧能正确工作，那么这个函数是并发安全的。在没有额外同步机制的情况下，从两个或多个 goroutine 同时调用这个函数。</li>
-<li>数据竞态发生于两个 goroutine 并发读写同一个变量且至少一个是写入的时候。有三种方法可以避免数据竞态：<ul>
-<li>方法不修改变量。那些从不修改的数据结构以及不可变数据结构本质上就是并发安全的，不需要任何同步</li>
-<li>避免通过多个 goroutine 访问同一个变量——通过通道来共享内存</li>
-<li>允许多个 goroutine 访问统一变量，但在同一时间只有一个 goroutine 可以访问。该机制被成为互斥机制<h2 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h2></li>
-</ul>
-</li>
-<li>按照惯例，被互斥量保护的变量声明应该紧跟在互斥量之后，如果实际情况不是如此，就要添加注释来说明此事</li>
-<li>lock 和 unlock 之间的代码，可以自由地读取和修改共享变量，这一部分称为临界区域，goroutine 使用完之后应当解锁。</li>
-<li>当处理并发程序时，应当永远优先考虑清晰度，拒绝过早的优化。在可以使用的地方，就尽量使用 defer 来让临界区域扩展到函数结尾处。</li>
-<li>当使用一个互斥量的时候，要确保互斥量本身和保护的变量都没有被导出</li>
-<li>读写互斥锁仅用于在临界区域对共享变量无写操作的情形，一般来讲，我们不应当嘉定那些逻辑上为只读函数或方法不会更新一些变量。<h2 id="内存同步"><a href="#内存同步" class="headerlink" title="内存同步"></a>内存同步</h2></li>
-<li>现代计算机一般有多个处理器，每个处理器都有内存的本地缓存。通道通信或互斥锁操作这样的同步原语都会导致处理器把累计的写操作刷回内存并提交。</li>
-<li>在可能的情况下，把变量局限在单个 goroutine 内部，其他的变量都使用互斥锁保护</li>
-<li>sync.Once 是专门用于解决延迟初始化的特定方案<h2 id="goroutine-与线程"><a href="#goroutine-与线程" class="headerlink" title="goroutine 与线程"></a>goroutine 与线程</h2></li>
-<li>OS 线程的栈大小通常为 2 MB，而 goroutine 的栈不是固定大小的，可以按需增大和缩小</li>
-<li>因为 OS 线程是由内核来调度，所以控制全县从一个进程到另一个进程需要一个完整的上下文切换：即保存一个线程的状态到内存，再恢复另外一个线程的状态，最后更新调度器的数据结构。</li>
-<li>与操作系统的线程调度器不同的是，Go 调度器不是由硬件时钟来定期出发的，而是由特定的 Go 语言结构来触发的。</li>
-</ul>
-<h1 id="包和管理工具"><a href="#包和管理工具" class="headerlink" title="包和管理工具"></a>包和管理工具</h1><ul>
-<li>当一个变量并非局部变量时，则对包内的全部文件都可见，如同写在同一个文件里一样。如果名称以大写字母开头，则是导出的，意味着对包外是可见和可访问的。</li>
-<li>像 ASCII 或 HTML 这样的首字母缩写词会使用相同的大小写</li>
-<li>main 包是很特殊的，该包用于定义一个独立的可运行程序，而不是某个库。在 main 包里，函数 main 也是特殊的。不管在任何函数中， main 做什么事情，总是程序开始执行的地方。当然，main 通常调用其他包中的函数来做更多的事情。</li>
-<li>go 程序编译要快过其他语言，原因如下：<ul>
-<li>所有导入都在源文件的开头进行显式的列出，这样编译器在确定依赖性时无需处理整个文件</li>
-<li>包的依赖性形成有向无环图，因此可以独立甚至并行编译</li>
-<li>go 包编译输出的目标文件不仅记录自己的导出信息，还会记录锁依赖包的信息。</li>
-</ul>
-</li>
-<li>包名通常是导入路径的最后一段，有三个例外：<ul>
-<li>如果该包定义了一条命令（可执行 Go 程序），那么总使用名称 main。必然会由 go build 生成可执行文件</li>
-<li>以 _test.go 结尾文件或者包名中出现_test,该部分用于测试</li>
-<li>包名存在版本后缀，则不包括后缀</li>
-</ul>
-</li>
-<li>可以在导入路径前改写包名，不过仅替代当前文件</li>
-<li>按照约定，包名是路径的最后一段。包初始化从声明变量开始，会先解析其依赖的顺序</li>
-<li>有时需要导入一个包，仅仅为了其副作用：对包级别的变量执行初始化表达式求职，并执行它的 init 函数。例如 import _ “image/png” ，多数情况下，它用来实现一个编译时机制，使用空白引入导入额外的包，从而开启主程序中可选的特性</li>
-<li>包的命名通常要求简短而无歧义，如果是处理某一个类的包，那么其中的函数就不必要加上这个类名</li>
-<li>pkg 子目录是构建工具存储编译后的包的位置，bin 子目录放置可执行程序。</li>
-<li>go get 创建的目录是远程仓库的真实客户端，而不是仅仅是文件的副本，可以使用版本控制命令来查看本地编辑的差异或更新到不同的版本。</li>
-<li>go get 指定 -u 开关，go get 将确保所有包都更新到到最新版本。如果没有该标记，则本地的包不会更新。</li>
-<li>通过给目录加一层 vendor 目录，可以保证依赖不更新。</li>
-<li>go build 命令编译每一个命令行参数中的包。如果包是一个库，结果会被舍弃，对于没有编译错误的包几乎不做检查，go build 会在调用命令的当前目录生成可执行程序，可执行程序名取自包的导入路径的最后一段</li>
-<li>默认情况下，go build 命令构建所有需要的包和它们的依赖性，然后丢弃除了最终可执行程序之外的所有编译后的代码</li>
-<li>go install 和 go build 非常像,区别在于会保存每一个包的编译代码和命令，而不是丢弃。</li>
-<li>go install 和 go build 对于没有改变的包和命令不需要重新编译，从而使后续的构建更加迅速。go build -i 可以将包安装在独立于构建目标的地方。</li>
-<li>当路径片段中含有 internal 的情况时，即为内部包，内部包只能被 internal 目录的父目录为跟的目录树中的包锁引用</li>
-</ul>
-<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><ul>
-<li>在 _test.go 文件中，有三种函数需要特殊对待，即功能测试函数、基准测试函数和示例函数。功能测试函数以 Test 开头，用于检测函数的正确性。基准测试函数以 Benchmark 开头，用来测试某些操作的性能， go tests回报操作的平均执行时间。示例函数以 Example 开头，用于提供机器检查过的文档。</li>
-<li>测试用例是彼此独立的，如果测试表中一个条目造成测试失败，那么其它的条目依旧会测试，这样可以在一次测试用发现多个失败的情况。若需要终止，则使用 t.Fatal 或者 t.Fatalf 函数来终止测试。这些函数的调用必须和 Test 函数在同一个 goroutine 中，而不是在测试创建的其他的 goroutine 中。</li>
-<li>测试代码和产品代码在一个包李敏。尽管包的名称叫做 main，并且李敏定义了一个 main 函数，但是在测试过程中，该包当作库来测试。</li>
-<li>白盒测试和黑盒测试的区别即为对包内情况的了解程度。黑盒测试假设测试者对包的了解仅通过公开的 API 和文档美不逻辑是不透明的。而白盒测试可以访问包内部函数和数据结构，并可以做一些改动。</li>
-<li>外部测试包用于解决循环引用的问题，当包声明为 url_test,它应该单独地编译一个包，这个包仅包含这些文件，然后通过测试。（可以立即为独立的包）</li>
-<li>应该在测试中只处理你关心的属性，选择性的设置断言，并在错误中输出足够的信息。</li>
-<li>默认情况下不会运行任何基准测试，当标记 -bench 的参数指定来要运行的基准测试。</li>
-<li>Example 函数的后缀可以将实力函数与他所演示的包或函数项关联。如果只叫 Example 关联，那么就和包 word 相关联。</li>
-</ul>
-<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
-<li>反射的处理和类型断言有些类似，当我们无法透视一个未知类型的布局时，这段代码就无法继续，这时就需要反射了。</li>
-<li>反射类型由 reflect 包提供，其中最重要的两个类型是 Type 和 Value。</li>
-<li>reflect.Type 接口只有一个实现，即类型描述符，接口里的动态值也是类型描述符</li>
-<li>reflect.TypeOf 返回一个接口值对应的动态类型，所以它总是返回具体类型（而不是接口类型）</li>
-<li>reflect.ValueOf 函数接受任意的 interface{} 并将接口的动态值以 reflect.Value 的形式返回。</li>
-<li>reflect.Value 和 interface 都可以包含任意的值。二者的区别在于空接口会隐藏值的布局信息、内置操作和相关方法，所以除非我们知道它的动态类型，并用一个断言渗透进去，否则能做的事情就很少了。而 Value 则有很多方法可以用来分析所包含的值。</li>
-<li>relfect 和 Kind 方法可以很好的区分不同的类型<h2 id="坏处"><a href="#坏处" class="headerlink" title="坏处"></a>坏处</h2></li>
-<li>反射应当谨慎使用，因为基于反射的代码是很脆弱的。正常情况下编译器可以在编译时报告错误，而反射错误则要等到执行时才以崩溃的方式来报告。</li>
-<li>反射降低了自动重构和分析工具的安全性和准确度，因为它们无法检测到类型信息。</li>
-<li>类型本身就是一种文档，大量的使用反射就如同动态语言一样让人难以理解。</li>
-<li>基于反射的函数会比为特定类型优化的函数要慢一到两个数量级，在关键路径上会大幅降低速度，不过用在测试里是无所谓的事情。 </li>
-</ul>
-<h1 id="杂"><a href="#杂" class="headerlink" title="杂"></a>杂</h1><ul>
-<li>i++ 是语句而不是表达式，另外，只支持后置而不支持前置</li>
-<li>Go 不允许无意义的临时变量，不然会出现编译错误。</li>
-<li>Go 没有构造或析构函数，没有形参默认值，没有范型</li>
-<li>一个 ServerMux 可以把多个 http.handler 合成为一个 http.handler</li>
-<li>在创建预分配空间 map、channel、预分配空间 slice。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2077,7 +1935,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

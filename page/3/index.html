@@ -229,6 +229,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/redux-机制探索/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/16/redux-机制探索/" itemprop="url">redux 机制探索</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-16T19:53:23+08:00">
+                2019-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>近日研究了一下 redux 的文档和源码，深感自己原来根本没有理解对 redux 的用法和原理。在花了三天时间把这一块搞明白之后，写下这篇博客作为记录。</p>
+<h1 id="什么是-redux"><a href="#什么是-redux" class="headerlink" title="什么是 redux"></a>什么是 redux</h1><p>我一直以为 redux 是一个 react 的专属的全局状态管理工具，但实际上， redux 是一个单向数据流的观察者模式，完全可以用在后端或者其它前端框架里使用。<br>redux 将整个数据流分为以下几个部分:</p>
+<h2 id="store"><a href="#store" class="headerlink" title="store"></a>store</h2><p>store 是 redux 的核心部分，它负责全局状态的管理（包括创建、更新以及对外暴露）、观察者的管理（包括注册、删除及触发对应的更新）。<br>而全局状态 state 对外是只读的（这也是为什么能保证单向数据流的原因），理论上讲，只要我们有全局 state 的数据，就获得一个 web 状态的复刻。</p>
+<p>在 createStore 实现中比较有意思的点包括:</p>
+<ul>
+<li>通过闭包维持一个变量，保证了不可能在 reducer 中再次触发 action</li>
+<li>对 action 的类型判断（原生的 redux 只允许有对象类型的 action）</li>
+<li>有一点很搞笑 —— 每次 dispatch 触发会使得所有的 listener 都触发，并没有针对的部分</li>
+</ul>
+<h2 id="action"><a href="#action" class="headerlink" title="action"></a>action</h2><p>action 通常而言是对象（当使用 redux-thunk 的时候可以是特定类型的函数）, 这个对象会包含 type 和 data 两部分， 标明了类型和数据。<br>触发 action 是唯一变动 state 的方式, 这也是维持单向数据流的方式</p>
+<h2 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h2><p>reducer 可以说是 redux 的核心部分，每一个 reducer 都是一个纯函数（最好是，否则时间旅行就是空谈）。只要我们知道前一个状态和触发的 action，那么必然会算出同一个结果。<br>reducer 的纯函数理论也让 redux 的测试变得非常的容易。</p>
+<h2 id="combineReducer"><a href="#combineReducer" class="headerlink" title="combineReducer"></a>combineReducer</h2><p>redux 要求全局只有一个状态，但是这会让我们的开发有很大的麻烦，比如数据更新时的嵌套问题，也不方便 reducer 的测试。<br>而 combinReducer 提供了一个解决方法，它可以把多个 reducer 合并成同一个（返回一个新的 reducer 函数），状态也是如此。<br>不过它的更新机制有点搞笑——它会把所有子 reducer 和传入的 action 都算一遍，由于 reducer 默认返回原状态，所以也没什么大不了的，如果能更新，则必然会更新。</p>
+<h2 id="Middleware"><a href="#Middleware" class="headerlink" title="Middleware"></a>Middleware</h2><p>中间件机制类似于 express 中的中间件，指的是当 dispatch 触发前后进行一些操作，本质上中间件机制就是通过对原 dispatch 进行层层的嵌套调用。</p>
+<h1 id="redux-中间件"><a href="#redux-中间件" class="headerlink" title="redux 中间件"></a>redux 中间件</h1><h2 id="redux-thunk"><a href="#redux-thunk" class="headerlink" title="redux-thunk"></a>redux-thunk</h2><p>redux-thunk 的本意是用来解决异步问题的，但是实际上可以用来使一个特定类型的函数作为 action。<br>该函数会接受 (dispatch, getState) 作为参数，而在函数中应当触发新的 action，否则父 action 会终结<br>通过这种写法可以把请求数据、更新数据汇成一体，只需要写一个这种类型的函数即可</p>
+<h2 id="手写"><a href="#手写" class="headerlink" title="手写"></a>手写</h2><p>中间件只是一个三阶函数， next 可以理解为该中间件内部的中间件们包裹的 dispatch，下面是我手写的一个尝试性的中间件，大致就是这样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">export function createHelloworld () &#123;</span><br><span class="line">    return (&#123;dispatch, getState&#125;) =&gt; next =&gt; action =&gt; &#123;</span><br><span class="line">        console.log(&apos;hello world!!!!!&apos;, action);</span><br><span class="line">        debugger;</span><br><span class="line">        next(action);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const helloWorld = createHelloworld();</span><br><span class="line"></span><br><span class="line">export &#123;</span><br><span class="line">    helloWorld</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><h2 id="state-组织"><a href="#state-组织" class="headerlink" title="state 组织"></a>state 组织</h2><p>比较常见的玩法主要是以下几点：</p>
+<ul>
+<li>将数据像数据库一样组织，准确的说是 selector 机制，这样在一些容易修改数据的web app 中会可靠很多</li>
+<li>可以通过 reselect 可以完成对数据很好的缓存（一般写在 mapState 中）, 这样可以避免重复的计算</li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://redux.js.org" target="_blank" rel="noopener">redux官网</a></li>
+<li><a href="https://blog.isquaredsoftware.com/2017/12/idiomatic-redux-using-reselect-selectors/" target="_blank" rel="noopener">Idiomatic Redux: Using Reselect Selectors for Encapsulation and Performance</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/16/js-模块机制探索/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1638,174 +1781,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/nginx初步探索(基本介绍)/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/17/nginx初步探索(基本介绍)/" itemprop="url">nginx初步探索（基本介绍）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-17T23:31:54+08:00">
-                2018-11-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>nginx 这个东西我听说很久了，实际上用页用过几次，但是实际上我一直没搞明白它是一个什么东西，以及它到底有什么用处，另外到底是什么原理。在这个周末，我看了一些文字，自己做了一些实验，简单的记一下。</p>
-</blockquote>
-<h1 id="nginx是什么？"><a href="#nginx是什么？" class="headerlink" title="nginx是什么？"></a>nginx是什么？</h1><p>nginx 是一个开源的服务器，主要是用于http服务器，反向代理以及邮件服务器。理论上它和Apache是一类东西。而它和 Apache 的区别在于 Apache 是多进程的，当一个请求到来的时候 Apache 都会启动一个进程或线程对其进行处理。这样当并发量上去的时候对CPU和内存的需求简直爆炸。。。而 Nginx 是异步、单进程、事件驱动和非阻塞的，非常适合处理高并发。<br>此外，nginx 可以提供静态资源服务、缓存服务、修改 HTTP 头或内容、负载均衡、流量控制和权限控制等功能，可以说非常的全面且可靠。<br>当 nginx 提供负载均衡时存在 内置策略 和 自定义策略，而内置策略又分为三种：轮询，ip Hash，加权轮询三种。</p>
-<h1 id="nginx-基本原理介绍"><a href="#nginx-基本原理介绍" class="headerlink" title="nginx 基本原理介绍"></a>nginx 基本原理介绍</h1><h2 id="nginx-基本组成"><a href="#nginx-基本组成" class="headerlink" title="nginx 基本组成"></a>nginx 基本组成</h2><p>nginx 从架构上讲由一个核心和多个模块组成，核心部分的工作是维持一个事件队列，在合适的时候调用worker处理事件，并在相应的时候调用对应模块。而功能模块负责的东西更多，包括网络内容的读写，对内容的处理，与上游服务器交互，应用选择器进行筛选（在返回给client之前）。</p>
-<h2 id="nginx-基本架构"><a href="#nginx-基本架构" class="headerlink" title="nginx 基本架构"></a>nginx 基本架构</h2><p><img src="http://www.aosabook.org/images/nginx/architecture.png" alt="nginx基础架构"></p>
-<p>而具体到实现思路上是由一个 master 进程 和 N 个 worker 组成的（另外还有一个缓存加载进程和一个缓存管理进程，其实完全可以把它们视为 worker 进程）。</p>
-<p>master 进程负责的任务包括：</p>
-<ul>
-<li>读取并校验配置文件</li>
-<li>创建、绑定或删除 与worker 进行通信的socket</li>
-<li>开始、终止或维持 根据配置文件所设定的多个 worker</li>
-<li>在不中断服务的基础上重新加载配置文件</li>
-<li>处理日志输出</li>
-<li>编译 Perl 脚本</li>
-</ul>
-<p>worker 负责的任务包括：</p>
-<ul>
-<li>读取并处理来自客户端的请求</li>
-<li>反向代理</li>
-<li>对返回内容进行筛选</li>
-</ul>
-<p>而每个 worker 都可以处理 N 个请求，而正如之前所说，Nginx 不会为每个请求都启动新的进程或线程，而是会用已有的 worker 进行处理。这样就不会存在创建、销毁进程和切换上下文所产生的消耗，这是 Nginx 高效的原因之一，也是为什么 Apache 的消耗会随着并发量的上涨线性上涨，而 Nginx 是非线性上涨。另外 worker 和 Nginx 之间的通信是通过共享内存来实现的。</p>
-<p>每个请求都完全由一个 worker 进程来进行处理，这样做的好处包括：</p>
-<ul>
-<li>节省锁带来的开销</li>
-<li>独立进程、避免风险</li>
-<li>一次请求无需进行上下文切换</li>
-</ul>
-<p>最后是缓存加载器和缓存管理器，前者负责缓存的读取和书写，后者负责缓存过期时间管理以及内容校验。</p>
-<h1 id="nginx-最大连接数"><a href="#nginx-最大连接数" class="headerlink" title="nginx 最大连接数"></a>nginx 最大连接数</h1><ul>
-<li>worker_processes：worker 进程的个数</li>
-<li>worker_connections： 每个 worker 可以处理的请求的个数</li>
-<li>Nginx作为http服务器的时候：max_clients = worker_processes * worker_connections</li>
-<li>Nginx作为反向代理服务器的时候：max_clients = worker_processes * worker_connections/4 （/4原因：因为浏览器默认会开启2个连接到nginx server，而且nginx还会为每个连接使用fds（file descriptor）从连接池建立connection到upstream后端。）</li>
-</ul>
-<h1 id="nginx-常用命令"><a href="#nginx-常用命令" class="headerlink" title="nginx 常用命令"></a>nginx 常用命令</h1><ul>
-<li>nginx 配置文件所在：  /usr/local/etc/nginx 或 /etc/nginx</li>
-<li>启动: nginx</li>
-<li>缓和终止(完成现有任务再停止): nginx -s quit</li>
-<li>迅速终止（直接退出）:  nginx -s stop</li>
-<li>重启服务（通常因为修改配置）: nginx -s reload</li>
-<li>重新打开日志文件: nginx -s reopen</li>
-<li>指定配置文件: nginx -c filename</li>
-<li>校验配置文件（不执行）: nginx -t filename</li>
-<li>显示 nginx 版本: nginx -v</li>
-<li>显示 nginx 版本及配置参数: nginx -V</li>
-</ul>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://www.aosabook.org/en/nginx.html" target="_blank" rel="noopener">nginx简介</a><br><a href="https://zhuanlan.zhihu.com/p/31196264" target="_blank" rel="noopener">nginx快速入门之基本原理篇</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1856,7 +1831,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
