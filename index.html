@@ -229,6 +229,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/05/css-轮播图/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/05/css-轮播图/" itemprop="url">css 轮播图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-05T10:59:03+08:00">
+                2019-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>近日看完了 《css 世界》和《精通 CSS》，感觉有了很大的提升，于是打算写一个轮播图练练手。因为之前没有看其他人的实现，所以这个完全是自己搞出来的，有些粗糙。</p>
+<p>大致思路是使用 absolute 来保证整体位于同一个位置，每一次都计算应当位于左右的两个元素，并将其放置到相应位置，然后通过 transition 来进行动画操作。<br>大致代码如下：<br>html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;outter&quot;&gt;</span><br><span class="line">  &lt;h1&gt;left&lt;/h1&gt;</span><br><span class="line">  &lt;div id=&quot;innter&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://img1.imgtn.bdimg.com/it/u=1255259111,1506741556&amp;fm=214&amp;gp=0.jpg&quot;/&gt;</span><br><span class="line">    &lt;img src=&quot;http://img1.imgtn.bdimg.com/it/u=4234143842,2014854201&amp;fm=26&amp;gp=0.jpg&quot; /&gt;</span><br><span class="line">    &lt;img src=&quot;http://img0.imgtn.bdimg.com/it/u=2865898084,2122387434&amp;fm=26&amp;gp=0.jpg&quot;/&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;h1&gt;right&lt;/h1&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>css<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#outter &#123;</span><br><span class="line">  height: 400px;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line">  background: #666;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#innter &#123;</span><br><span class="line">  width: 700px;</span><br><span class="line">  height: 400px;</span><br><span class="line">  background: #777;</span><br><span class="line">  position: relative;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">img &#123;</span><br><span class="line">  width: 100%;</span><br><span class="line">  height: 100%;</span><br><span class="line">  position: absolute;</span><br><span class="line">  transition: left 1s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.hidden &#123;</span><br><span class="line">  visibility: &apos;hidden&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.left &#123;</span><br><span class="line">  left: -700px;</span><br><span class="line">  z-index: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.right &#123;</span><br><span class="line">  left: 700px;</span><br><span class="line">  z-index: 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.normal &#123;</span><br><span class="line">  left: 0px;</span><br><span class="line">  z-index: 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">let current = 0;</span><br><span class="line">const imgs = document.getElementsByTagName(&apos;img&apos;);</span><br><span class="line">const imgsLength = imgs.length;</span><br><span class="line"></span><br><span class="line">function nextPosition(left) &#123;</span><br><span class="line">  const next = left ? -1 : 1;</span><br><span class="line">  return (current + next + imgsLength) % imgsLength;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function handleImgsChange(left) &#123;</span><br><span class="line">  const leftPosition = nextPosition(left);</span><br><span class="line">  const rightPosition = nextPosition(!left);</span><br><span class="line">  console.log(leftPosition, current, rightPosition);</span><br><span class="line">  for (let i = 0; i &lt; imgsLength; i++) &#123;</span><br><span class="line">    if (i !== current) &#123;</span><br><span class="line">       if (i === leftPosition) &#123;</span><br><span class="line">        imgs[leftPosition].className =&apos;left&apos;;</span><br><span class="line">      &#125; else if (i === rightPosition) &#123;</span><br><span class="line">        imgs[rightPosition].className = &apos;right&apos;;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        imgs[i].classList.add(&apos;hidden&apos;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    else &#123;</span><br><span class="line">      imgs[i].className = &apos;noraml&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">   if (left) &#123;</span><br><span class="line">      imgs[current].className = &apos;left&apos;;</span><br><span class="line">      imgs[rightPosition].className = &apos;normal&apos;;</span><br><span class="line">      current = rightPosition;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      imgs[current].className = &apos;right&apos;;</span><br><span class="line">      imgs[leftPosition].className = &apos;normal&apos;;</span><br><span class="line">      current = leftPosition;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const buttons = document.getElementsByTagName(&apos;h1&apos;);</span><br><span class="line">buttons[0].addEventListener(&apos;click&apos;, handleImgsChange.bind(null, false));</span><br><span class="line">buttons[1].addEventListener(&apos;click&apos;, handleImgsChange.bind(null, true));</span><br></pre></td></tr></table></figure></p>
+<p>随后我看了一下 element 的实现，核心思路与我类似，只不过是使用 translate 来确保位置的，同样是每一次都计算。由于 element 使用了 Vue，所以其将核心状态放在了父组件控制，而子组件负责具体的切换动作。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/01/css-世界/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1687,204 +1811,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/python-学习笔记-基础/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/13/python-学习笔记-基础/" itemprop="url">python 学习笔记(基础)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T16:00:22+08:00">
-                2019-07-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>本笔记是我第 n 次重新上手 python 的笔记，该笔记并不全面，但是记录了很多关于 python 的某些的需要注意的点。只要注意到这些点，对我来说就可以迅速重新上手这门语言。</p>
-</blockquote>
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><ul>
-<li>python 中变量不需要声明</li>
-<li>python 并没有常量的概念，虽然惯例上使用大写字母作为常量名，但是这只是惯例上的约束，实际上依旧可以改变</li>
-<li>整数相除必然除出浮点数，除非用 // 地板除</li>
-<li>int 数字等于对应的浮点数</li>
-<li>只要 x 上非零数字、非空字符串、非空 list 等，就判断为 True，否则为 False</li>
-</ul>
-<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><ul>
-<li>不可越界，否则报错</li>
-<li>可以存放不同的类型</li>
-<li>insert(index, val) 方法用于插入, pop(index?) 可以用来删除指定位置的值</li>
-</ul>
-<h2 id="turple"><a href="#turple" class="headerlink" title="turple"></a>turple</h2><ul>
-<li>形式类似于 (1, 3, 4),其内容是不可变的，剩下基本等同于 list</li>
-</ul>
-<h2 id="dic"><a href="#dic" class="headerlink" title="dic"></a>dic</h2><ul>
-<li>可以用 in 来判断某个 key 是否存在于对象</li>
-<li>get 方法可以用来安全的获取值，并可以在第二个参数设置默认值</li>
-<li>pop 可以用来删除特定 key</li>
-</ul>
-<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><ul>
-<li>添加可以使用 add 方法</li>
-<li>删除的方法为 remove 而不是 pop</li>
-</ul>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ul>
-<li>python 的函数可以返回多个值</li>
-<li>python 的默认参数一定要指向不变的对象</li>
-<li>参数星号代表多参数，参数会以 list 的形式插入</li>
-<li>两个星号则代表以命名参数的行事形成一个 dic</li>
-<li>注意，python 同样存在闭包问题，因此要考虑变量在延迟执行时的情况</li>
-</ul>
-<h1 id="迭代器及函数式编程"><a href="#迭代器及函数式编程" class="headerlink" title="迭代器及函数式编程"></a>迭代器及函数式编程</h1><ul>
-<li>能被 for 使用的对象就是 iterable 对象</li>
-<li>能调用 next 的才是 Iterator 迭代器，可以理解为一个超长的数据流</li>
-<li>map, resuce, filter 的第一个参数是函数，第二个才是迭代器</li>
-<li>sorted 的第一个参数是 list，第二个是 key=function，第三个是布尔值 reverse</li>
-<li>functools.partial 可以以默认值的方式从右向左固定一些值</li>
-</ul>
-<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def log(func):</span><br><span class="line">    def wrapper(*args, **kw):</span><br><span class="line">        print(&apos;call %s():&apos; % func.__name__)</span><br><span class="line">        return func(*args, **kw)</span><br><span class="line">    return wrapper</span><br></pre></td></tr></table></figure>
-<ul>
-<li>func 即为被装饰器所包装的函数，如果需要给装饰器添加参数，则需要再包一层，参数放在最外边</li>
-</ul>
-<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><ul>
-<li>python 使用包和文件作为模块的机制，包下必须要有<strong>init</strong>.py,否则会被认为是普通的目录</li>
-<li>python 没有限制导出的策略，因此习惯上正常变量名随意导出、<strong>xxx</strong>属于有特殊用途的情况，而_xxx属于私有变量，不应该被使用</li>
-</ul>
-<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Name(object)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>类名通常大写，括号内则是继承的类名</li>
-<li>__init__代表构造函数，第一个参数为 self 实例本身，后面则是类的参数</li>
-<li>类内的 __xxx  在类外不可访问</li>
-<li>python 在类型上属于鸭子类型语言，十分类似于 go</li>
-<li>isinstance 可以判断子类及本身，而 type 则可以判断 class 类型</li>
-<li>不加 self 即为类属性，实例属性会覆盖类属性，找不到实例属性就会去找类属性(直接在类中书写普通变量即可)</li>
-<li>__slots__属性可以限制允许挂载到对象上的属性的</li>
-<li>@property 用来将方法变成了 getter, @xxx.settter 把方法变成了赋值的 setter</li>
-<li>结合 hasattr, getattr, setattr 可以很好的处理对象的属性</li>
-<li>__str__代表返回给用户的字符串，__repr__代表返回给开发者的字符串</li>
-<li>要想实现一个迭代器，则必须实现__iter__方法返回一个迭代对象，并实现一个__next__方法不断的调用，直到碰到 StopIteration Error </li>
-<li>__getItem__可以帮助实现一个类似于 list 的结构</li>
-<li>__getattr__用于处理没有定义的属性</li>
-<li>__call__让一个对象可以直接作为方法来被调用</li>
-</ul>
-<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><ul>
-<li>测试分为单元测试和文档测试</li>
-<li>class TestDict(unittest.TestCase) 可以用来测试</li>
-<li>setUp() 和 tearDown() 可以在测试开始前和结束后执行</li>
-</ul>
-<h1 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h1><ul>
-<li>namedtuple 可以实现一个类似于类的小玩意</li>
-<li>dqeue 用于实现队列和栈，存在 append, pop, appendleft, popleft 方法</li>
-<li>OrderedDict 会按插入的顺序进行排布</li>
-<li>ChainMap 可以合并多个 dic，最后以从前向后的顺序查找值</li>
-<li>struct 提供了二进制到类型的转换</li>
-<li>@contextmanager 可以提供上下文，让事物在开始前结束后做一些什么东西，可用于迭代器， yield 代表了返回的值</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1935,7 +1861,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
