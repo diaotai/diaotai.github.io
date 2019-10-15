@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="日拱一卒">
 <meta property="og:description" content="基础流布局简介 流实际上是 css 世界中的一种基本定位和布局机制，具备自适应的特性。流对于某些 table 并不适用。 通常把元素分为块级元素和内联元素 width 为 auto 时如果是块级元素会充分利用可用空间，如果是浮动、绝对定位、inline-block 时会收缩到合适大小，如果是内容连续的很长的英文或数字，则会超出（word-break:break-all 可以用来解决该问题） 如果内">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-04T12:05:13.537Z">
+<meta property="og:updated_time" content="2019-10-05T08:20:10.787Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css 世界">
 <meta name="twitter:description" content="基础流布局简介 流实际上是 css 世界中的一种基本定位和布局机制，具备自适应的特性。流对于某些 table 并不适用。 通常把元素分为块级元素和内联元素 width 为 auto 时如果是块级元素会充分利用可用空间，如果是浮动、绝对定位、inline-block 时会收缩到合适大小，如果是内容连续的很长的英文或数字，则会超出（word-break:break-all 可以用来解决该问题） 如果内">
@@ -376,7 +376,7 @@
 <li>inline 水平盒子</li>
 <li>z-index 为 auto 或 0</li>
 <li>正 z-index<h2 id="层叠上下文"><a href="#层叠上下文" class="headerlink" title="层叠上下文"></a>层叠上下文</h2></li>
-<li>当 position 为 relative、absolute 或者 position 为 fixed 且 z-index 为 auto 时，会产生层叠上下文。</li>
+<li>当 position 为 relative、absolute 或者 position 为 fixed 且 z-index 不为 auto 时，会产生层叠上下文。</li>
 <li>z-index 为负数时，依旧无法突破当前上下文。z-index 负值的渲染就是寻找第一个层叠上下文的过程，然后层叠顺序止步于这个层叠上下文元素。 </li>
 </ul>
 <h1 id="元素的显式和隐藏"><a href="#元素的显式和隐藏" class="headerlink" title="元素的显式和隐藏"></a>元素的显式和隐藏</h1><ul>
@@ -503,7 +503,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -229,6 +229,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/react-hook-记录/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/10/react-hook-记录/" itemprop="url">react-hook 记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-10T22:30:55+08:00">
+                2019-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="常识"><a href="#常识" class="headerlink" title="常识"></a>常识</h1><ul>
+<li>hook 只能使用在函数式组件的最外层，不可以被使用在任何分支或循环中，也不可以被使用在普通函数中（自定义 hook 除外）</li>
+<li>自定义 hook 的状态是独立的，每个使用的自定义 hook 都会有单独的 state</li>
+<li>与 setState 不同，hook 中的状态更新总是以覆盖的形式而不是合并的形式</li>
+<li>函数式组件中的每一个局部变量都会随着每次渲染重新定义</li>
+<li>fiber 可以解决大组件导致的渲染缓慢问题，具体而言是异步渲染</li>
+<li>异步渲染分为两个阶段 —— render parse 和 commit parse，前者包括一次 渲染的 redner 函数及之前全部步骤，完全可能被中断，可能会被反复执行多次，因此其中不应该有任何有副作用的东西。而后者只会执行一次，不会被中断，有副作用的请求可以放入其中。</li>
+<li>suspense 的作用是进行代码分割，动态加载。 fallback 即为兜底逻辑，当加载页面时，发现所需组件尚在加载中，就会抛出一个 promise 错误，然后 suspense 会捕获该错误，当该 promise resolve 的时候，会进行重新渲染。</li>
+</ul>
+<h1 id="hook-与生命周期"><a href="#hook-与生命周期" class="headerlink" title="hook 与生命周期"></a>hook 与生命周期</h1><ul>
+<li>useEffect Hook 看做 componentDidMount，componentDidUpdate 和 componentWillUnmount 这三个函数的组合。</li>
+<li>每一次重新渲染都会生成新的 effect，替换掉之前的。effect 更像是渲染的结果，每个 effect 都属于一次特定的渲染。</li>
+<li>effect 不会阻塞浏览器更新屏幕，大多数情况下 effect 也不需要同步执行。如果是一些特殊情况，可以使用 useLayoutEffect hook 来解决。</li>
+<li>effect 在每一次渲染的时候都会执行，因此 react 会在执行当前 effect 前对上一个 effect 进行清除</li>
+<li>当使用 effect 的优化形式时，请确保数组中包含了所有外部作用域中会随时间变化并且在 effect 中使用的变量（包括间接使用，比如 effect 中调用的函数），否则你的代码会引用到先前渲染中的旧变量。</li>
+<li>如果你传入了一个空数组（[]），effect 内部的 props 和 state 就会一直拥有其初始值</li>
+<li>要记住 effect 外部的函数使用了哪些 props 和 state 很难。这也是为什么 通常你会想要在 effect 内部 去声明它所需要的函数。 这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值</li>
+<li>在最坏的情况下，可以将函数放入 hook 的条件中，然后将函数的定义包裹进 useCallback 中</li>
+<li>当 effect 的依赖频繁变化时，可以考虑在 setState 使用回调函数的形式来解决问题(这种情况同样也是 useReducer 的使用场景)</li>
+</ul>
+<h1 id="其它-hook"><a href="#其它-hook" class="headerlink" title="其它 hook"></a>其它 hook</h1><ul>
+<li>useContext 会在离组件上层最近的 Context.Provider 更新时触发冲渲染，并使用最新的 context value</li>
+<li>在使用 useReducer 时，应当向子组件传递 dispatch 而不是回调函数</li>
+<li>要注意, useMemo 函数在渲染期间执行，请不要在这个函数内部执行与渲染无关的操作，注入副作用之类的操作属于 useEffect。</li>
+<li>当 ref 对象内容发生变化时，useRef 并不会通知你。变更 .current 属性不会引发组件重新渲染。如果想要在 React 绑定或解绑 DOM 节点的 ref 时运行某些代码，则需要使用回调 ref 来实现。</li>
+</ul>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><ul>
+<li>react 通过 hook 的顺序来确认 state 和 useState 的对应关系</li>
+<li>react 保证 useState 的函数是稳定的，并不会在组件重新渲染时发生新变化</li>
+<li>react 通过 Object.is 来并判断是否更新，并以此为依据来处理渲染</li>
+<li>可以理解为每一次渲染都是完全新的组件，里面的 state 和 props 都是不变的（useRef 属于另一种情况）</li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://zh-hans.reactjs.org/docs/hooks-faq.html" target="_blank" rel="noopener">react hook 官方文档</a></li>
+<li><a href="https://adamrackis.dev/state-and-use-reducer/" target="_blank" rel="noopener">Hooks, State, Closures, and useReducer</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/84697185" target="_blank" rel="noopener">React useEffect的陷阱</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/50597236" target="_blank" rel="noopener">一篇看懂 React Hooks</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/48264713" target="_blank" rel="noopener">对React Hooks的一些思考</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/56975681" target="_blank" rel="noopener">React Hooks 第一期：聊聊 useCallback</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/81752821" target="_blank" rel="noopener">精读《React Hooks 最佳实践》</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/60277120" target="_blank" rel="noopener">精读《useEffect 完全指南》</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/05/css-轮播图/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -500,7 +661,7 @@
 <li>inline 水平盒子</li>
 <li>z-index 为 auto 或 0</li>
 <li>正 z-index<h2 id="层叠上下文"><a href="#层叠上下文" class="headerlink" title="层叠上下文"></a>层叠上下文</h2></li>
-<li>当 position 为 relative、absolute 或者 position 为 fixed 且 z-index 为 auto 时，会产生层叠上下文。</li>
+<li>当 position 为 relative、absolute 或者 position 为 fixed 且 z-index 不为 auto 时，会产生层叠上下文。</li>
 <li>z-index 为负数时，依旧无法突破当前上下文。z-index 负值的渲染就是寻找第一个层叠上下文的过程，然后层叠顺序止步于这个层叠上下文元素。 </li>
 </ul>
 <h1 id="元素的显式和隐藏"><a href="#元素的显式和隐藏" class="headerlink" title="元素的显式和隐藏"></a>元素的显式和隐藏</h1><ul>
@@ -706,7 +867,7 @@
 <li>浮动元素从文档流中脱离后，会触发其后的元素中行盒子的缩短行为，而当一个元素具备了触发新跨级格式化上下文的条件，且挨着浮动元素后，就会收缩至适当大小且保证做外边必为直线。</li>
 </ul>
 <h1 id="水平布局"><a href="#水平布局" class="headerlink" title="水平布局"></a>水平布局</h1><h2 id="层叠-1"><a href="#层叠-1" class="headerlink" title="层叠"></a>层叠</h2><ul>
-<li>z-index 并不是在所有层面都生效的，只有在非 static 或几种特殊情况下（opacity &lt; 1,transform!=none,filter!=none），才会有效果。要注意，z-index 只有在父级层叠上下文中才有意义，子级层叠上下文会被视为单独的一部分。<h2 id="水平布局-1"><a href="#水平布局-1" class="headerlink" title="水平布局"></a>水平布局</h2></li>
+<li>要注意，z-index 只有在父级层叠上下文中才有意义，子级层叠上下文会被视为单独的一部分。<h2 id="水平布局-1"><a href="#水平布局-1" class="headerlink" title="水平布局"></a>水平布局</h2></li>
 <li>要让两个元素的内容竖直方向对齐，先把它们设置为 inline 属性，然后应用 vertical-align: center</li>
 <li>在 HTML 的行内，可能出现将换行视为一个空格的情况，这组情况下需要将 font-size 设置为 0 来解决</li>
 <li>通常只将行内块当作兼容旧版本浏览器的逻辑，正常而言应当使用更为先进的 flexbox</li>
@@ -1683,134 +1844,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/iterm2-小记/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/13/iterm2-小记/" itemprop="url">iterm2 小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T18:11:38+08:00">
-                2019-07-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="分屏操作"><a href="#分屏操作" class="headerlink" title="分屏操作"></a>分屏操作</h1><ul>
-<li>⌘ + d: 垂直分屏，</li>
-<li>⌘ + shift + d: 水平分屏。</li>
-<li>⌘ + ]和⌘ + [在最近使用的分屏直接切换</li>
-<li>⌘ + 数字: 切换标签页。 </li>
-<li>⌘ + 方向键 按方向切换标签页。</li>
-<li>shift + ⌘ + s: 保存当前窗口快照。</li>
-<li>⌘ + opt + b: 快照回放。很有意思的功能，你可以对你的操作根据时间轴进行回放。可以拖动下方的时间轴，也可以按左右方向键</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1861,7 +1894,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

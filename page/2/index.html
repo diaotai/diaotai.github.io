@@ -229,6 +229,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/iterm2-小记/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/13/iterm2-小记/" itemprop="url">iterm2 小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T18:11:38+08:00">
+                2019-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="分屏操作"><a href="#分屏操作" class="headerlink" title="分屏操作"></a>分屏操作</h1><ul>
+<li>⌘ + d: 垂直分屏，</li>
+<li>⌘ + shift + d: 水平分屏。</li>
+<li>⌘ + ]和⌘ + [在最近使用的分屏直接切换</li>
+<li>⌘ + 数字: 切换标签页。 </li>
+<li>⌘ + 方向键 按方向切换标签页。</li>
+<li>shift + ⌘ + s: 保存当前窗口快照。</li>
+<li>⌘ + opt + b: 快照回放。很有意思的功能，你可以对你的操作根据时间轴进行回放。可以拖动下方的时间轴，也可以按左右方向键</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/python-学习笔记-基础/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2173,134 +2301,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/react-redux-源码解析/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="diaotai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="日拱一卒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/22/react-redux-源码解析/" itemprop="url">react-redux 源码解析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-22T17:46:11+08:00">
-                2019-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h1><p>本次解析的代码是 react-redux 的 v5.0 版本，并不是最新的，不过也很好了。</p>
-<p>代码的核心部分是 Provider 和 connectAdvanced 部分，前者是包含全部组件的地方，后者则是传递搞自组件的地方。</p>
-<h1 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">export default class Provider extends Component &#123;</span><br><span class="line">  getChildContext() &#123;</span><br><span class="line">    return &#123; store: this.store &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  constructor(props, context) &#123;</span><br><span class="line">    super(props, context)</span><br><span class="line">    this.store = props.store</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return Children.only(this.props.children)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if (process.env.NODE_ENV !== &apos;production&apos;) &#123;</span><br><span class="line">  Provider.prototype.componentWillReceiveProps = function (nextProps) &#123;</span><br><span class="line">    const &#123; store &#125; = this</span><br><span class="line">    const &#123; store: nextStore &#125; = nextProps</span><br><span class="line"></span><br><span class="line">    if (store !== nextStore) &#123;</span><br><span class="line">      warnAboutReceivingStore()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到 Provider 基本没做什么事情，就是把 store 放进了 context 里面，以便内部的组件可以直接通过 context 拿到数据。另外比较有意思的地方在于 process.env，这个变量在前端本该是不存在的，但是 webpack 在打包时通过插件将当时的变量注入了进去，也就是说该值是与打包环境有关，而不是与执行环境有关。（可以参考 webpack.config.js）</p>
-<h2 id="connnectAdvanced"><a href="#connnectAdvanced" class="headerlink" title="connnectAdvanced"></a>connnectAdvanced</h2><p>本方法会传入一大堆参数，但是这些都属于无关紧要的细节，真正的重点在于它返回的高阶组件，在该组件中，会从 context 中取出 store，此外还会试图取出 parentSub,在最外面的该组件时，就没有这个东西，但是它会把自己放在 context 中，从而让自己内部的 connect 生成的组件可以拿到它。</p>
-<p>而在组件的 constructor 中，会执行 initSelector 方法，该方法的作用就是根据 mapStateToProps 和 mapDispatchToProps 来算出新的结果，如果结果和之前不一样，就会将 selector 的 shouldComponentUpdate 字段置为 true。 而用来计算和判断新属性的方法为 run，该方法会在 Connect 组件的 componentDidMount 和 componentWillReceiveProps 以及 subscription.onStateChange 中执行。此外，selector.shouldComponentUpdate 属性会在每次 render 中置为 false。</p>
-<p>组件的 constructor 中，还会执行另一个方法 initSubscription，在该方法中，会进行 subscription.onStateChange 的实现（模版设计模式），然后若 selector.shouldComponentUpdate 为 false，则执行子订阅的通知，若为 true， 则更新自己的 state —— 这样会触发整体的更新。</p>
-<p>在 Subscription 的实现中，会分为存在 parentSub（Connect 内部中的 Connect）和不存在 parentSub 两种情况。前者会在其父 Subscription 上实现订阅，后者则直接使用 store 的订阅。这样，可以保证子组件的 onStateChange 必然在父组件的之后调用。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>代码的核心思路就是这样了，没什么太了不起的地方，但是整体思路还是很巧妙的（个人觉得最巧妙的地方在于优化逻辑以及模版模式上）。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2351,7 +2351,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
