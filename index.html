@@ -632,7 +632,14 @@
 <li>浮动参考的元素是浮动元素对齐参考的实体，通常是行框盒子</li>
 <li>clear 属性是让自身不能与前面的浮动元素相邻，根本不会对之后的浮动元素造成影响</li>
 <li>如果 clear:both 元素前面的元素就是 float，那么 margin-top 负值即使设置成 -9999 px 也不会有任何效果。<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2></li>
-<li>display 为 inline-block、table-caption、table-cell 时，position 不为 static 和 relative 时会产生 BFC<h2 id="overflow"><a href="#overflow" class="headerlink" title="overflow"></a>overflow</h2></li>
+<li>display 为 inline-block、table-caption、table-cell</li>
+<li>position 不为 static 和 relative 时</li>
+<li>overflow 不为 visible 的块元素</li>
+<li>contain 值为 layout、content或 paint 的元素</li>
+<li>弹性元素（display为 flex 或 inline-flex元素的直接子元素）</li>
+<li>网格元素（display为 grid 或 inline-grid 元素的直接子元素）</li>
+<li>多列容器（元素的 column-count 或 column-width 不为 auto，包括 column-count 为 1）</li>
+<li>column-span 为 all 的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（标准变更，Chrome bug）。<h2 id="overflow"><a href="#overflow" class="headerlink" title="overflow"></a>overflow</h2></li>
 <li>清除浮动最合适的不是 clear，而是 overflow，设置 为 hidden。如果要完成元素裁剪的同时在四周设置间隙，那么可以使用透明边框，此时内监局为 padding 时无能为力的。</li>
 <li>如果两个方向的 overflow 有一个是 visible 而另一个不是，那么 visible 会表现为 auto。</li>
 <li>要想实现 text-overflow: ellipsis,必须同时设置另外两个属性– white-space:nowrap,overflow:hidden。</li>
@@ -642,8 +649,7 @@
 <li>absolute 使用的包含块是 padding-box 而非 content-box</li>
 <li>行内元素生成的包含块由前后内联盒子决定，和里面的细节毫无关系（比如说里面字体特别大撑开）</li>
 <li>absolute 如果不设置 top 和 left 的话会处于原位置，只是会脱离文档流。<h2 id="absolute-和-overflow"><a href="#absolute-和-overflow" class="headerlink" title="absolute 和 overflow"></a>absolute 和 overflow</h2></li>
-<li>如果 overflow 不是定位元素，同时绝对定位元素和 overflow 容器之间也没有定位关系，则 overflow 无法对 absolute 元素进行裁剪。</li>
-<li>如果 overflow 的属性值不是 hidden 而是 auto 或者是 scroll，即使绝对定位元素高宽比 overflow 元素高宽还要大，也不会出现滚动条。</li>
+<li>如果 overflow 不是定位元素，同时绝对定位元素和 overflow 容器之间也没有定位关系，则 overflow 无法对 absolute 元素进行裁剪，而如果 overflow 的属性值不是 hidden 而是 auto 或者是 scroll，即使绝对定位元素高宽比 overflow 元素高宽还要大，也不会出现滚动条。</li>
 <li>absolute 被裁剪或 fixed 固定定位失效时，可能是 transform 的原因，<h2 id="absolute-其它"><a href="#absolute-其它" class="headerlink" title="absolute 其它"></a>absolute 其它</h2></li>
 <li>当 absolute 只设置某个方向时，另一个方向的定位依旧保持相对定位特性。</li>
 <li>clip 要起作用其元素必须是绝对定位或者固定定位<h2 id="relative"><a href="#relative" class="headerlink" title="relative"></a>relative</h2></li>
@@ -660,9 +666,19 @@
 <li>float 浮动盒子</li>
 <li>inline 水平盒子</li>
 <li>z-index 为 auto 或 0</li>
-<li>正 z-index<h2 id="层叠上下文"><a href="#层叠上下文" class="headerlink" title="层叠上下文"></a>层叠上下文</h2></li>
-<li>当 position 为 relative、absolute 或者 position 为 fixed 且 z-index 不为 auto 时，会产生层叠上下文。</li>
-<li>z-index 为负数时，依旧无法突破当前上下文。z-index 负值的渲染就是寻找第一个层叠上下文的过程，然后层叠顺序止步于这个层叠上下文元素。 </li>
+<li>正 z-index<h2 id="层叠上下文"><a href="#层叠上下文" class="headerlink" title="层叠上下文"></a>层叠上下文</h2><h3 id="层叠上下文的作用"><a href="#层叠上下文的作用" class="headerlink" title="层叠上下文的作用"></a>层叠上下文的作用</h3></li>
+<li>层叠上下文提供了一个基准，如果层叠上下文 A 在层叠上下文 B 之下，那么 A 上的元素绝对不可能位于 B 之上，无论 z-index 是多大</li>
+<li>层叠上下文内采取 z-index 谁大谁在上面的措施（其实没什么卵用，正常的文档流根本用不着 z-index，如果要使用必然已经触发的位移）</li>
+<li>z-index 为负数时，依旧无法突破当前上下文。z-index 负值的渲染就是寻找第一个层叠上下文的过程，然后层叠顺序止步于这个层叠上下文元素。 <h3 id="如何产生层叠上下文"><a href="#如何产生层叠上下文" class="headerlink" title="如何产生层叠上下文"></a>如何产生层叠上下文</h3><h4 id="z-index-派（对于它们，产生的层叠上下文顺序为-z-index-的值）"><a href="#z-index-派（对于它们，产生的层叠上下文顺序为-z-index-的值）" class="headerlink" title="z-index 派（对于它们，产生的层叠上下文顺序为 z-index 的值）"></a>z-index 派（对于它们，产生的层叠上下文顺序为 z-index 的值）</h4></li>
+<li>当 position 为 relative、absolute 且 z-index 不为 auto(其实 auto 时也产生了，可以认为 z-index 为 0) </li>
+<li>z-index 不为 auto 的 flex 或 grid 子项（此时 z-index 必须为数值）</li>
+<li>position 为 fixed 或 sticky <h4 id="其它（此时都认为-z-index-为-0）"><a href="#其它（此时都认为-z-index-为-0）" class="headerlink" title="其它（此时都认为 z-index 为 0）"></a>其它（此时都认为 z-index 为 0）</h4></li>
+<li>opacity 属性值小于 1 的元素（参考 the specification for opacity），</li>
+<li>transform 属性值不为 “none”的元素，</li>
+<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
+<li>transform属性值不为“none”的元素 </li>
+<li>filter值不为“none”的元素，</li>
+<li>perspective值不为“none”的元素</li>
 </ul>
 <h1 id="元素的显式和隐藏"><a href="#元素的显式和隐藏" class="headerlink" title="元素的显式和隐藏"></a>元素的显式和隐藏</h1><ul>
 <li>父元素 visibility 为 hidden，子元素设置为 visible，是可以支持显式的（这一点可以用在占位符上）</li>
@@ -847,7 +863,7 @@
 <li>在 CSS 中设置任何高度值都应该慎重，这是因为元素的高度通常应该取决于所包含的内容，一个定值容易产生越界。如果需要使用，也最好使用 min-height。</li>
 </ul>
 <h2 id="可见盒子模型"><a href="#可见盒子模型" class="headerlink" title="可见盒子模型"></a>可见盒子模型</h2><ul>
-<li>行内盒子是沿文本流水平排列的，也会随着文本换行而换行。它们之间的水平间距可以通过水平方向的 margin、padding、border 来调节。而在竖直方向，唯一修改盒子大小的方法只有 line-height（line-height代表最小值）。</li>
+<li>行内盒子是沿文本流水平排列的，也会随着文本换行而换行。它们之间的水平间距可以通过水平方向的 margin、padding、border 来调节。而在竖直方向，唯一修改盒子大小的方法只有 line-height（line-height代表最小值）。经实验，感觉 line-height 影响的更像是行内元素的排放位置，并不影响相应区域</li>
 <li>当文本没有被任何元素包裹的时候，即为匿名盒子，所有展示都位于盒子中</li>
 <li>外边距折叠：外边距折叠只发生在文档常规文本流的垂直方向上，行内盒子、浮动盒子和绝对定位盒子的外边距不会折叠。当发生外边距折叠时，最终结果取较大的那个值，当出嵌套时，如果没有 border 或 padding 或者某些具体的内容在进行隔离，同样会出现外边距折叠，一个空的块级元素自身的上下边距也会折叠。在外边距折叠后，如果碰到其它外边距，还会继续折叠。</li>
 <li>包含块是计算内边距和外边距百分比的依据，在 static 中，默认使用父元素作为包含块。</li>
@@ -884,6 +900,7 @@
 <li>为了处理 flex-box 换行后过于庞大的情况，可以给 item 设置最大宽度</li>
 <li>与常规块不同，不需要将可伸缩项设置为非 static 的定位值，也可以对它们应用 z-index 属性，并产生 z-index 上下文</li>
 <li>flex 中可伸缩项具有隐性最小宽度，即收缩不可能收缩到无法展示内容的情况下，为此，可以覆盖 min-width，明确一个主尺寸</li>
+<li>flex 第一个参数为 flex-grow，第二个为 flex-shink， 第三个是 flex-basis</li>
 </ul>
 <h1 id="盒子模型-1"><a href="#盒子模型-1" class="headerlink" title="盒子模型"></a>盒子模型</h1><ul>
 <li>颜色的 hsl 语法需要传入三个参数，第一个是角度，第二个和第三个分别代表饱和度和亮度</li>
@@ -892,7 +909,10 @@
 <li>背景图片默认展现在 border 范围内，而 background-clip 属性可以改变这个行为，这个属性的默认值为 border-box，而 padding-box 和 content-box 可以解决这个问题。</li>
 <li>background-attachment 可以解决背景图片附着的问题</li>
 <li>background-size 是百分比并不是根据图片固有大小，而是根据包含块的大小来测定的</li>
-<li>background-size 的 contain 和 cover 都不改变 宽高比例，前者可以保证完全被展示，后者会导致被剪切<h2 id="border"><a href="#border" class="headerlink" title="border"></a>border</h2></li>
+<li>background-size 的 contain 和 cover 都不改变 宽高比例，前者可以保证完全被展示，后者会导致被剪切</li>
+<li>backgound-posiiton 的百分比是特殊的，百分比值的偏移指定图片的相对位置和容器的相对位置重合。值0%代表图片的左边界（或上边界）和容器的左边界（上边界）重合。值100%代表图片的右边界（或下边界）和容器的右边界（或下边界）重合。值50%则代表图片的中点和容器的中点重合。</li>
+</ul>
+<h2 id="border"><a href="#border" class="headerlink" title="border"></a>border</h2><ul>
 <li>border 的顺序是左上角开始顺时针旋转</li>
 <li>border 的值指的是圆的半径，若两个圆角的弧线相交，则两个轴向都会分别缩小半径，知道圆弧不再相交。对于方形元素的对称圆角而言，任何大于 50% 的值都会得到圆形。而对于矩形元素，则可以设置一个非常大的值来实现胶囊效果。</li>
 <li>当矩形变为圆角后，元素对布局的影响和之前是一样的，但是响应点击的范围是以变化之后为标准的。<h2 id="盒阴影"><a href="#盒阴影" class="headerlink" title="盒阴影"></a>盒阴影</h2></li>
@@ -935,16 +955,25 @@
 <li>translate 的百分比是相较于自身而非包含块</li>
 <li>多重变换的顺序非常重要。如果先旋转伪元素，那么变换会以旋转后的坐标来完成</li>
 <li>应用给元素的任何变换都会创建一个堆叠上下文，这意味着在使用变换时，要注意 z-index，因为变换后的元素有自己的堆叠上下文，也就是说，子元素上的 z-index值再大，也无法和父堆叠上下文呢相比较。</li>
+<li>在进行 x，y 轴的旋转时，会涉及到透视的概念，用户距离透视点越近，影响越大，反之越小，默认无穷远，即不影响。</li>
+<li>默认情况下，嘉定观察者的实现与应用透视的元素相较于元素的中心。通过 perspective-origin 属性来修改消失的点的位置。</li>
+<li>backface-visibility 属性可以用来控制背面展示，默认是 visible，不过可以设置为 hidden</li>
+<li>当进行三维反转时，所有子元素的三维反转都会失效，因此需要通过 transform-style 属性来设置一个三维上下文， 改制为 perserve-3d.<h2 id="transition-动画"><a href="#transition-动画" class="headerlink" title="transition 动画"></a>transition 动画</h2></li>
 <li>单写某个 transition 形式无法制定多个属性，但可以指定多个不同的过度，以逗号进行分隔。</li>
 <li>transition-property 指定的值决定了要应用的过度数量，如果其它过度列表持续时间更短，则会重复。</li>
 <li>steps 可以将动画分为不同的几帧。</li>
 <li>transition-delay 可以用来延迟动画的触发，延迟时间可以为负值，这样可以跳过一部分动画。</li>
-<li>关键帧动画中 css 属性不允许添加 ！important，加了会被忽略。</li>
 <li>直接修改 dom 的 css 属性可以触发 dom</li>
-<li>在进行 x，y 轴的旋转时，会涉及到透视的概念，用户距离透视点越近，影响越大，反之越小，默认无穷远，即不影响。</li>
-<li>默认情况下，嘉定观察者的实现与应用透视的元素相较于元素的中心。通过 perspective-origin 属性来修改消失的点的位置。</li>
-<li>backface-visibility 属性可以用来控制背面展示，默认是 visible，不过可以设置为 hidden</li>
-<li>当进行三维反转时，所有子元素的三维反转都会失效，因此需要通过 transform-style 属性来设置一个三维上下文， 改制为 perserve-3d.</li>
+</ul>
+<h3 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h3><ul>
+<li>transition需要事件触发，所以没法在网页加载时自动发生。</li>
+<li>transition是一次性的，不能重复发生，除非一再触发。</li>
+<li>transition只能定义开始状态和结束状态，不能定义中间状态，也就是说只有两个状态。</li>
+<li>一条transition规则，只能定义一个属性的变化，不能涉及多个属性。<h2 id="关键帧动画"><a href="#关键帧动画" class="headerlink" title="关键帧动画"></a>关键帧动画</h2></li>
+<li>关键帧动画中 css 属性不允许添加 ！important，加了会被忽略。</li>
+<li>animation-fill-mode 可以用来处理动画结束后的状态，比如 none 为没开始，backwards 为第一针，forwards 为结束状态，both 则轮流应用 forards 和 backwards</li>
+<li>animation-play-state 用来处理动画播放一半时中断的状态</li>
+<li>animation-direction 主要是 normal 和 reverse</li>
 </ul>
 <h1 id="高级特效"><a href="#高级特效" class="headerlink" title="高级特效"></a>高级特效</h1><ul>
 <li>shape-outside 可以应用给浮动元素，不改变自身的外观，而是通过设置其形状影响外部的文档流</li>

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="日拱一卒">
 <meta property="og:description" content="基础流布局简介 流实际上是 css 世界中的一种基本定位和布局机制，具备自适应的特性。流对于某些 table 并不适用。 通常把元素分为块级元素和内联元素 width 为 auto 时如果是块级元素会充分利用可用空间，如果是浮动、绝对定位、inline-block 时会收缩到合适大小，如果是内容连续的很长的英文或数字，则会超出（word-break:break-all 可以用来解决该问题） 如果内">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-05T08:20:10.787Z">
+<meta property="og:updated_time" content="2019-10-19T07:47:06.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css 世界">
 <meta name="twitter:description" content="基础流布局简介 流实际上是 css 世界中的一种基本定位和布局机制，具备自适应的特性。流对于某些 table 并不适用。 通常把元素分为块级元素和内联元素 width 为 auto 时如果是块级元素会充分利用可用空间，如果是浮动、绝对定位、inline-block 时会收缩到合适大小，如果是内容连续的很长的英文或数字，则会超出（word-break:break-all 可以用来解决该问题） 如果内">
@@ -347,7 +347,14 @@
 <li>浮动参考的元素是浮动元素对齐参考的实体，通常是行框盒子</li>
 <li>clear 属性是让自身不能与前面的浮动元素相邻，根本不会对之后的浮动元素造成影响</li>
 <li>如果 clear:both 元素前面的元素就是 float，那么 margin-top 负值即使设置成 -9999 px 也不会有任何效果。<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2></li>
-<li>display 为 inline-block、table-caption、table-cell 时，position 不为 static 和 relative 时会产生 BFC<h2 id="overflow"><a href="#overflow" class="headerlink" title="overflow"></a>overflow</h2></li>
+<li>display 为 inline-block、table-caption、table-cell</li>
+<li>position 不为 static 和 relative 时</li>
+<li>overflow 不为 visible 的块元素</li>
+<li>contain 值为 layout、content或 paint 的元素</li>
+<li>弹性元素（display为 flex 或 inline-flex元素的直接子元素）</li>
+<li>网格元素（display为 grid 或 inline-grid 元素的直接子元素）</li>
+<li>多列容器（元素的 column-count 或 column-width 不为 auto，包括 column-count 为 1）</li>
+<li>column-span 为 all 的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（标准变更，Chrome bug）。<h2 id="overflow"><a href="#overflow" class="headerlink" title="overflow"></a>overflow</h2></li>
 <li>清除浮动最合适的不是 clear，而是 overflow，设置 为 hidden。如果要完成元素裁剪的同时在四周设置间隙，那么可以使用透明边框，此时内监局为 padding 时无能为力的。</li>
 <li>如果两个方向的 overflow 有一个是 visible 而另一个不是，那么 visible 会表现为 auto。</li>
 <li>要想实现 text-overflow: ellipsis,必须同时设置另外两个属性– white-space:nowrap,overflow:hidden。</li>
@@ -357,8 +364,7 @@
 <li>absolute 使用的包含块是 padding-box 而非 content-box</li>
 <li>行内元素生成的包含块由前后内联盒子决定，和里面的细节毫无关系（比如说里面字体特别大撑开）</li>
 <li>absolute 如果不设置 top 和 left 的话会处于原位置，只是会脱离文档流。<h2 id="absolute-和-overflow"><a href="#absolute-和-overflow" class="headerlink" title="absolute 和 overflow"></a>absolute 和 overflow</h2></li>
-<li>如果 overflow 不是定位元素，同时绝对定位元素和 overflow 容器之间也没有定位关系，则 overflow 无法对 absolute 元素进行裁剪。</li>
-<li>如果 overflow 的属性值不是 hidden 而是 auto 或者是 scroll，即使绝对定位元素高宽比 overflow 元素高宽还要大，也不会出现滚动条。</li>
+<li>如果 overflow 不是定位元素，同时绝对定位元素和 overflow 容器之间也没有定位关系，则 overflow 无法对 absolute 元素进行裁剪，而如果 overflow 的属性值不是 hidden 而是 auto 或者是 scroll，即使绝对定位元素高宽比 overflow 元素高宽还要大，也不会出现滚动条。</li>
 <li>absolute 被裁剪或 fixed 固定定位失效时，可能是 transform 的原因，<h2 id="absolute-其它"><a href="#absolute-其它" class="headerlink" title="absolute 其它"></a>absolute 其它</h2></li>
 <li>当 absolute 只设置某个方向时，另一个方向的定位依旧保持相对定位特性。</li>
 <li>clip 要起作用其元素必须是绝对定位或者固定定位<h2 id="relative"><a href="#relative" class="headerlink" title="relative"></a>relative</h2></li>
@@ -375,9 +381,19 @@
 <li>float 浮动盒子</li>
 <li>inline 水平盒子</li>
 <li>z-index 为 auto 或 0</li>
-<li>正 z-index<h2 id="层叠上下文"><a href="#层叠上下文" class="headerlink" title="层叠上下文"></a>层叠上下文</h2></li>
-<li>当 position 为 relative、absolute 或者 position 为 fixed 且 z-index 不为 auto 时，会产生层叠上下文。</li>
-<li>z-index 为负数时，依旧无法突破当前上下文。z-index 负值的渲染就是寻找第一个层叠上下文的过程，然后层叠顺序止步于这个层叠上下文元素。 </li>
+<li>正 z-index<h2 id="层叠上下文"><a href="#层叠上下文" class="headerlink" title="层叠上下文"></a>层叠上下文</h2><h3 id="层叠上下文的作用"><a href="#层叠上下文的作用" class="headerlink" title="层叠上下文的作用"></a>层叠上下文的作用</h3></li>
+<li>层叠上下文提供了一个基准，如果层叠上下文 A 在层叠上下文 B 之下，那么 A 上的元素绝对不可能位于 B 之上，无论 z-index 是多大</li>
+<li>层叠上下文内采取 z-index 谁大谁在上面的措施（其实没什么卵用，正常的文档流根本用不着 z-index，如果要使用必然已经触发的位移）</li>
+<li>z-index 为负数时，依旧无法突破当前上下文。z-index 负值的渲染就是寻找第一个层叠上下文的过程，然后层叠顺序止步于这个层叠上下文元素。 <h3 id="如何产生层叠上下文"><a href="#如何产生层叠上下文" class="headerlink" title="如何产生层叠上下文"></a>如何产生层叠上下文</h3><h4 id="z-index-派（对于它们，产生的层叠上下文顺序为-z-index-的值）"><a href="#z-index-派（对于它们，产生的层叠上下文顺序为-z-index-的值）" class="headerlink" title="z-index 派（对于它们，产生的层叠上下文顺序为 z-index 的值）"></a>z-index 派（对于它们，产生的层叠上下文顺序为 z-index 的值）</h4></li>
+<li>当 position 为 relative、absolute 且 z-index 不为 auto(其实 auto 时也产生了，可以认为 z-index 为 0) </li>
+<li>z-index 不为 auto 的 flex 或 grid 子项（此时 z-index 必须为数值）</li>
+<li>position 为 fixed 或 sticky <h4 id="其它（此时都认为-z-index-为-0）"><a href="#其它（此时都认为-z-index-为-0）" class="headerlink" title="其它（此时都认为 z-index 为 0）"></a>其它（此时都认为 z-index 为 0）</h4></li>
+<li>opacity 属性值小于 1 的元素（参考 the specification for opacity），</li>
+<li>transform 属性值不为 “none”的元素，</li>
+<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
+<li>transform属性值不为“none”的元素 </li>
+<li>filter值不为“none”的元素，</li>
+<li>perspective值不为“none”的元素</li>
 </ul>
 <h1 id="元素的显式和隐藏"><a href="#元素的显式和隐藏" class="headerlink" title="元素的显式和隐藏"></a>元素的显式和隐藏</h1><ul>
 <li>父元素 visibility 为 hidden，子元素设置为 visible，是可以支持显式的（这一点可以用在占位符上）</li>
@@ -549,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础流布局简介"><span class="nav-number">1.</span> <span class="nav-text">基础流布局简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#盒尺寸四大家族"><span class="nav-number">2.</span> <span class="nav-text">盒尺寸四大家族</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#content"><span class="nav-number">2.1.</span> <span class="nav-text">content</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padding"><span class="nav-number">2.2.</span> <span class="nav-text">padding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#margin"><span class="nav-number">2.3.</span> <span class="nav-text">margin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#border"><span class="nav-number">2.4.</span> <span class="nav-text">border</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内联元素与流"><span class="nav-number">3.</span> <span class="nav-text">内联元素与流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流的破坏与保护"><span class="nav-number">4.</span> <span class="nav-text">流的破坏与保护</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#float"><span class="nav-number">4.1.</span> <span class="nav-text">float</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BFC"><span class="nav-number">4.2.</span> <span class="nav-text">BFC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overflow"><span class="nav-number">4.3.</span> <span class="nav-text">overflow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#absolute"><span class="nav-number">4.4.</span> <span class="nav-text">absolute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#absolute-和-overflow"><span class="nav-number">4.5.</span> <span class="nav-text">absolute 和 overflow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#absolute-其它"><span class="nav-number">4.6.</span> <span class="nav-text">absolute 其它</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#relative"><span class="nav-number">4.7.</span> <span class="nav-text">relative</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#层叠"><span class="nav-number">5.</span> <span class="nav-text">层叠</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本层叠关系（自下而上）"><span class="nav-number">5.1.</span> <span class="nav-text">基本层叠关系（自下而上）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层叠上下文"><span class="nav-number">5.2.</span> <span class="nav-text">层叠上下文</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#元素的显式和隐藏"><span class="nav-number">6.</span> <span class="nav-text">元素的显式和隐藏</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础流布局简介"><span class="nav-number">1.</span> <span class="nav-text">基础流布局简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#盒尺寸四大家族"><span class="nav-number">2.</span> <span class="nav-text">盒尺寸四大家族</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#content"><span class="nav-number">2.1.</span> <span class="nav-text">content</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padding"><span class="nav-number">2.2.</span> <span class="nav-text">padding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#margin"><span class="nav-number">2.3.</span> <span class="nav-text">margin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#border"><span class="nav-number">2.4.</span> <span class="nav-text">border</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内联元素与流"><span class="nav-number">3.</span> <span class="nav-text">内联元素与流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流的破坏与保护"><span class="nav-number">4.</span> <span class="nav-text">流的破坏与保护</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#float"><span class="nav-number">4.1.</span> <span class="nav-text">float</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BFC"><span class="nav-number">4.2.</span> <span class="nav-text">BFC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overflow"><span class="nav-number">4.3.</span> <span class="nav-text">overflow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#absolute"><span class="nav-number">4.4.</span> <span class="nav-text">absolute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#absolute-和-overflow"><span class="nav-number">4.5.</span> <span class="nav-text">absolute 和 overflow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#absolute-其它"><span class="nav-number">4.6.</span> <span class="nav-text">absolute 其它</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#relative"><span class="nav-number">4.7.</span> <span class="nav-text">relative</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#层叠"><span class="nav-number">5.</span> <span class="nav-text">层叠</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本层叠关系（自下而上）"><span class="nav-number">5.1.</span> <span class="nav-text">基本层叠关系（自下而上）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层叠上下文"><span class="nav-number">5.2.</span> <span class="nav-text">层叠上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#层叠上下文的作用"><span class="nav-number">5.2.1.</span> <span class="nav-text">层叠上下文的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何产生层叠上下文"><span class="nav-number">5.2.2.</span> <span class="nav-text">如何产生层叠上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#z-index-派（对于它们，产生的层叠上下文顺序为-z-index-的值）"><span class="nav-number">5.2.2.1.</span> <span class="nav-text">z-index 派（对于它们，产生的层叠上下文顺序为 z-index 的值）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其它（此时都认为-z-index-为-0）"><span class="nav-number">5.2.2.2.</span> <span class="nav-text">其它（此时都认为 z-index 为 0）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#元素的显式和隐藏"><span class="nav-number">6.</span> <span class="nav-text">元素的显式和隐藏</span></a></li></ol></div>
             
 
           </div>
