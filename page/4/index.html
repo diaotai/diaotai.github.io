@@ -229,6 +229,289 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/24/redis-初步探索/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/24/redis-初步探索/" itemprop="url">redis 初步探索</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-24T17:40:14+08:00">
+                2018-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>在本周我尝试了 redis 的一些操作，感觉还是很有意思的，所以写本文记下来</p>
+</blockquote>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Redis是一个开源的、基于内存的数据结构存储器，可以用作数据库、缓存和消息中间件。<br>Redis 是一款采取 CS 架构的单线程服务器，基于事件循环处理客户端请求。尽管 redis 是基于内存进行存储的，但是它可以通过快照的形式（包括全量和增量）来进行数据持久化。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>redis 的数据库结构非常简单，每个数据库采取一个数字来标识，默认数据库是 0.通过 select n 就可以切换数据库。</p>
+<p>redis 提供了 5 种数据结构来进行数据存储，分别是 字符串，数组，set，hashMdp。</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>这是最常见的数据类型，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set users:leto &apos;&#123;&quot;name&quot;: leto, &quot;planet&quot;: dune, &quot;likes&quot;: [&quot;spice&quot;]&#125;&apos; //写</span><br><span class="line">get users:leto  //读</span><br></pre></td></tr></table></figure></p>
+<p>另外 redis 对字符串有一些常见的操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; strlen users:leto     // 获取字符串长度 </span><br><span class="line">(integer) 50    </span><br><span class="line"></span><br><span class="line">&gt; getrange users:leto 31 48     // 获取特定范围的字符</span><br><span class="line">&quot;\&quot;likes\&quot;: [\&quot;spice\&quot;]&quot;</span><br><span class="line"></span><br><span class="line">&gt; append users:leto &quot; OVER 9000!!&quot;  // 追加内容</span><br><span class="line">(integer) 62</span><br></pre></td></tr></table></figure></p>
+<p>另外如果字符串是整型也会很有意思<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; incr stats:page:about     // 加一</span><br><span class="line">(integer) 1</span><br><span class="line">&gt; incr stats:page:about</span><br><span class="line">(integer) 2</span><br><span class="line"></span><br><span class="line">&gt; incrby ratings:video:12333 5  // 增加指定大小</span><br><span class="line">(integer) 5</span><br><span class="line">&gt; incrby ratings:video:12333 3</span><br><span class="line">(integer) 8</span><br></pre></td></tr></table></figure></p>
+<h2 id="哈希结构"><a href="#哈希结构" class="headerlink" title="哈希结构"></a>哈希结构</h2><p>和普通字符串而言是多了一层数据:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hset users:goku powerlevel 9000     // 设置hashset</span><br><span class="line">hget users:goku powerlevel          // 获取hashset</span><br><span class="line">hmset users:goku race saiyan age 737    // 一次设置多个</span><br><span class="line">hmget users:goku race powerlevel        // 一次获取多个</span><br><span class="line">hgetall users:goku      // 获取全部值</span><br><span class="line">hkeys users:goku        // 获取全部key</span><br><span class="line">hdel users:goku age     // 删除key</span><br></pre></td></tr></table></figure></p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>列表结构可以让你，为指定的 key 保存和处理数组形式的 value 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lpush newusers goku     // push 内容</span><br><span class="line">ltrim newusers 0 49     // 保留最新的五十个</span><br></pre></td></tr></table></figure></p>
+<h2 id="集合结构"><a href="#集合结构" class="headerlink" title="集合结构"></a>集合结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sadd friends:leto ghanima paul chani jessica    // 向 set 内添加内容</span><br><span class="line">sismember friends:leto jessica      // 检验是否在内部</span><br></pre></td></tr></table></figure>
+<h2 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h2><p>和普通集合的唯一区别在于存在权重<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zadd friends:duncan 70 ghanima 95 paul 95 chani 75 jessica 1 vladimir // 添加内容时加权重</span><br><span class="line">zcount friends:duncan 90 100    // 统计 90-100 间的个数</span><br><span class="line">zrank friends:duncan chani      // 由低到高进行排序</span><br><span class="line">zrevrank friends:duncan chani   // 由高到低进行排序</span><br></pre></td></tr></table></figure></p>
+<h2 id="其它操作"><a href="#其它操作" class="headerlink" title="其它操作"></a>其它操作</h2><h3 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h3><p>Redis 所有的命令都是原子性的，包括那些一次可以执行多项操作的命令也一样。此外，在使用多命令的时候，Redis 支持事务，例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">redis.watch(&apos;powerlevel&apos;)</span><br><span class="line">current = redis.get(&apos;powerlevel&apos;)</span><br><span class="line">redis.multi()</span><br><span class="line">redis.set(&apos;powerlevel&apos;, current + 1)</span><br><span class="line">redis.exec()</span><br></pre></td></tr></table></figure></p>
+<h3 id="超时"><a href="#超时" class="headerlink" title="超时"></a>超时</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">expire pages:about 30               // 超时时间 30 s</span><br><span class="line">expireat pages:about 1356933600     // 设置 unix 时间戳</span><br><span class="line">ttl pages:about                     // 还剩多久</span><br><span class="line">persist pages:about                 // 删除过期数据</span><br><span class="line">setex pages:about 30 &apos;&lt;h1&gt;about us&lt;/h1&gt;....&apos;    // 在放入时就设置过期时间</span><br></pre></td></tr></table></figure>
+<h3 id="发布订阅"><a href="#发布订阅" class="headerlink" title="发布订阅"></a>发布订阅</h3><p>同一个发布事件可以被多个窗口监听，一个窗口也可以监听多个事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subscribe warnings          // a 窗口发布消息</span><br><span class="line">publish warnings &quot;it&apos;s over 9000!&quot;  // b 窗口接受消息</span><br></pre></td></tr></table></figure></p>
+<h3 id="Monitor-and-Slow-Log"><a href="#Monitor-and-Slow-Log" class="headerlink" title="Monitor and Slow Log"></a>Monitor and Slow Log</h3><p>这是两个非常好的调试工具,但不应该被用于生产环境中</p>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>sort 是Redis 最强力命令之一。它允许你对列表，集合，有序集合中的值进行排序 (有序集是依照权重排序的，而不是集合中的成员)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpush users:leto:guesses 5 9 10 2 4 10 19 2</span><br><span class="line">sort users:leto:guesses         // 由低到高（默认）</span><br><span class="line">sort friends:ghanima limit 0 3 desc alpha   //  分页、逆序，按照字典序</span><br></pre></td></tr></table></figure>
+<p>排序可以更复杂<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hset bug:12339 severity 3</span><br><span class="line">hset bug:12339 priority 1</span><br><span class="line">hset bug:12339 details &apos;&#123;&quot;id&quot;: 12339, ....&#125;&apos;</span><br><span class="line"></span><br><span class="line">sort watch:leto by bug:*-&gt;priority get bug:*-&gt;details   // 根据优先级排序，获取细节</span><br></pre></td></tr></table></figure></p>
+<p>另外，store 可以缓存排序结果</p>
+<h2 id="扫描"><a href="#扫描" class="headerlink" title="扫描"></a>扫描</h2><p>keys 命令不应该被用于生产环境，scan 则是另一回事了<br>一次调用 scan 无需返回所有匹配结果。没什么奇怪的，就是一个被分页的结果;但是, scan 返回的结果条数不定，它不能被精确的控制。你可以用 count 选项，默认是 10，不过它完全有可能拿到比指定的 count 更多或更少的结果。<br>也就是说，一个空结果集并不意味着没有其他的结果存在。只有一个 0 游标，才意味着没有更多的结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">scan 0 match bugs:* count 2</span><br><span class="line">&gt; 1) &quot;3&quot;</span><br><span class="line">&gt; 2) 1) &quot;bugs:125&quot;</span><br><span class="line">scan 3 match bugs:* count 2</span><br><span class="line">&gt; 1) &quot;0&quot;</span><br><span class="line">&gt; 2) 1) &quot;bugs:124&quot;</span><br><span class="line">&gt;    2) &quot;bugs:123&quot;</span><br></pre></td></tr></table></figure>
+<p><em>这有两点需要牢记。首先，scan 可以多次返回相同的 key 。你需要自己处理(比如说保存一个已有值集合)。其次，scan 只保证在迭代的整个持续过程中的存在值会被返回。如果在迭代中有值被添加或者被删除，新值可能被返回，旧值可能被忽略。再强调一次，这就是 scan 所谓的无状态; 它不会对存在值做快照(就像你在许多数据库中看到的那样，提供了强一致性保证)，仅仅是遍历同一块内存空间，不管空间有没有发生变更。</em></p>
+<h1 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h1><p>简单集群和负载均衡其实是很危险的——当某一台机器出现问题时上面的数据会全部丢失，因此，我们应该采取主从库的结构，而 master-slave 模式可以有以下两个优势：</p>
+<ul>
+<li>数据高可用：Master负责接收客户端的写入请求，将数据写到Master后，同步给Slave，实现数据备份。一旦Master挂了，可以将Slave提拔为Master；</li>
+<li>提高查询效率：一旦Master发现自己忙不过来了，可以把一些查询请求，转发给Slave去处理，也就是Master负责读写或者只负责写，Slave负责读；尽管这样可能导致读到一些过期的数据，不过还算是可以接受的折中。</li>
+</ul>
+<p>配置主从服务可以通过修改配置文件的 slaveof 标签或者用 slaveof 命令来实现。不过目前 redis 还不支持自动将 slave 提升为 master,因此依旧需要用心跳监控和脚本来手动处理</p>
+<h1 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h1><p>备份 Redis 只需要简单的将 Redis 的快照拷贝到你想要的地方(S3, FTP, …)。默认的，Redis 把它的快照保存在名为 dump.rdb 的文件中。随时，你都可以 scp, ftp 或者 cp (或别的什么) 操作这个文件。</p>
+<p>在主服务上禁用快照或者禁用增量文件(append-only file (aof))，转而让从服务去维护，这种做法并不少见。这有助于降低主服务器上的负载，并且允许在从服务上使用更积极的备份操作，而不会影响整个系统的响应速度。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://github.com/ilivebox/the-little-redis-book/blob/master/zh-cn/redis.md" target="_blank" rel="noopener">redis 简介</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/37055648" target="_blank" rel="noopener">Redis简明教程</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/20/vim-初步探索/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="diaotai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="日拱一卒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/20/vim-初步探索/" itemprop="url">vim 初步探索</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-20T10:02:03+08:00">
+                2018-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>由于平时工作中有用到 vim 的情况，然而我对 vim 的了解就是进入退出编辑，所以初步的进行一些探索。本文记录下来的 vim 操作只是最最基础的，只代表我接下来一段时间会投入使用的命令，后续会接着尝试更多的命令。</p>
+</blockquote>
+<h1 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h1><h2 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ctrl + f        向下跳一页</span><br><span class="line">ctrl + b        向上跳一页</span><br><span class="line">*               当鼠标停留在某个单词上时摁 * 会跳到后面下一个单词上（最后会跳到第一个）</span><br><span class="line">#               当鼠标停留在某个单词上时摁 # 会跳到后面上一个单词上（最后会跳到第一个）</span><br><span class="line">gg              跳转到文件第一行</span><br><span class="line">G               跳转到文件最后一行</span><br><span class="line">nG或ngg         跳转到文件第几行</span><br><span class="line">(n)H            跳转到当前页面第几行（默认是第一行</span><br><span class="line">M               跳转到当前页面中间</span><br><span class="line">(n)L            跳转到当前页面倒数第几行</span><br></pre></td></tr></table></figure>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(n)dd           删除以下n行</span><br><span class="line">(n)dw           删除光标右侧n个字</span><br><span class="line">(n)db           删除光标左侧n个字</span><br><span class="line">d$              光标删除到行末</span><br><span class="line">d0              光标删除到行首</span><br><span class="line">J               删除本行回车符，与下一行合并</span><br></pre></td></tr></table></figure>
+<h2 id="复制粘贴撤销重做"><a href="#复制粘贴撤销重做" class="headerlink" title="复制粘贴撤销重做"></a>复制粘贴撤销重做</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p               粘贴至光标之后</span><br><span class="line">P               粘贴至光标之前</span><br><span class="line">(n)yy           复制到内存中</span><br><span class="line">u               撤销</span><br><span class="line">.               重复上一步操作</span><br></pre></td></tr></table></figure>
+<h1 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h1><h2 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:w filename     另存为filename</span><br><span class="line">:n              跳转到第n行</span><br><span class="line">:m,nw filename  第m-n行写入文件</span><br><span class="line">:.,$w filename  当前行到最后一行写入文件</span><br><span class="line">:f              显示当前信息，比如文件共几行，光标在第几行</span><br></pre></td></tr></table></figure>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:/str/          正向搜索</span><br><span class="line">:?str?          逆向搜索</span><br><span class="line">可以使用正则表达式</span><br></pre></td></tr></table></figure>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://www.jianshu.com/p/bcbe916f97e1" target="_blank" rel="noopener">vim入门</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/nginx初步探索（配置文件/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -875,7 +1158,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -888,7 +1171,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
