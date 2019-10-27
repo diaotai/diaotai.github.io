@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="常识 hook 只能使用在函数式组件的最外层，不可以被使用在任何分支或循环中，也不可以被使用在普通函数中（自定义 hook 除外） 自定义 hook 的状态是独立的，每个使用的自定义 hook 都会有单独的 state 与 setState 不同，hook 中的状态更新总是以覆盖的形式而不是合并的形式 函数式组件中的每一个局部变量都会随着每次渲染重新定义 fiber 可以解决大组件导致的渲染缓慢问">
+<meta name="description" content="介绍近日因为在项目中遇到了打包大量无关代码的情况，既导致了打包时间缓慢，还导致了一些其它的错误，因此进行了相应的优化。 我使用的优化工具是一个 webpack 插件—— webpack-bundle-analyzer，需要配合webpack和webpack-cli一起使用。这个插件的功能是生成代码分析报告，帮助提升代码质量和网站性能。，其地址为 webpack-bundle-analyzer),可">
 <meta name="keywords" content="front-end">
 <meta property="og:type" content="article">
-<meta property="og:title" content="react-hook 记录">
-<meta property="og:url" content="http://yoursite.com/2019/10/10/react-hook-记录/index.html">
+<meta property="og:title" content="webpack 打包优化">
+<meta property="og:url" content="http://yoursite.com/2019/10/27/webpack-打包优化/index.html">
 <meta property="og:site_name" content="日拱一卒">
-<meta property="og:description" content="常识 hook 只能使用在函数式组件的最外层，不可以被使用在任何分支或循环中，也不可以被使用在普通函数中（自定义 hook 除外） 自定义 hook 的状态是独立的，每个使用的自定义 hook 都会有单独的 state 与 setState 不同，hook 中的状态更新总是以覆盖的形式而不是合并的形式 函数式组件中的每一个局部变量都会随着每次渲染重新定义 fiber 可以解决大组件导致的渲染缓慢问">
+<meta property="og:description" content="介绍近日因为在项目中遇到了打包大量无关代码的情况，既导致了打包时间缓慢，还导致了一些其它的错误，因此进行了相应的优化。 我使用的优化工具是一个 webpack 插件—— webpack-bundle-analyzer，需要配合webpack和webpack-cli一起使用。这个插件的功能是生成代码分析报告，帮助提升代码质量和网站性能。，其地址为 webpack-bundle-analyzer),可">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-13T10:51:58.717Z">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/302213/20628702/93f72404-b338-11e6-92d4-9a365550a701.gif">
+<meta property="og:updated_time" content="2019-10-27T11:28:22.343Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="react-hook 记录">
-<meta name="twitter:description" content="常识 hook 只能使用在函数式组件的最外层，不可以被使用在任何分支或循环中，也不可以被使用在普通函数中（自定义 hook 除外） 自定义 hook 的状态是独立的，每个使用的自定义 hook 都会有单独的 state 与 setState 不同，hook 中的状态更新总是以覆盖的形式而不是合并的形式 函数式组件中的每一个局部变量都会随着每次渲染重新定义 fiber 可以解决大组件导致的渲染缓慢问">
+<meta name="twitter:title" content="webpack 打包优化">
+<meta name="twitter:description" content="介绍近日因为在项目中遇到了打包大量无关代码的情况，既导致了打包时间缓慢，还导致了一些其它的错误，因此进行了相应的优化。 我使用的优化工具是一个 webpack 插件—— webpack-bundle-analyzer，需要配合webpack和webpack-cli一起使用。这个插件的功能是生成代码分析报告，帮助提升代码质量和网站性能。，其地址为 webpack-bundle-analyzer),可">
+<meta name="twitter:image" content="https://cloud.githubusercontent.com/assets/302213/20628702/93f72404-b338-11e6-92d4-9a365550a701.gif">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/10/react-hook-记录/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/27/webpack-打包优化/">
 
 
 
 
 
-  <title>react-hook 记录 | 日拱一卒</title>
+  <title>webpack 打包优化 | 日拱一卒</title>
   
 
 
@@ -233,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/react-hook-记录/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/27/webpack-打包优化/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="diaotai">
@@ -250,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">react-hook 记录</h1>
+          <h1 class="post-title" itemprop="name headline">webpack 打包优化</h1>
         
 
         <div class="post-meta">
@@ -262,8 +264,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-10T22:30:55+08:00">
-                2019-10-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-27T19:21:50+08:00">
+                2019-10-27
               </time>
             
 
@@ -300,48 +302,13 @@
       
 
       
-        <h1 id="常识"><a href="#常识" class="headerlink" title="常识"></a>常识</h1><ul>
-<li>hook 只能使用在函数式组件的最外层，不可以被使用在任何分支或循环中，也不可以被使用在普通函数中（自定义 hook 除外）</li>
-<li>自定义 hook 的状态是独立的，每个使用的自定义 hook 都会有单独的 state</li>
-<li>与 setState 不同，hook 中的状态更新总是以覆盖的形式而不是合并的形式</li>
-<li>函数式组件中的每一个局部变量都会随着每次渲染重新定义</li>
-<li>fiber 可以解决大组件导致的渲染缓慢问题，具体而言是异步渲染</li>
-<li>异步渲染分为两个阶段 —— render parse 和 commit parse，前者包括一次 渲染的 redner 函数及之前全部步骤，完全可能被中断，可能会被反复执行多次，因此其中不应该有任何有副作用的东西。而后者只会执行一次，不会被中断，有副作用的请求可以放入其中。</li>
-<li>suspense 的作用是进行代码分割，动态加载。 fallback 即为兜底逻辑，当加载页面时，发现所需组件尚在加载中，就会抛出一个 promise 错误，然后 suspense 会捕获该错误，当该 promise resolve 的时候，会进行重新渲染。</li>
-</ul>
-<h1 id="hook-与生命周期"><a href="#hook-与生命周期" class="headerlink" title="hook 与生命周期"></a>hook 与生命周期</h1><ul>
-<li>useEffect Hook 看做 componentDidMount，componentDidUpdate 和 componentWillUnmount 这三个函数的组合。</li>
-<li>每一次重新渲染都会生成新的 effect，替换掉之前的。effect 更像是渲染的结果，每个 effect 都属于一次特定的渲染。</li>
-<li>effect 不会阻塞浏览器更新屏幕，大多数情况下 effect 也不需要同步执行。如果是一些特殊情况，可以使用 useLayoutEffect hook 来解决。</li>
-<li>effect 在每一次渲染的时候都会执行，因此 react 会在执行当前 effect 前对上一个 effect 进行清除</li>
-<li>当使用 effect 的优化形式时，请确保数组中包含了所有外部作用域中会随时间变化并且在 effect 中使用的变量（包括间接使用，比如 effect 中调用的函数），否则你的代码会引用到先前渲染中的旧变量。</li>
-<li>如果你传入了一个空数组（[]），effect 内部的 props 和 state 就会一直拥有其初始值</li>
-<li>要记住 effect 外部的函数使用了哪些 props 和 state 很难。这也是为什么 通常你会想要在 effect 内部 去声明它所需要的函数。 这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值</li>
-<li>在最坏的情况下，可以将函数放入 hook 的条件中，然后将函数的定义包裹进 useCallback 中</li>
-<li>当 effect 的依赖频繁变化时，可以考虑在 setState 使用回调函数的形式来解决问题(这种情况同样也是 useReducer 的使用场景)</li>
-</ul>
-<h1 id="其它-hook"><a href="#其它-hook" class="headerlink" title="其它 hook"></a>其它 hook</h1><ul>
-<li>useContext 会在离组件上层最近的 Context.Provider 更新时触发冲渲染，并使用最新的 context value</li>
-<li>在使用 useReducer 时，应当向子组件传递 dispatch 而不是回调函数</li>
-<li>要注意, useMemo 函数在渲染期间执行，请不要在这个函数内部执行与渲染无关的操作，注入副作用之类的操作属于 useEffect。</li>
-<li>当 ref 对象内容发生变化时，useRef 并不会通知你。变更 .current 属性不会引发组件重新渲染。如果想要在 React 绑定或解绑 DOM 节点的 ref 时运行某些代码，则需要使用回调 ref 来实现。</li>
-</ul>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><ul>
-<li>react 通过 hook 的顺序来确认 state 和 useState 的对应关系</li>
-<li>react 保证 useState 的函数是稳定的，并不会在组件重新渲染时发生新变化</li>
-<li>react 通过 Object.is 来并判断是否更新，并以此为依据来处理渲染</li>
-<li>可以理解为每一次渲染都是完全新的组件，里面的 state 和 props 都是不变的（useRef 属于另一种情况）</li>
-</ul>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><a href="https://zh-hans.reactjs.org/docs/hooks-faq.html" target="_blank" rel="noopener">react hook 官方文档</a></li>
-<li><a href="https://adamrackis.dev/state-and-use-reducer/" target="_blank" rel="noopener">Hooks, State, Closures, and useReducer</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/84697185" target="_blank" rel="noopener">React useEffect的陷阱</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/50597236" target="_blank" rel="noopener">一篇看懂 React Hooks</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/48264713" target="_blank" rel="noopener">对React Hooks的一些思考</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/56975681" target="_blank" rel="noopener">React Hooks 第一期：聊聊 useCallback</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/81752821" target="_blank" rel="noopener">精读《React Hooks 最佳实践》</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/60277120" target="_blank" rel="noopener">精读《useEffect 完全指南》</a></li>
-</ul>
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>近日因为在项目中遇到了打包大量无关代码的情况，既导致了打包时间缓慢，还导致了一些其它的错误，因此进行了相应的优化。</p>
+<p>我使用的优化工具是一个 webpack 插件—— webpack-bundle-analyzer，需要配合webpack和webpack-cli一起使用。这个插件的功能是生成代码分析报告，帮助提升代码质量和网站性能。，其地址为 <a href="[https://www.npmjs.com/package/webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer">webpack-bundle-analyzer</a>),可以在开发环境生成很好的可视化界面，有利于迅速进行分析。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># NPM </span><br><span class="line">npm install --save-dev webpack-bundle-analyzer</span><br><span class="line"># Yarn </span><br><span class="line">yarn add -D webpack-bundle-analyzer</span><br></pre></td></tr></table></figure>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const BundleAnalyzerPlugin = require(&apos;webpack-bundle-analyzer&apos;).BundleAnalyzerPlugin</span><br><span class="line">module.exports=&#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    new BundleAnalyzerPlugin()  // 使用默认配置</span><br><span class="line">    // 默认配置的具体配置项</span><br><span class="line">    // new BundleAnalyzerPlugin(&#123;</span><br><span class="line">    //   analyzerMode: &apos;server&apos;,</span><br><span class="line">    //   analyzerHost: &apos;127.0.0.1&apos;,</span><br><span class="line">    //   analyzerPort: &apos;8888&apos;,</span><br><span class="line">    //   reportFilename: &apos;report.html&apos;,</span><br><span class="line">    //   defaultSizes: &apos;parsed&apos;,</span><br><span class="line">    //   openAnalyzer: true,</span><br><span class="line">    //   generateStatsFile: false,</span><br><span class="line">    //   statsFilename: &apos;stats.json&apos;,</span><br><span class="line">    //   statsOptions: null,</span><br><span class="line">    //   excludeAssets: null,</span><br><span class="line">    //   logLevel: info</span><br><span class="line">    // &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;dev&quot;: &quot;webpack --config webpack.dev.js --progress&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p><img src="https://cloud.githubusercontent.com/assets/302213/20628702/93f72404-b338-11e6-92d4-9a365550a701.gif" alt="webpack-bundle-analyzer-result"></p>
+<p>每一个彩色的框子都代表一部分打包结果，很好的指示了包含关系以及路径的问题，点击可以放大，我就是根据这个找到了原因。</p>
 
       
     </div>
@@ -372,8 +339,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/05/css-轮播图/" rel="next" title="css 轮播图">
-                <i class="fa fa-chevron-left"></i> css 轮播图
+              <a href="/2019/10/19/chrome-插件-1/" rel="next" title="chrome 插件">
+                <i class="fa fa-chevron-left"></i> chrome 插件
               </a>
             
           </div>
@@ -381,10 +348,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/19/chrome-插件/" rel="prev" title="chrome 插件">
-                chrome 插件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -507,7 +470,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常识"><span class="nav-number">1.</span> <span class="nav-text">常识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hook-与生命周期"><span class="nav-number">2.</span> <span class="nav-text">hook 与生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其它-hook"><span class="nav-number">3.</span> <span class="nav-text">其它 hook</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理"><span class="nav-number">4.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运行"><span class="nav-number">4.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结果"><span class="nav-number">5.</span> <span class="nav-text">结果</span></a></li></ol></div>
             
 
           </div>
